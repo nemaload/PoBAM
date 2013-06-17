@@ -1,0 +1,291 @@
+\documentclass[letterpaper,10pt,twoside]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[american]{babel}
+
+\usepackage{datetime}
+\newdateformat{ymd}{\THEYEAR/\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+
+\usepackage{color}
+\usepackage{verbatim}
+
+\usepackage{soul}
+\usepackage{bm}\usepackage{sectsty}
+\sectionfont{\Large\scshape}
+\subsectionfont{\large\scshape}
+\subsubsectionfont{\scshape}
+%\renewcommand{\thesection}{\relax}
+%\setcounter{secnumdepth}{-1}
+\usepackage[compact]{titlesec}
+%\usepackage[font=it,labelfont={up,bf},margin=1.2cm]{caption}
+\usepackage{ccaption}
+\captionnamefont{\bfseries}
+\captiontitlefont{\small}
+\captiondelim{. }
+\captionstyle{\centerlastline}
+\captionwidth{\linewidth}
+\changecaptionwidth
+\precaption{\hrule\par}
+\postcaption{\vspace{1mm}}
+\setlength{\abovecaptionskip}{4mm}
+\setlength{\belowcaptionskip}{2mm}
+\usepackage[alwaysadjust]{paralist}
+\setdefaultleftmargin{1.1em}{1.5em}{0.8ex}{0.8ex}{0.8ex}{0.8ex}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{array}
+\usepackage{booktabs}
+%\usepackage{tabularx}
+%\usepackage{ltxtable}
+%\usepackage{multicol}
+\usepackage{tabu}
+\usepackage[top=1in,bottom=0.65in,right=0.5in,left=0.5in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{authblk}
+\usepackage[overload]{ragged2e}
+\usepackage[section,above]{place ins}
+
+%title configuration
+\setlength{\droptitle}{-1cm}
+\pretitle{\begin{center}\LARGE}
+\posttitle{\end{center}}
+
+%author block hack
+\makeatletter
+\newsavebox{\affilsym}
+\newcommand\lift[1]{{\fontsize{8}{8}\selectfont\vtop{\vskip -2.78ex \hbox{\hspace{0.14em}#1}}}}
+\renewcommand\AB@authnote[1]{\lift{#1}}
+\renewcommand\AB@affilnote[1]{\normalfont\textbf{#1}\hspace*{0.4em plus 0.6em}}
+\renewcommand\AB@affilsep{\protect\par\protect\vspace{0.1pt}\protect\justify\protect\Affilfont}
+\renewcommand\AB@affilsepx{\protect\hskip 1em plus 0.4em \protect\Affilfont}
+\makeatother
+\renewcommand\Authsep{\hskip 0.39em minus 0.05em}
+\renewcommand\Authands{~{\fontsize{8.7}{8.4}\selectfont{and}}\hskip 0.51em minus 0.08em}
+\renewcommand\Authfont{\fontsize{9}{12}\selectfont\setlength{\baselineskip}{15pt}}
+\renewcommand\Affilfont{\fontfamily{ugm}\selectfont\footnotesize}
+\protected\def\jointfirst{\vartriangleleft}
+\newcommand{\jointlast}{\hspace{-0.3pt}\vartriangleright}
+
+%date configuration
+\predate{\begin{center}\small({\color{red}Draft} produced }
+\postdate{)\end{center}}
+
+%page numbering
+\fancypagestyle{plain}{
+\fancyhead{}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+}
+
+%\usepackage{marvosym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage[binary-units=true]{siunitx}
+\newcommand{\ca}{{\sim}}
+\sisetup{input-protect-tokens=\ca,input-symbols=\ca,range-phrase=\textrm{--},range-units=single,retain-unity-mantissa=false,per-mode=symbol}
+
+\newcommand\sub[1]{_{\text{\scriptsize #1}}}
+\renewcommand\d{\text{d}}
+
+\usepackage[urw-garamond]{mathdesign}
+\delimitershortfall=1pt
+\delimiterfactor=1100
+\usepackage[kerning=true]{microtype}
+\SetExtraKerning{encoding={T1}}{\textemdash={215,215}}
+%\SetProtrusion[load=ugm-T1,context=biblio]{encoding=T1,family=ugm}{\textquotedblleft={80,80}}
+\usepackage{textcomp}
+\newcommand\od{\text{d}}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usetikzlibrary{arrows,shapes,calc,positioning,matrix,chains}
+
+\usepackage{eqparbox}
+\newsavebox{\tstretchbox}
+\newcolumntype{S}[1]{>{\begin{lrbox}{\tstretchbox}}l<{\end{lrbox}\eqmakebox[#1][s]{\unhcopy\tstretchbox}}}
+
+\usepackage[ps2pdf,breaklinks=true,bookmarks=true,bookmarksopen,bookmarksopenlevel=2,pdfpagelayout=OneColumn]{hyperref}
+\usepackage{url}
+\usepackage{breakurl}
+
+\usepackage{csquotes}
+\MakeAutoQuote{«}{»}
+%\usepackage[numbers,sort&compress]{natbib}
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=ydnt,
+    sortcites=true,
+    natbib=true,
+    url=true, 
+    doi=true,
+    eprint=true,
+    backref=true,
+    backrefstyle=three,
+    maxnames=6,
+    minnames=5,
+    defernumbers=true,
+]{biblatex}
+\usepackage{xpatch}
+\setlength{\bibitemsep}{0.7ex plus 0.25ex minus 0.2ex}
+\renewcommand{\subtitlepunct}{\addcolon\space}
+\renewcommand{\intitlepunct}{\space}
+\renewcommand{\newunitpunct}{\addcomma\space}
+\renewcommand{\newblockpunct}{\unspace\penalty-8\relax\space}
+\renewcommand{\labelnamepunct}{\addperiod}
+\renewcommand{\multinamedelim}{\addsemicolon\space}
+\renewcommand{\finalnamedelim}{\addsemicolon\space\printtext{and}\space}
+\renewcommand{\mkbibnamelast}[1]{\textsc{#1}}
+\DeclareNameAlias{default}{last-first/first-last}
+\renewbibmacro{name:last-first}[4]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \ifblank{#3}{}{%
+       \ifcapital
+         {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+     {\mkbibnameprefix{#3}\isdot}%
+       \ifpunctmark{'}{}{\bibnamedelimc}}%
+     \mkbibnamelast{{\bfseries #1}}\isdot
+     \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}%
+     \ifblank{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamefirst{#2}\isdot}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}%
+     \mkbibnamelast{{\bfseries #1}}\isdot
+     \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}%
+     \ifblank{#2#3}{}{\revsdnamepunct}%
+     \ifblank{#2}{}{\bibnamedelimd\mkbibnamefirst{#2}\isdot}%
+     \ifblank{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}
+\DeclareFieldFormat{pages}{\mkcomprange{#1}}
+\DeclareFieldFormat{sentencecase}{\MakeSentenceCase{#1}}
+\DeclareFieldFormat{sortyear}{\textbf{#1}}
+\renewbibmacro*{title}{%
+  \ifthenelse{\iffieldundef{title}\AND\iffieldundef{subtitle}}
+    {}
+    {\ifthenelse{\ifentrytype{article}\OR\ifentrytype{inbook}%
+      \OR\ifentrytype{incollection}\OR\ifentrytype{inproceedings}%
+      \OR\ifentrytype{inreference}}
+      {\printtext[title]{%
+        \printfield[sentencecase]{title}%
+        \setunit{\subtitlepunct}%
+        \printfield[sentencecase]{subtitle}}}%
+      {\printtext[title]{%
+        \printfield[titlecase]{title}%
+        \setunit{\subtitlepunct}%
+        \printfield[titlecase]{subtitle}}}%
+     \newunit}%
+  \printfield{titleaddon}}
+\renewcommand*{\relatedpunct}{\space}
+\renewcommand*{\relateddelim}{\addsemicolon\space}
+\xapptobibmacro{pageref}{\renewcommand{\newunitpunct}{\addsemicolon\space}}{}{}
+\xapptocmd{\bibsetup}{\flushbottom\raggedright}{}{}
+\newbibmacro*{related:prelim}[1]{%
+  \entrydata{#1}{\mkbibparens{\usebibmacro{date}}\nopunct\space\bibstring{on}\usebibmacro{doi+eprint+url}}}
+\NewBibliographyString{prelim,prelims,on}
+\DefineBibliographyStrings{american}{%
+  in = {{}},
+  url = {{URL}},
+  backrefpage = {{cited on p. }},
+  backrefpages = {{cited on pp. }},
+  prelim = {preliminary version\nopunct},
+  prelims = {preliminary versions\addcolon},
+  on = {on\nopunct},
+}
+
+\newcommand\anref[1]{\hyperref[#1]{\autoref*{#1} (\nameref*{#1})}}
+%\usepackage{doi}
+\usepackage{makeidx}
+
+%\yyyymmdddate
+
+\hypersetup{%
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat‚Äôs bookmarks
+    pdftoolbar=false,        % show Acrobat's toolbar?
+    pdfmenubar=true,        % show Acrobat's menu?
+    pdffitwindow=true,     % window fit to page when opened
+    pdfstartview={FitBV},    % fits the width of the page to the window
+    pdfauthor={David Dalrymple},     % author
+    pdfcreator={David Dalrymple},   % creator of the document
+    pdfproducer={David Dalrymple}, % producer of the document
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links
+    citecolor=blue,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+% fancy quotes
+\definecolor{quotemark}{gray}{0.7}
+\makeatletter
+\def\fquote{%
+    \@ifnextchar[{\fquote@i}{\fquote@i[]}%]
+           }%
+\def\fquote@i[#1]{%
+    \def\tempa{#1}%
+    \@ifnextchar[{\fquote@ii}{\fquote@ii[]}%]
+                 }%
+\def\fquote@ii[#1]{%
+    \def\tempb{#1}%
+    \@ifnextchar[{\fquote@iii}{\fquote@iii[]}%]
+                      }%
+\def\fquote@iii[#1]{%
+    \def\tempc{#1}%
+    \vspace{-0.15em}%
+    \noindent%
+    \begin{list}{}{%
+ 	   %
+         \setlength{\leftmargin}{0.12\textwidth}%
+         \setlength{\rightmargin}{0.12\textwidth}%
+                  }%
+         \item[]%
+         \begin{picture}(0,0)%
+         \put(-16.6,-5){\makebox(0,0){\scalebox{4.4}{\fontfamily{cmr}\selectfont\textcolor{quotemark}{``}}}}%
+         \end{picture}%
+         \begingroup}%
+         
+ \def\endfquote{%
+ \endgroup\par%
+ \makebox[0pt][l]{%
+ \hspace{0.8\textwidth}%
+ \begin{picture}(0,0)(0,0)%
+ \put(1.3,14){\makebox(0,0){%
+ \scalebox{4.4}{\fontfamily{cmr}\selectfont\color{quotemark}''}}}%
+ \end{picture}}%
+ \vskip -2.7em%
+ \ifx\tempa\empty%
+ \else%
+    \ifx\tempc\empty%
+       \hfill\rule{100pt}{0.25pt}\\\mbox{}\hfill{\small\tempa,\ \emph{\tempb}}%
+   \else%
+       \hfill\rule{100pt}{0.25pt}\\\mbox{}\hfill{\small\tempa,\ \emph{\tempb},\ \tempc}%
+   \fi\fi\par%
+   \vspace{0.63em}%
+ \end{list}%
+ }%
+ \makeatother
+
+\DeclareMathOperator*{\argmax}{arg\:max}
+\DeclareMathOperator*{\argmin}{arg\:min}
+
+\usepackage{subscript}
+
+\newcommand{\attrib}[1]{\nopagebreak{\raggedleft\footnotesize #1\par}}
+\newcommand{\todo}[1]{\textcolor{lightgray}{\textit{<<#1>>}}}
+\newcommand{\tbc}{\begin{center} \todo{to be completed} \end{center}}
+  \newcommand{\notes}[3]{\vspace{1.5cm}\begin{center} \parbox[b]{3cm}{\hfill #1 \hfill} \hspace{2cm} \textbf{#3} \hspace{2cm} \parbox[b]{3cm}{\hfill \textit{#2} \hfill} \\[-3mm] \rule{\textwidth}{0.4pt} \end{center}}
+
+\flushbottom
+\setlength{\parskip}{0.3cm plus3mm minus1mm}
+\setlength{\parindent}{0cm}
+\setlength{\columnsep}{7mm}
+%\setlength{\premulticols}{1cm}
+%\setlength{\postmulticols}{1cm}
+
+

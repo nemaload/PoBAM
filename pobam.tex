@@ -1,0 +1,428 @@
+\input preamble
+\addbibresource{pobam_.bib}
+
+\title{Physical Principles for Scalable Neural Recording}
+
+\author[1,2]{\ \lift{$\jointfirst\,$}Adam~H.~Marblestone\rlap{,}}
+\author[3]{\lift{$\jointfirst\,$}Bradley~M.~Zamft\rlap{,}}
+\author[3,4]{Yael~G.~Maguire\rlap{,}}
+\author[5]{Mikhail~G.~Shapiro\rlap{,}}
+\author[6]{Ted~Cybulski\rlap{,}}
+\author[6]{Joshua~I.~Glaser\rlap{,}}
+\author[3]{Ben~Stranges\rlap{,}}
+\author[3]{Reza~Kalhor\rlap{,}}
+\author[1,7,8]{David~A.~Dalrymple\rlap{,}}
+\author[9]{Dongjin Seo\rlap{,}}
+\author[9]{Elad Alon\rlap{,}}
+\author[9]{Michel M. Maharbiz\rlap{,}}
+\author[9]{Jose Carmena\rlap{,}}
+\author[9]{Jan Rabaey\rlap{,}}
+\author[$\jointlast$8,10]{Edward~S.~Boyden\rlap{,}}
+\author[$\jointlast$1,2,3]{George~M.~Church\rlap{,}}
+\author[$\jointlast$11,12]{Konrad~P.~K\"ording}
+
+\affil[$\jointfirst$]{Joint first authors}
+\affil[$\jointlast$]{Joint last authors}
+
+\newcommand\et{{\em \&}}
+
+\definecolor{deemph}{gray}{0.48}
+\affil[1]{Biophysics {\color{deemph}Program,} Harvard {\color{deemph}Univ., Boston,~MA~02115, USA}}
+\affil[2]{Wyss Institute {\color{deemph}for Biologically Inspired Engineering at} Harvard {\color{deemph}Univ., Boston,~MA~02115, USA}}
+\affil[3]{{\color{deemph} Dept.\ of Genetics,} Harvard Medical School{\color{deemph}, Boston,~MA~02115, USA}}
+\affil[4]{Plum Labs LLC, Somerville,~MA{\color{deemph}~02143, USA}}
+\affil[5]{Miller Institute{\color{deemph}, Depts.\ of Bioengineering \et\ of Molecular and Cell Biology, Univ.\ of California at} Berkeley{\color{deemph}, Berkeley,~CA~94720, USA}}
+\affil[6]{{\color{deemph}Interdepartmental} Neuroscience {\color{deemph}Program,} Northwestern Univ.{\color{deemph}, Chicago,~IL~60611, USA}}
+\affil[7]{Nemaload, San Francisco, CA{\color{deemph}~94107, USA}}
+\affil[8]{Media Lab{\color{deemph}oratory,} Massachusetts Institute of Technology{\color{deemph}, Cambridge,~MA~02139, USA}}
+\affil[9]{{\color{deemph}Dept.\ of} Electrical Engineering and Computer Science{\color{deemph}, Univ. of California at} Berkeley{\color{deemph}, Berkeley,~CA~94720, USA}}
+\affil[10]{{\color{deemph}Depts.\ of} Brain and Cognitive Sciences {\color{deemph}\et\ of} Biological Engineering, Massachusetts Institute of Technology{\color{deemph}, Cambridge,~MA~02139, USA}}
+\affil[11]{{\color{deemph}Depts.\ of} Physical Medicine and Rehabilitation {\color{deemph}\et\ of} Physiology, Northwestern Univ.{\color{deemph}\ Feinberg} School of Medicine{\color{deemph}, Chicago,~IL~60611,~USA}}
+\affil[12]{{\color{deemph}Sensory Motor Performance Program,} The Rehabilitation Institute of Chicago{\color{deemph}, Chicago,~IL~60611,~USA}}
+
+\renewcommand{\maketitlehookc}{{\small\raggedright Correspondence to: \texttt{adam.h.marblestone\,\textnormal{(at)}\,\,gmail.com}}}
+
+\begin{document}
+\fontfamily{ugm}\selectfont
+\maketitle
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\begin{fquote}[Freeman Dyson][Imagined Worlds][1997]To understand in depth what is going on in a brain, we need tools that can fit inside or between neurons and transmit reports of neural events to receivers outside. We need observing instruments that are local, nondestructive and noninvasive, with rapid response, high band-width and high spatial resolution\ldots\hfill\ There is no law of physics that declares such an observational tool to be impossible.\end{fquote}
+
+\begin{abstract}
+\noindent
+Simultaneously measuring the activities of all neurons in a mammalian brain at millisecond resolution is a challenge that goes beyond the limits of existing techniques in neuroscience.
+Entirely new approaches may be required, motivating an analysis of the fundamental physical constraints on the problem.
+Here, we outline the physical principles governing brain activity mapping using optical, electrical, magnetic resonance, and molecular modalities of neural recording.
+Focusing on the mouse brain, we analyze the scalability of each method, concentrating on the limitations imposed by spatiotemporal resolution, energy dissipation, and volume displacement.
+Based on this analysis, all existing approaches require orders of magnitude improvement in key parameters.
+Electrical recording is limited by the low multiplexing capacity of electrodes and their lack of intrinsic spatial resolution,
+optical methods are constrained by the scattering of visible light in brain tissue,
+magnetic resonance is hindered by the diffusion and relaxation timescales of the spin species,
+and the implementation of molecular recording is complicated by the stochastic kinetics of enzymes.
+Understanding the physical limits of brain activity mapping may provide insight into opportunities for novel solutions.
+For example, unconventional methods for delivering electrodes may enable unprecedented numbers of recording sites,
+embedded optical devices could allow optical detectors to be placed within a few scattering lengths of the measured neurons,
+and new classes of molecularly engineered sensors might obviate cumbersome hardware architectures.
+We also study the physics of powering and communicating with microscale devices embedded in brain tissue and find that, while radio-frequency electromagnetic data transmission suffers from a severe power--bandwidth tradeoff, communication via infrared light or via ultrasound may allow high data rates due to the possibility of spatial multiplexing.
+The use of an embedded local recording and wireless data transmission strategy would only be viable, however, given major improvements to the power efficiency of microelectronic neural recording devices.
+\end{abstract}
+
+\section{Introduction}
+Progress in neuroscience depends on recording the electrical activities of neurons within functioning brains.
+The classical technique of electrical recording with wired electrodes has made remarkable progress: the number of simultaneously recorded neurons has doubled every seven years since the 1950s, currently allowing electrical observation of hundreds of neurons at millisecond timescales~\cite{stevenson11}.
+
+Recording techniques have recently diversified beyond their roots in electrical recording.
+For example, activity-dependent optical signals from neurons endowed with fluorescent indicators can be measured by photodetectors, and radio-frequency emissions from excited nuclear spins allow the construction of magnetic resonance images modulated by activity-dependent contrast mechanisms.
+Other methods have been proposed, including the direct recording of neural activities into information-bearing biopolymers~\cite{zamft12,glaser13,kording11a}.
+
+Each modality of neural recording has characteristic advantages and disadvantages.
+Multi-electrode arrays enable the recording of $\ca 250$ neurons at sub-millisecond temporal resolutions.
+Optical microscopy can currently record $\ca 100,000$ neurons at a \SI{1.25}{\second} timescale in behaving Zebrafish~\cite{ahrens13} (via light-sheet microscopy), or hundreds to thousands of neurons at a \SI{\ca100}{\milli\second} timescale in behaving mice~\cite{ziv13} (via two-photon microscopy).
+Magnetic resonance imaging (MRI) allows non-invasive whole brain recordings at a \SI{1}{\second} timescale in humans, but is far from single neuron spatial resolution.
+Molecular recording devices have been proposed for scalable physiological signal recording but have not yet been demonstrated in neurons~\cite{zamft12,glaser13,kording11a}. \autoref{fig:modalities} illustrates the recording modalities studied here.
+While further development of these methods promises to be a crucial driver for future neuroscience research, their fundamental scaling limits are not immediately obvious.
+
+\begin{figure}[htbp]
+\caption{Four generalized neural recording modalities are studied here. % TODO: sub figs
+}
+\label{fig:modalities}
+\centering
+\end{figure}
+
+Our analysis is predicated on assumptions that enable us to estimate scaling limits.
+These include assumptions about basic properties of the brain, which are treated in \anref{sec:constraints}, as well as those pertaining to the required measurement resolution and the limits to which a neural recording method may perturb brain tissue, which are treated in \anref{sec:challenges}.
+Together, these considerations form the basis for our estimates of the prospects for scaling of neural recording technologies.
+We analyze four modalities of brain activity mapping---electrical, optical, magnetic resonance and molecular---in light of these assumptions, and conclude with discussion on opportunities for new developments.
+
+Importantly, our assumptions, analyses and the conclusions thereof are intended as \emph{first approximations and are subject to debate}.
+We anticipate that as much can be learned from where our logic breaks down as from where it succeeds, and from methods to work around the limits imposed by our assumptions.
+
+\section{Basic Constraints}
+\label{sec:constraints}
+
+\paragraph{Mouse brain}
+The mouse brain contains \num{\ca 7.5e7} neurons in a volume of \SI{\ca 420}{\milli\meter\cubed}~\cite{vincent10} and weighs about \SI{0.5}{\gram}.
+For comparison, the human brain has roughly \num{8e10} neurons~\cite{azevedo09} in a volume of \SI{1200}{\centi\meter\cubed}~\cite{allen02}.
+The human brain consumes \SI{\ca 15}{\watt} of power (performing the equivalent of roughly \num{1e17} floating point computational operations on that meager power budget)~\cite{sarpeshkar10}.
+Because power consumption scales approximately linearly with the number of neurons~\cite{houzel11}, the mouse brain is expected to utilize \SI{\ca 15}{\milli\watt} (for comparison, the metabolic rate of the \SIrange{\ca 20}{30}{\gram} mouse is \SIrange{\ca 200}{600}{\milli\watt} depending on its degree of physical activity~\cite{speakman13}).
+
+\paragraph{Neural activities}
+Action potentials (spikes) last \SI{\ca 2}{\milli\second}.
+The average rate of neuronal spiking is \SI{\ca 5}{\hertz}~\cite{sarpeshkar10}, but some neurons spike at \SI{500}{\hertz} or even faster~\cite{gittis10}.
+The activities of nearby neurons can be highly correlated.
+
+\paragraph{Absorption and scattering of radiation}
+All existing methods of neural recording utilize electromagnetic waves, from the ultra-low frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
+Electromagnetic waves are attenuated in brain tissue by absorption and scattering.
+As an approximation to the electromagnetic absorption of brain tissue, we treat the absorption by water, the brain's main constituent (\SIrange{68}{80}{\percent} by mass in humans \cite{dobbing73,fatouros99}).
+At visible and IR wavelengths, there is far worse scattering than absorption: absorption lengths range from \SI{\ca 1.5}{\milli\meter} (blue light) to about \SI{\ca 1}{\centi\meter} (infrared light), while scattering lengths are in the hundreds of microns.
+The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
+\autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering simulation (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue.
+This provides an initial indication of which wavelengths can be used to measure deep-brain signals.
+
+\begin{figure}[htbp]
+\caption{%
+The penetration depth (attenuation length) of electromagnetic radiation in water as a function of wavelength (data from \cite{jonasz07}).
+Radiation is penetrant only in the visible-to-infrared spectrum and in the long-wave RF.
+Black dashed line: the approximate diameter of the mouse brain.
+Inset: tissue scattering simulation based on Mie scattering theory and water absorption. Absorption length of water~\cite{kou93} (blue), simulated scattering length of cortical tissue in a simple Mie scattering model (red) and the attenuation length calculated based on these models (green) of infrared light (inset reproduced from \cite{kou93}, with permission).}
+\label{fig:attenuation}
+\centering
+\end{figure}
+
+\section{Challenges for Brain Activity Mapping}
+\label{sec:challenges}
+Any activity mapping technology must extract the required information without disrupting normal neuronal activity.
+This gives rise to three primary challenges: %TODO "we consider..."
+
+\subsection{Spatiotemporal Resolution}
+
+A sampling rate of \SI{1}{\kilo\hertz} is necessary to capture the fastest trains of action potentials at single-spike resolution.
+A minimal data rate of \num{7.5e10} bits processed per second is required to record 1 bit per mouse neuron at \SI{1}{\kilo\hertz}.
+
+In electrical recording, higher sampling rates (e.g. \SIrange{10}{40}{\kilo\hertz}) are often necessary to distinguish neurons based on spike shapes when each electrode monitors multiple neurons.
+One bit per neuron sampling at \SI{1}{\kilo\hertz} would likely not be sufficient to reliably distinguish spikes above noise: transmitting \SI{\ca 10}{\bit} samples at \SI{\ca 10}{\kilo\hertz} (full waveform) or \SIrange{\ca 10}{20}{\bit} time-stamps upon spike detection would be more realistic.
+On the other hand, it may be possible to locally compress measurements of a spike train before transmission.
+In the fly, the entropy of spike trains has been measured to be up to \SI{\ca 180}{\bit\per\second}, and the information about a stimulus encoded by a spike train (mutual information) was as high as \SI{\ca 90}{\bit\per\second}~\cite{strong98}. This would suggest that in the worst case, a compression factor of 5$\times$--10$\times$ should be possible, relative to a \SI{1000}{\bit\per\second} raw binary sampling. As a na\"{\i}ve estimate of the entropy as a function of firing rate, one can write the entropy $H$ in \si{\bit\per\second}, assuming \SI{1}{\milli\second} long spikes and \SI{1000}{\hertz} sampling rate, as
+\[H \approx \left(-P\sub{spike}\cdot\log_2\!\left(P\sub{spike}\right) - \left(1 - P\sub{spike}\right)\cdot\log_2\!\left(1 - P\sub{spike}\right)\right) \cdot \SI{1000}{\bit\per\second}\]
+
+where $P\sub{spike}$ is the probability of spiking during the sampling interval.
+For the average firing rate of \SI{5}{\hertz}, $P\sub{spike}=0.005$ and $H=\SI{45}{\bit\per\second}$, corresponding to a compression factor of $\ca 20\times$.
+However, at \SI{500}{\hertz}, $P\sub{spike}=0.5$ with $H\approx\SI{1000}{\bit\per\second}$, i.e., no compressibility. 
+Therefore, compression could conceivably reduce the data transmission burden of activity mapping by 1--2 orders of magnitude, depending on the neurons and activity regimes under consideration.
+Based on the above considerations, we assume \SI{1}{\bit\per neuron\per\milli\second} or \SI{100}{\giga\bit\per\second} for the entire mouse brain, as a ``minimal whole brain data rate'' in what follows.
+In many cases, this constitutes a lower bound on what will be feasible in practice.
+
+\subsection{Energy Dissipation}
+
+Brain tissue can sustain local temperature increases ($\Delta T$) of \SI{\ca 2}{\celsius} without severe damage \cite{azevedo09}.
+Assuming that the brain is receiving a constant power influx $P\sub{delivered}$ and that the local thermal transport properties of mouse brains are similar to those of humans \cite{allen02}, we can approximate the temperature change in deep-brain tissue as a function of the applied power \cite{horton13}:
+\[\frac{\od T}{\od t} = \left.\left(P\sub{delivered} + P\sub{metabolic} - \rho\sub{blood} C\sub{blood}\,f\sub{blood} \Delta T\right)\right/C\sub{tissue}\]
+where $P\sub{metabolic} = \SI{0.0116}{\watt\per\gram}$ is the power per unit mass of basal metabolism, $C\sub{tissue} \approx \SI{3.7}{\joule\per\kelvin\per\gram} \approx 0.88\cdot C\sub{water}$ is the specific heat capacity of brain tissue, $\rho\sub{blood}=\SI{1.05}{\gram\per\centi\meter\cubed}$ is the density of blood, $C\sub{blood} = \SI{3.9}{\joule\per\kelvin\per\gram}$ is the specific heat capacity of blood, $f\sub{blood} = \SI{9.3e-9}{\meter\cubed\per\gram\per\second}$ is the volume flow rate of blood, and $\Delta T$ is the temperature difference between the brain tissue and the blood (at temperature \SI{37}{\celsius}).
+A steady-state temperature increase ($\od T/\od t = 0$) of \SI{2}{\celsius} corresponds to a power dissipation of \SI{\ca 40}{\milli\watt} per \SI{500}{\milli\gram} mouse brain.
+Therefore, a recording technique should not dissipate more than \SI{\ca 40}{\milli\watt} of power in a mouse brain at steady state.
+
+Higher power levels may be introduced transiently.
+According to the above equation, if a neural recorder dissipates \SI{\ca 40}{\milli\watt} per \SI{500}{\milli\gram} mouse brain, then the brain approaches the steady-state temperature in \SIrange{2}{3}{\minute}, so shorter experiments may be feasible.
+Increasing convective heat loss from the brain by increasing blood flow (e.g. via increased heart rate) or cooling the brain, the blood, or the whole animal, could increase the allowable power dissipation.
+Note that radiative loss of heat from the brain was ignored here since infrared light emitted by deep-brain tissue is quickly re-absorbed by nearby tissue.
+We have also assumed that conductive heat loss is negligible compared to the heat extracted by blood flow.
+
+In addition to the whole-brain steady-state power, there are limits on the acceptable power density.
+For radio-frequency electromagnetic radiation, the specific absorption rate (SAR) limit on the power density exposed to tissue (calibrated for \SI{\ca 1}{\celsius} temperature change) is  \SI{\ca 10}{\milli\watt\per\centi\meter\squared}, while for ultrasound (which couples less strongly to dissipative loss mechanisms in tissue) the SAR limits are up to 72$\times$ higher.
+The power density limit for visible and near-IR light exposures are also in the \SIrange{\ca 10}{100}{\milli\watt\per\centi\meter\squared} range for \SI{\ca 1}{\milli\second} long exposures, decreasing as the exposure time lengthens (based on the IEC 60825 formulas~\cite{iec60825}).
+High local power dissipation (transient or steady-state) can also modify the electrical properties of excitable membranes, altering neuronal activity patterns.
+For example, heating of cell membranes and surrounding solution by millisecond optical pulses leads to changes in membrane electrical capacitance mediated by the ionic double layer~\cite{shapiro12}.
+Slower temperature changes (scale of seconds) resulting from RF radiation lead to accelerated ion channel and transporter kinetics~\cite{shapiro13}.
+Both of these effects are appreciable when the temperature changes are on the order of \SIrange{1}{10}{\degreeCelsius}.
+
+\subsection{Sensitivity to Volume Displacement}
+
+To prevent damage to the brain, we assume that a recording technique should not introduce a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess.
+
+The nature of the volume displacement is important---sheets of instrumentation that sever long-range connectivity, for example, would disrupt normal brain function regardless of the degree of volume displacement.
+Conversely, higher volume displacement might be possible if introduced during the early development of the brain, so that the brain can adapt.
+
+\section{Evaluation of Modalities}
+
+We next evaluate neural recording technologies with respect to the above challenges, using the mouse brain as a model system.
+\autoref{table:strategies} lists the modalities studied, the assumptions made, the analysis strategies applied, and the conclusions derived.
+
+\begin{table}[htbp]
+\caption{Summary of modalities, models, assumptions and conclusions}
+\label{table:strategies}
+\centering
+\footnotesize
+\tabulinesep=1mm
+\newcommand{\iskip}{\par\vspace{3pt}}
+\begin{tabu} to\linewidth{>{\itshape}X[2,l]X[2.5]X[4,l]X[5]}
+\toprule
+\rowfont[C]{\upshape\bfseries\small}
+Modality & Analysis Strategy & Assumptions & Conclusions \\
+\cmidrule[0.4pt](lr){1-1}
+\cmidrule[0.4pt](lr){2-3}
+\cmidrule[0.4pt](lr){4-4}
+
+Extracellular electrical recording &
+Compute minimal number recorders based on max distance from recorder to recorded neuron &
+{Decay profile of extracellular voltage
+\iskip Approximate noise levels at recording site}
+&
+{Maximum recording distance $r\sub{max}\approx\SIrange{100}{200}{\micro\meter}$ from electrode to neuron measured
+\iskip $\ca 100,000$ recording sites are required per mouse brain at current noise levels
+\iskip However, $\ca\num{1e7}$ electrodes are required in practice to enable sorting of noisy, temporally overlapping spikes using current algorithms}
+\\
+
+Implanted electrical recorders &
+Compute power dissipation of electronic devices that digitally sample neuronal activity &
+Physical limit: $\left.k_bT\ln\left(2\right)\right/\si{\bit}$ processed, practical limit $\left.\ca 10 k_b T\right/\si{\bit}$ \iskip
+Current CMOS digital circuits: $\left.\num{>1e5}k_bT\right/\si{\bit}$&
+Requires at least 2--3 orders of magnitude increase in the power efficiency of electronics relative to current devices to scale to whole-brain simultaneous recordings \iskip
+Minimalist architectures should be developed to reduce local data processing overhead
+\\
+
+Wireless data transmission &
+Compute tradeoff between power efficiency and channel bandwidth using information theory &
+Transmitter must supply enough power to overcome noise and path loss &Data transmission at optical or near-optical frequencies is necessary to achieve sufficient data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain data would draw excessive power due to bandwidth constraints. 
+\iskip Bandwidth cannot effectively be split over multiple independent RF channels.
+\\
+
+Optical imaging &
+Relate the scattering and absorption lengths of optical wavelengths in brain tissue to signal-to-noise ratios for optical imaging &
+Approximate values of scattering and absorption lengths as a function of wavelength &
+Light scattering imposes severe limits on optical techniques, but strategies exist which could negate the effects of scattering, such as implantable optics, infrared fluorescence or bioluminescence, and online inversion of the scattering matrix
+\\
+
+Multi-photon optics &
+Compute minimum total excitation light power to excite multi-photon transitions from indicators within each neuron in every imaging frame &
+Approximate values of multi-photon cross-sections \iskip
+Pulse durations similar to those currently used in multi-photon imaging &
+Multi-photon pulsed-laser excitation of a whole mouse brain will over-heat the brain except in very short experiments
+\\
+
+Beam scanning microscopies &
+Calculate device and indicator parameters necessary for fast beam re-positioning and signal detection &
+Fast optical phase modulators could re-position beams at \si{\giga\hertz} switching rates \iskip
+Fluorescence lifetimes in the \SIrange{0.1}{1.0}{\nano\second} range &
+Beam re-positioning time limits the speed of current systems but we are far from the physical limits of scan speed \iskip
+Fluorescence lifetimes of activity indicators may limit temporal resolution
+\\
+
+Magnetic resonance imaging &
+Calculate spatial and temporal resolution of MRI based on spin relaxation times and spin diffusion &
+Proton MRI using tissue water \iskip
+Approximate values of T1 and T2 relaxation times and self-diffusion times for tissue water &
+To a first approximation, proton MRI is limited by the T1 relaxation time of water to \SI{\ca 100}{\milli\second} temporal resolution and by the self-diffusion of water to spatial resolutions of \SI{\ca 40}{\micro\meter}. T1 pre-mapping could allow T2 contrast on a \SI{\ca 10}{\milli\second} timescale.
+\\
+
+Ultrasound &
+Calculate spatial resolution, signal strength and bandwidth limits on ultrasound imaging &
+Speed of sound in brain \iskip
+Attenuation rate of ultrasound in brain &
+Attenuation of ultrasound by brain tissue and bone may be prohibitive at the \SI{\ca 100}{\mega\hertz} frequencies needed for single-cell resolution ultrasound imaging \iskip
+Ultrasound may be a viable medium for multiplexed data transmission from embedded devices
+\\
+
+Molecular recording &
+Compute metabolic load and DNA volume for synthesis of large nucleic acid polymers \iskipEvaluate temporal resolution in simulated experiments &
+Polymerase biochemical parameter ranges \iskipMetabolic requirements of genome replication &
+Molecular recording devices fall within physical limits but their development poses major challenges in synthetic biology
+
+\\\bottomrule
+\end{tabu}
+\end{table}
+
+\subsection{Electrical Recording}
+
+In the oldest strategy for neural recording, an electrode is used to measure the local voltage at a recording site, which conveys information about the spiking activity of one or more nearby neurons.
+The number of recording sites may be smaller than the number of neurons recorded since each recording site may detect signals from multiple neurons.
+Typical electrical recording techniques keep active devices such as amplifiers outside the skull and therefore do not pose a heat dissipation challenge.
+
+\subsubsection{Spatiotemporal Resolution}
+
+One way to estimate the minimal number of electrodes required to record from the entire mouse brain is to extrapolate the state of the art in spike sorting.
+In an optimistic scenario, $\ca 10$ neurons per electrode may be distinguishable using current spike-sorting algorithms \cite{strong98,sotero11,shapiro12}, although the theoretical upper bound is unknown.
+Indeed, most current techniques (e.g. hand-positioned tetrodes) optimize for signal separability, not for total number of recorded neurons.
+This scenario would necessitate $N=\num{7.5e6}$ electrodes to record from all mouse neurons.
+This could correspond to recording sites spaced on the vertices of a \num{\ca 200 x 200 x 200} site cubic lattice with \SI{\ca 40}{\micro\meter} edge length.
+
+A more optimistic estimate, neglecting difficulties with spike sorting, derives from the maximum distance between an extracellular electrical recorder and a neuron from which it records spikes.
+In a first approximation, this is determined by two factors: the decay of the signal with distance from the spiking neuron and the background noise level at the recording site.
+In a crude approximation to signal detection theory, for one electrode to reliably detect the signal from a neuron, the size of the signal must be larger than the electrode's noise level. %fix repetitive
+
+The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scales roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
+However, this decay is strongly influenced by its detailed geometry and the properties of the extracellular space, making analytical calculation of the decay rate difficult.
+
+Several sources of background noise enter the recordings.
+Johnson noise, which arises from thermal fluctuations in the electrode, is \[V\sub{johnson} = \left(4k_b T Z W\right)^{1/2}\]
+which for physiological temperature, electrodes of impedance $Z = \SI{0.5}{\mega\ohm}$, and \SI{10}{\kilo\hertz} bandwidth is \SI{\ca 9}{\micro\volt}.
+The recordings are also affected by interference from other neurons, which has been reported to exceed the Johnson noise, and is non-stationary due to changes in the cells' firing properties~\cite{sahani99}. 
+The noise and interference from these sources realistically produces \SIrange{>10}{20}{\micro\volt} of voltage fluctuations~\cite{camunas13}.
+Typical current recording setups thus have signal to interference-plus-noise ratios (SINRs) of \num{<100}, where the SINR is defined as the ratio of the peak voltage from immediately adjacent neurons to the voltage fluctuation floor of the electrode.
+
+Importantly, this calculation underestimates the required number of electrodes in practice, because sorting spikes from all neurons within the \SI{6e6}{\micro\meter\cubed} cube corresponding to a single electrode is likely to be unrealistic for several reasons.
+First, signals from the weakest cells are far weaker than those from the strongest cells and the signals from some cells decay much faster than others~\cite{gray95}.
+Second, because of neuronal synchronization, the local noise produced by nearby neurons may sometimes be large. 
+Finally, with many neurons per electrode or at high firing rates, spikes from detectable neurons will often temporally overlap, making spike sorting difficult.
+This would be exacerbated by correlated firing patterns of nearby neurons.
+
+\subsubsection{Volume Displacement}
+
+We require \SI{<1}{\percent} total volume displacement from $N$ recorders.
+Wires from each electrode must make it to the surface of the brain, which implies an average length $\ell\approx\SI{4}{\milli\meter}$ for the mouse brain (depending on assumptions about the wiring geometry).
+
+As a rough approximation we consider each recorder to require a volume displacement associated with a single cylindrical wire, with length $\ell$ and radius $r$.
+Thus $r$ must satisfy \[\pi r^2\ell N\sub{min,rd} < 0.01V\sub{brain}\]
+Using $N\sub{min,rd} = 110,000$ or $21,000$ recording sites and $\ell\approx\SI{4}{\milli\meter}$ requires wires of radius $r\sub{max} \approx \SI{8.0}{\micro\meter}$, or \SI{3.4}{\micro\meter}, respectively.
+While these dimensions are readily achievable using lithographic micro-fabrication, there would be a challenge to produce \emph{isolated} wires of such dimensions at scale.
+Still, the volume constraints are unlikely to limit whole-mouse-brain electrical recording even in the most pessimistic scenario.
+
+\autoref{fig:snrlimits} illustrates the above considerations as a function of the electrode SNR.
+
+\begin{figure}[htbp]
+\caption{The voltage signal to interference-plus-noise ratio (SINR) at the recording site sets an approximate upper bound on the distance $r\sub{max}$ between the recording site and the farthest neuron it can sense (blue). Assuming at least one electrode per cube of edge length $\sqrt{2}r\sub{max}$ in the mouse brain in turn limits the number of neurons per recording site (gold), the total number of recording sites (red) and the diameter of wiring consistent with \SI{<1}{\percent} total brain volume displacement (turquoise). SINR values for current recording setups are typically \num{<1e2}. In practice, the number of neurons per electrode distinguishable by spike-sorting algorithms is only \num{\ca 10}, so these curves greatly under-estimate the number of electrodes which would be required based on current spike-sorting approaches.
+}
+\label{fig:snrlimits}
+\centering
+\end{figure}
+
+\subsubsection{Implanting Electrodes in the Brain}
+
+There are several technology options for introducing many electrodes into a brain. For example, flexible nanowire electrodes could be threaded through the capillary network~\cite{llinas05}. Capillaries are present in the brain at a density of \SIrange{2500}{3000}{\milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. Neural tissues could be grown around pre-fabricated electrode arrays~\cite{jadhav12}, or silicon probes arrays with many nano-fabricated recording sites per probe~\cite{du11} could be inserted into the brain.
+
+Mechanical forces during insertion and retraction of silicon and tungsten microelectrodes from brain tissue have been measured in rat cortex at \SI{\ca 1}{\milli\newton} for electrodes of \SI{\ca 25}{\micro\meter} radius~\cite{jensen03}. These forces are comparable to the Euler bucking force $F$ of a \SI{2}{\milli\meter} long cylindrical tungsten rod of \SI{5}{\micro\meter} radius
+\[F=\frac{\pi^2 E I}{(K L)^2} \approx \SI{1}{\milli\newton}\]
+where $E=\SI{411}{\giga\pascal}$ is the elastic modulus of tungsten, $I=(\pi/2)(\SI{5}{\micro\meter})^4$ is the area moment of inertia of the cylindrical wire cross-section, $L\approx\SI{2}{\milli\meter}$ is the length of the wire, and $K$ is the column effective length factor which depends on the boundary conditions and is set to $K=1$ here for simplicity. This suggests that it may be possible to push structures of \SI{<10}{\micro\meter} diameter into brain tissue (see \cite{najafi90} for related calculations).
+
+\subsubsection{Conclusions and Future Directions}
+
+The main challenge for electrical recordings is the large number of required recording sites. Ongoing innovations which could enable viable all-electrical recording methods include the development of highly multiplexed probes, thinner wires, smaller electrode impedances, amplifiers with lower input-referred noise levels, novel methods to implant large numbers of electrodes, multilayer lithography for routing electrical traces, spike sorting algorithms capable of handling temporally overlapping, non-independent spikes and adaptively modeling the noise, and hybrid systems integrating electrical recording with implantable optics or other methods. Furthermore, highly miniaturized embedded electronics (see the below section) could allow shorter wires, reducing volume displacement.
+A caveat, however, pertains to the ability to relate the measured electrical signals to specific cells within a circuit. As the set of neurons recorded by each electrode grows to encompass a large volume around the electrode, it will become more difficult to attribute the recorded spikes to particular neurons. Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode. A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation. Until these issues can be resolved, readouts with intrinsic spatial resolving power may be more appropriate than pure electrical recording for the goal of whole-brain activity mapping (as opposed to sparsely sampling neural activities at high temporal resolutions).
+
+\subsection{Optical Recording}
+\tbc
+
+\subsubsection{Spatiotemporal Resolution}
+\tbc
+
+\subsubsection{Energy Dissipation}
+\tbc
+
+\subsubsection{Bioluminescence}
+\tbc
+
+\subsubsection{Conclusions and Future Directions}
+\tbc
+
+\subsection{Embedded Active Electronics}
+\tbc
+
+\subsubsection{Power Requirements for Recording}
+\tbc
+
+\subsubsection{Powering Embedded Devices}
+\tbc
+
+\subsubsection{Conclusions and Future Directions}
+\tbc
+
+\subsection{Embedded Devices: Information Theory}
+\tbc
+
+\subsubsection{Power Requirements for Single-Channel Data Transmission}
+\tbc
+
+\subsubsection{Spatially Multiplexed Data Transmission}
+\tbc
+
+\subsubsection{Ultrasound as a Data Transmission Modality}
+\tbc
+
+\subsubsection{Conclusions and Future Directions}
+\tbc
+
+\subsection{Magnetic Resonance Imaging}
+\tbc
+
+\subsubsection{Spatiotemporal Resolution}
+\tbc
+
+\subsubsection{Energy Dissipation}
+\tbc
+
+\subsubsection{Imaging Agents}
+\tbc
+
+\subsection{Molecular Recording}
+\tbc
+
+\subsubsection{Spatiotemporal Resolution}
+\tbc
+
+\subsubsection{Energy Dissipation}
+\tbc
+
+\subsubsection{Volume Displacement}
+\tbc
+
+\subsubsection{Conclusions and Future Directions}
+\tbc
+
+\section{Discussion}
+\tbc
+
+\section{Acknowledgments}
+
+We thank K. Esvelt for helpful discussions on bio-luminescent proteins; D. Boysen for help on the fuel cell calculations; R.~Tucker and E.~Yablonovitch (\url{http://www.e3s-center.org}) for helpful discussions on the energy efficiency of CMOS; C.~Xu and C.~Schaffer for data on optical attenuation lengths; T. Dean and the participants in his CS379C course at Stanford/Google, including Chris Uhlik and Akram Sadek, for helpful discussions and informative content in the discussion notes (\url{http://www.stanford.edu/class/cs379c/}); and R.~Koene, S.~Rezchikov, A.~Bansal, J.~Lovelock, A.~Payne, R.~Barish, N.~Donoghue, J.~Pillow, W.~Shih and P.~Yin for helpful discussions.
+
+A.~Marblestone is supported by the Fannie and John Hertz Foundation fellowship.
+D.~Dalrymple is supported by the Thiel Foundation.K.~K\"ording is funded in part by the Chicago Biomedical Consortium with support from the Searle Funds at The Chicago Community Trust.E.~Boyden is supported by the National Institutes of Health (NIH), the National Science Foundation, the MITMcGovern Institute and Media Lab, the New York Stem Cell Foundation Robertson InvestigatorAward, the Human Frontiers Science Program, and the Paul Allen Distinguished Investigator inNeuroscience Award.
+B.~Stranges, B.~Zamft, R.~Kalhor and G.~Church acknowledge support from the Office of Naval Research and the NIH Centers of Excellence in Genomic Science.
+M.~Shapiro is supported by the Miller Research Institute, the Burroughs~Wellcome Career~Award~at~the~Scientific Interface and the W.M. Keck Foundation.
+
+\nocite{*}
+\printbibliography[notsubtype=hide]
+
+\end{document}
