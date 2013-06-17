@@ -1,0 +1,10 @@
+You'll need a whole pile of packages (a recent version of TeX-Live will do), and then this sequence compiles the document:
+
+$ latex pobam
+$ biber pobam
+$ latex pobam
+$ latex pobam
+$ dvips pobam
+$ ps2pdf pobam.ps
+
+then you'll have pobam.pdf all ready!
