@@ -41,7 +41,6 @@
 %\usepackage{ltxtable}
 %\usepackage{multicol}
 \usepackage{tabu}
-\usepackage[top=1in,bottom=0.65in,right=0.5in,left=0.5in]{geometry}
 \usepackage{fancyhdr}
 \usepackage{titling}
 \usepackage{authblk}
@@ -85,11 +84,15 @@
 \usepackage{amsthm}
 \usepackage{cancel}
 \usepackage[binary-units=true]{siunitx}
+\DeclareSIUnit\Molar{\textsc{m}}
 \newcommand{\ca}{{\sim}}
 \sisetup{input-protect-tokens=\ca,input-symbols=\ca,range-phrase=\textrm{--},range-units=single,retain-unity-mantissa=false,per-mode=symbol}
 
 \newcommand\sub[1]{_{\text{\scriptsize #1}}}
 \renewcommand\d{\text{d}}
+\newcommand{\kb}{\ensuremath{k\sub{B}}}
+\newcommand{\NA}{\ensuremath{\text{NA}}}
+\newcommand{\BW}{\ensuremath{\text{BW}}}
 
 \usepackage[urw-garamond]{mathdesign}
 \delimitershortfall=1pt
@@ -110,6 +113,8 @@
 \newcolumntype{S}[1]{>{\begin{lrbox}{\tstretchbox}}l<{\end{lrbox}\eqmakebox[#1][s]{\unhcopy\tstretchbox}}}
 
 \usepackage[ps2pdf,breaklinks=true,bookmarks=true,bookmarksopen,bookmarksopenlevel=2,pdfpagelayout=OneColumn]{hyperref}
+\usepackage[top=1in,bottom=0.65in,right=0.5in,left=0.5in]{geometry}
+\usepackage{cleveref}
 \usepackage{url}
 \usepackage{breakurl}
 
