@@ -31,7 +31,7 @@
 \affil[2]{Wyss Institute {\color{deemph}for Biologically Inspired Engineering at} Harvard {\color{deemph}Univ., Boston,~MA~02115, USA}}
 \affil[3]{{\color{deemph} Dept.\ of Genetics,} Harvard Medical School{\color{deemph}, Boston,~MA~02115, USA}}
 \affil[4]{Plum Labs LLC, Somerville,~MA{\color{deemph}~02143, USA}}
-\affil[5]{Miller Institute{\color{deemph}, Depts.\ of Bioengineering \et\ of Molecular and Cell Biology, Univ.\ of California at} Berkeley{\color{deemph}, Berkeley,~CA~94720, USA}}
+\affil[5]{Division of Chemistry and Chemical Engineering, California Institute of Technology{\color{deemph}, Pasadena, CA~91125, USA}}
 \affil[6]{{\color{deemph}Interdepartmental} Neuroscience {\color{deemph}Program,} Northwestern Univ.{\color{deemph}, Chicago,~IL~60611, USA}}
 \affil[7]{Nemaload, San Francisco, CA{\color{deemph}~94107, USA}}
 \affil[8]{Media Lab{\color{deemph}oratory,} Massachusetts Institute of Technology{\color{deemph}, Cambridge,~MA~02139, USA}}
@@ -225,7 +225,8 @@ Minimalist architectures should be developed to reduce local data processing ove
 
 Wireless data transmission &
 Compute tradeoff between power efficiency and channel bandwidth using information theory &
-Transmitter must supply enough power to overcome noise and path loss &Data transmission at optical or near-optical frequencies is necessary to achieve sufficient data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain data would draw excessive power due to bandwidth constraints. 
+Transmitter must supply enough power to overcome noise and path loss &
+Data transmission at optical or near-optical frequencies is necessary to achieve sufficient data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain data would draw excessive power due to bandwidth constraints. 
 \iskip Bandwidth cannot effectively be split over multiple independent RF channels.
 \\
 
@@ -266,8 +267,10 @@ Ultrasound may be a viable medium for multiplexed data transmission from embedde
 \\
 
 Molecular recording &
-Compute metabolic load and DNA volume for synthesis of large nucleic acid polymers \iskipEvaluate temporal resolution in simulated experiments &
-Polymerase biochemical parameter ranges \iskipMetabolic requirements of genome replication &
+Compute metabolic load and DNA volume for synthesis of large nucleic acid polymers \iskip
+Evaluate temporal resolution in simulated experiments &
+Polymerase biochemical parameter ranges \iskip
+Metabolic requirements of genome replication &
 Molecular recording devices fall within physical limits but their development poses major challenges in synthetic biology
 
 \\\bottomrule
@@ -354,7 +357,8 @@ amplifiers with lower input-referred noise levels, novel methods to implant larg
 multilayer lithography for routing electrical traces, spike sorting algorithms capable of handling temporally overlapping, non-independent spikes and adaptively modeling the noise, and hybrid systems integrating electrical recording with
 implantable optics or other methods.
 Furthermore, highly miniaturized embedded electronics (see the below section) could allow shorter wires, reducing volume displacement.
-A caveat, however, pertains to the ability to relate the measured electrical signals to specific cells within a circuit.
+
+A caveat, however, pertains to the ability to relate the measured electrical signals to specific cells within a circuit.
 As the set of neurons recorded by each electrode grows to encompass a large volume around the electrode, it will become more difficult to attribute the recorded spikes to particular neurons.
 Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode.
 A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation.
@@ -422,7 +426,9 @@ The speed of beam scanning is thus far from its physical limits.
 Fluorescence lifetimes in the \SIrange{0.1}{1}{\nano\second} range~\cite{striker99} may ultimately limit the frame rates of scanning microscopies to \SIrange{10}{100}{\hertz} for whole mouse brain imaging.
 
 \paragraph{Diffraction}
-Due to diffraction, a lens (or other limiting optical aperture) of a certain size is necessary toachieve a given angular resolution, and it might be hypothesized that this would be limitingfactor for optical methods.
+Due to diffraction, a lens (or other limiting optical aperture) of a certain size is necessary to
+achieve a given angular resolution, and it might be hypothesized that this would be limiting
+factor for optical methods.
 However, this is not the case.
 To illustrate, at a depth of \SI{10}{\milli\meter} we must be able to distinguish two neurons which are \SI{10}{\micro\meter} apart.
 In the small angle approximation, we have $\theta \approx (\SI{10}{\micro\meter})/(\SI{10}{\milli\meter}) \approx \lambda/D$. Therefore, using light of wavelength $\lambda\approx\SI{1}{\micro\meter}$ requires a lens aperture $D$ of only \SI{1}{\milli\meter}.
@@ -660,7 +666,12 @@ Fortunately, with many orders of magnitude potential for improvement, we can exp
 We thank K. Esvelt for helpful discussions on bioluminescent proteins; D. Boysen for help on the fuel cell calculations; R.~Tucker and E.~Yablonovitch (\url{http://www.e3s-center.org}) for helpful discussions on the energy efficiency of CMOS; C.~Xu and C.~Schaffer for data on optical attenuation lengths; T. Dean and the participants in his CS379C course at Stanford/Google, including Chris Uhlik and Akram Sadek, for helpful discussions and informative content in the discussion notes (\url{http://www.stanford.edu/class/cs379c/}); and R.~Koene, S.~Rezchikov, A.~Bansal, J.~Lovelock, A.~Payne, R.~Barish, N.~Donoghue, J.~Pillow, W.~Shih and P.~Yin for helpful discussions.
 
 A.~Marblestone is supported by the Fannie and John Hertz Foundation fellowship.
-D.~Dalrymple is supported by the Thiel Foundation.K.~K\"ording is funded in part by the Chicago Biomedical Consortium with support from the Searle Funds at The Chicago Community Trust.E.~Boyden is supported by the National Institutes of Health (NIH), the National Science Foundation, the MITMcGovern Institute and Media Lab, the New York Stem Cell Foundation Robertson InvestigatorAward, the Human Frontiers Science Program, and the Paul Allen Distinguished Investigator inNeuroscience Award.
+D.~Dalrymple is supported by the Thiel Foundation.
+K.~K\"ording is funded in part by the Chicago Biomedical Consortium with support from the Searle Funds at The Chicago Community Trust.
+E.~Boyden is supported by the National Institutes of Health (NIH), the National Science Foundation, the MIT
+McGovern Institute and Media Lab, the New York Stem Cell Foundation Robertson Investigator
+Award, the Human Frontiers Science Program, and the Paul Allen Distinguished Investigator in
+Neuroscience Award.
 B.~Stranges, B.~Zamft, R.~Kalhor and G.~Church acknowledge support from the Office of Naval Research and the NIH Centers of Excellence in Genomic Science.
 M.~Shapiro is supported by the Miller Research Institute, the Burroughs~Wellcome Career~Award~at~the~Scientific Interface and the W.M. Keck Foundation.
 
