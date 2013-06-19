@@ -86,7 +86,7 @@
 \usepackage[binary-units=true]{siunitx}
 \DeclareSIUnit\Molar{\textsc{m}}
 \newcommand{\ca}{{\sim}}
-\sisetup{input-protect-tokens=\ca,input-symbols=\ca,range-phrase=\textrm{--},range-units=single,retain-unity-mantissa=false,per-mode=symbol}
+\sisetup{input-protect-tokens=\ca\approx\sim\dots\gg\ll\pm,input-symbols=\ca,input-ignore={,},input-decimal-markers={.},range-phrase=\textrm{--},range-units=single,product-units=repeat,retain-unity-mantissa=false,per-mode=symbol}
 
 \newcommand\sub[1]{_{\text{\scriptsize #1}}}
 \renewcommand\d{\text{d}}
@@ -186,19 +186,19 @@
      \newunit}%
   \printfield{titleaddon}}
 \renewcommand*{\relatedpunct}{\space}
-\renewcommand*{\relateddelim}{\addsemicolon\space}
+\renewcommand*{\relateddelim}{\addcomma\space}
 \xapptobibmacro{pageref}{\renewcommand{\newunitpunct}{\addsemicolon\space}}{}{}
 \xapptocmd{\bibsetup}{\flushbottom\raggedright}{}{}
-\newbibmacro*{related:prelim}[1]{%
-  \entrydata{#1}{\mkbibparens{\usebibmacro{date}}\nopunct\space\bibstring{on}\usebibmacro{doi+eprint+url}}}
+%\newbibmacro*{related:prelim}[1]{\entrydata{#1}{\mkbibparens{\usebibmacro{date}}\nopunct\space\bibstring{on}\usebibmacro{doi+eprint+url}}}
+\newbibmacro*{related:prelim}[1]{\entrydata{#1}{\usebibmacro{doi+eprint+url}\setunit{\addspace}\printtext{\bibopenparen}\usebibmacro{date}\iffieldundef{note}{}{\newunit\printfield{note}}\printtext{\bibcloseparen}}}
 \NewBibliographyString{prelim,prelims,on}
 \DefineBibliographyStrings{american}{%
   in = {{}},
   url = {{URL}},
   backrefpage = {{cited on p. }},
   backrefpages = {{cited on pp. }},
-  prelim = {preliminary version\nopunct},
-  prelims = {preliminary versions\addcolon},
+  prelim = {preliminary version on\nopunct},
+  prelims = {preliminary versions\nopunct},
   on = {on\nopunct},
 }
 

@@ -78,8 +78,8 @@ For example, activity-dependent optical signals from neurons endowed with fluore
 Other methods have been proposed, including the direct recording of neural activities into information-bearing biopolymers~\cite{zamft12,glaser13,kording11a}.
 
 Each modality of neural recording has characteristic advantages and disadvantages.
-Multi-electrode arrays enable the recording of $\ca 250$ neurons at sub-millisecond temporal resolutions.
-Optical microscopy can currently record $\ca 100,000$ neurons at a \SI{1.25}{\second} timescale in behaving Zebrafish~\cite{ahrens13} (via light-sheet microscopy), or hundreds to thousands of neurons at a \SI{\ca100}{\milli\second} timescale in behaving mice~\cite{ziv13} (via two-photon microscopy).
+Multi-electrode arrays enable the recording of \num{\ca 250} neurons at sub-millisecond temporal resolutions.
+Optical microscopy can currently record \num{\ca 100000} neurons at a \SI{1.25}{\second} timescale in behaving Zebrafish~\cite{ahrens13} (via light-sheet microscopy), or hundreds to thousands of neurons at a \SI{\ca100}{\milli\second} timescale in behaving mice~\cite{ziv13} (via two-photon microscopy).
 Magnetic resonance imaging (MRI) allows non-invasive whole brain recordings at a \SI{1}{\second} timescale in humans, but is far from single neuron spatial resolution.
 Molecular recording devices have been proposed for scalable physiological signal recording but have not yet been demonstrated in neurons~\cite{zamft12,glaser13,kording11a}. \autoref{fig:modalities} illustrates the recording modalities studied here.
 While further development of these methods promises to be a crucial driver for future neuroscience research, their fundamental scaling limits are not immediately obvious.
@@ -211,7 +211,7 @@ Compute minimal number recorders based on max distance from recorder to recorded
 \iskip Approximate noise levels at recording site}
 &
 {Maximum recording distance $r\sub{max}\approx\SIrange{100}{200}{\micro\meter}$ from electrode to neuron measured
-\iskip $\ca 100,000$ recording sites are required per mouse brain at current noise levels
+\iskip \num{\ca 100,000} recording sites are required per mouse brain at current noise levels
 \iskip However, $\ca\num{1e7}$ electrodes are required in practice to enable sorting of noisy, temporally overlapping spikes using current algorithms}
 \\
 
@@ -575,7 +575,7 @@ Energy cost of elementary operations across a variety of recording and data tran
 Embedded systems need power, which could be supplied via electromagnetic or acoustic energy transfer, or could be harvested from the local environment in the brain.
 
 There are two key regimes for wireless electromagnetic power transfer: non-linear device rectification and photovoltaics.
-If the single-photon energy is sufficient to allow electrons to move from the valence to the conduction band---that is, $\text{band gap} < \hbar\nu/q$, where $q$ is the electron charge, $\hbar$ is Planck's constant, and $\nu$ is the frequency of the photon---a photovoltaic effect can occur.
+If the single-photon energy is sufficient to allow electrons to move from the valence to the conduction band---that is, $\text{band gap} < h\nu/q$, where $q$ is the electron charge, $h$ is Planck's constant, and $\nu$ is the frequency of the photon---a photovoltaic effect can occur.
 Otherwise, light energy is converted to voltage by an antenna and non-linear device rectification may occur.
 In this regime (single photon energy much lower than the band gap), power conversion is governed by the total RF power and by the impedances of the antenna and the rectifier, rather than by the individual photon energy.
 For a monochromatic RF source, there is no thermodynamic or quantum limit to the RF to DC conversion efficiency, other than the resistive losses and threshold voltages for a semiconductor process.
@@ -585,7 +585,7 @@ Ultimately, rectification improvements are dependent on the same improvements wh
 Wireless power transfer also imposes range constraints due to the loss in power density with distance.
 For directional power transfer, placing the receiver at the edge of the transmitter's near field (the Rayleigh distance $D^2/4\lambda$ where $D$ is the transmitter aperture) has advantages in terms of energy capture efficiency~\cite{ozeri10}, whereas for omni-directional antennas it is typically advantageous to place the receiver as close as possible to the transmitter.
 
-Alternatively, if the photon energy is above the silicon band gap ($\lambda < \frac{\hbar c}{qV\sub{th}} \approx \SI{3}{\micro\meter}$ or less for silicon), the chip is essentially acting as a photovoltaic cell.
+Alternatively, if the photon energy is above the silicon band gap ($\lambda < \frac{h c}{qV\sub{th}} \approx \SI{3}{\micro\meter}$ or less for silicon), the chip is essentially acting as a photovoltaic cell.
 There is no thermodynamic or quantum limit to the conversion efficiency of light to DC electrical power for monochromatic sources, other than resistive losses and dark currents in the material (\SI{86}{\percent} in GaAs for example~\cite{bett08}). 
 In the use of infrared light for photovoltaics, the penetration of the photons through tissue is decreased compared to radio frequencies.
 To supply \SI{10}{\micro\watt} (typical of current wirelessly-powered RFID chips) photovoltaically to a \SI{10 x 10}{\micro\meter} (cell sized) chip at \SI{34}{\percent} photovoltaic efficiency requires a light intensity of \SI{\ca 300}{\kilo\watt\per\meter\squared} at the chip.
