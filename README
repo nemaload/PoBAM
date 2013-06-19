@@ -1,4 +1,8 @@
-You'll need a whole pile of packages (a recent version of TeX-Live will do), and then this sequence compiles the document:
+You'll need a whole pile of packages (a recent version of TeX-Live will do), plus additional fonts (namely URW-Garamond):
+
+http://www.tug.org/fonts/getnonfreefonts/
+
+and then this sequence compiles the document:
 
 $ latex pobam
 $ biber pobam
