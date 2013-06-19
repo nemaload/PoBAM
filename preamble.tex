@@ -11,13 +11,21 @@
 \usepackage{verbatim}
 
 \usepackage{soul}
-\usepackage{bm}\usepackage{sectsty}
+\usepackage{isomath}
+\newcommand{\mat}[1]{\matrixsym{#1}}
+\renewcommand{\vec}[1]{\vectorsym{#1}}
+\usepackage{sectsty}
 \sectionfont{\Large\scshape}
 \subsectionfont{\large\scshape}
 \subsubsectionfont{\scshape}
 %\renewcommand{\thesection}{\relax}
 %\setcounter{secnumdepth}{-1}
-\usepackage[compact]{titlesec}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{3.5mm plus1mm minus0.5mm}{1.7mm plus0.4mm minus0.4mm}
+\titlespacing*{\subsection}{0pt}{2.4mm plus.5mm minus0.2mm}{0.9mm plus0.2mm minus0.2mm}
+\titlespacing*{\subsubsection}{0pt}{1.3mm plus.6mm minus0.2mm}{0.1mm plus0.1mm minus0.1mm}
+\titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{}{}
+\titlespacing{\paragraph}{0pt}{0.7mm plus0.3mm minus0.4mm}{2em plus1em minus0.9em}
 %\usepackage[font=it,labelfont={up,bf},margin=1.2cm]{caption}
 \usepackage{ccaption}
 \captionnamefont{\bfseries}
@@ -86,13 +94,15 @@
 \usepackage[binary-units=true]{siunitx}
 \DeclareSIUnit\Molar{\textsc{m}}
 \newcommand{\ca}{{\sim}}
-\sisetup{input-protect-tokens=\ca\approx\sim\dots\gg\ll\pm,input-symbols=\ca,input-ignore={,},input-decimal-markers={.},range-phrase=\textrm{--},range-units=single,product-units=repeat,retain-unity-mantissa=false,per-mode=symbol}
+\sisetup{input-protect-tokens=\ca\approx\sim\dots\gg\ll\pm,input-symbols=\ca,input-ignore={,},input-decimal-markers={.},range-phrase=\textrm{--},range-units=single,product-units=repeat,retain-unity-mantissa=false,per-mode=symbol,list-units=single}
 
 \newcommand\sub[1]{_{\text{\scriptsize #1}}}
 \renewcommand\d{\text{d}}
 \newcommand{\kb}{\ensuremath{k\sub{B}}}
 \newcommand{\NA}{\ensuremath{\text{NA}}}
 \newcommand{\BW}{\ensuremath{\text{BW}}}
+\newcommand{\SNR}{\ensuremath{\text{SNR}}}
+\newcommand{\pathloss}{\ensuremath{\text{PL}}}
 
 \usepackage[urw-garamond]{mathdesign}
 \delimitershortfall=1pt
@@ -113,7 +123,7 @@
 \newcolumntype{S}[1]{>{\begin{lrbox}{\tstretchbox}}l<{\end{lrbox}\eqmakebox[#1][s]{\unhcopy\tstretchbox}}}
 
 \usepackage[ps2pdf,breaklinks=true,bookmarks=true,bookmarksopen,bookmarksopenlevel=2,pdfpagelayout=OneColumn]{hyperref}
-\usepackage[top=1in,bottom=0.65in,right=0.5in,left=0.5in]{geometry}
+\usepackage[top=0.88in,headsep=5mm,bottom=0.6in,right=0.5in,left=0.5in]{geometry}
 \usepackage{cleveref}
 \usepackage{url}
 \usepackage{breakurl}

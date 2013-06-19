@@ -395,7 +395,9 @@ Because only one neuron is illuminated at a time, all of the light emissions cap
 Therefore, the emission pathway is limited less by scattering than by absorption and a single detector may collect a large number of scattered emission photons to obtain a sufficiently large integrated signal.
 Exploiting these ideas allows imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
 
+\begin{samepage}
 There are at least four options for overcoming the scattering of visible light to enable signal-separation from deep-brain neurons:
+
 \begin{enumerate}
 \item Infrared light can excite multi-photon fluorescence in an excitation-scanning architecture.
 \item Fluorophores with both excitation and emission wavelengths in the infrared could be developed.
@@ -406,6 +408,7 @@ This can currently be achieved with digital micro-mirror devices (DMDs), but not
 This could be done using optical fiber~\cite{mahalati13} and/or waveguide~\cite{zorzos10,zorzos12} technologies, which are developing rapidly.
 For example, single-mode fiber cables used in telecommunications can support \SI{>1}{\tera\byte\per\second} data rates with low light loss over hundreds of kilometers.
 \end{enumerate}
+\end{samepage}
 
 While implanted optics might seem to require a number of implanted photodetectors, fibers or waveguide ports comparable to the number of neurons, new developments suggest ways of imaging with far fewer elements.
 For example, compressive sensing or ghost imaging techniques based on random mask projections~\cite{wakin06,studer12,tian11,sun13} might allow a smaller number of photodetectors to be used.
@@ -604,7 +607,7 @@ An alternative to wireless energy transmission is the local harvesting of bioche
 The theoretical maximum thermodynamic efficiency for a fuel cell in aqueous solution is equal to that of the hydrogen fuel cell: $\Delta G^0/\Delta H^0 = \SI{83}{\percent}$ at \SI{25}{\degreeCelsius}.
 Furthermore, if glucose is only oxidized to gluconic acid, the Coulombic (electron extraction) efficiency is at most \SI{8.33}{\percent}~\cite{rapoport12}, which bounds the thermodynamic efficiency.
 The blood glucose concentration in rats has been measured at \SI{\ca 7.6}{\milli\Molar}, with an extracellular glucose concentration in the brain of \SI{\ca 2.4}{\milli\Molar}~\cite{silver94}.
-A hypothetical highly miniaturized neural recorder with a device area of \SI{25 x 25}{\micro\meter} and efficiency of \SI{80}{\percent}, processing a blood flow rate of \SI{\ca 1}{\milli\meter\per\second}~\cite{ivanov81} could extract $(\SI{80}{\percent})(\SI{7.6}{\milli\mole\per\cubic\deci\meter})(\SI{25}{\micro\meter})^2(\SI{1}{\milli\meter\per\second})(\SI{2880}{\kilo\joule\per\mole})\approx \SI{11}{\micro\watt}$, which is sufficient for low-power device such as RFID chips~\cite{cho05}.
+A hypothetical highly miniaturized neural recorder with a device area of \SI{25 x 25}{\micro\meter} and efficiency of \SI{80}{\percent}, processing a blood flow rate of \SI{\ca 1}{\milli\meter\per\second}~\cite{ivanov81} could extract $(\SI{80}{\percent})(\SI{7.6}{\milli\Molar})(\SI{25}{\micro\meter})^2(\SI{1}{\milli\meter\per\second})(\SI{2880}{\kilo\joule\per\mole})\approx \SI{11}{\micro\watt}$, which is sufficient for low-power device such as RFID chips~\cite{cho05}.
 Unfortunately, current non-microbial glucose fuel cells obtain only \SI{\ca 180}{\micro\watt\per\centi\meter\squared} peak power and \SI{\ca 3.4}{\micro\watt\per\centi\meter\squared} steady state power~\cite{rapoport12}.
 Thus there is a need for \num{1e4}- and \num{1e6}-fold improvements in peak and steady state power densities, respectively, for non-microbial glucose fuel cells to power brain-embedded electronics of the complexity of today's RFID chips (or better, the corresponding decrease in power requirements for the chips, as emphasized above).
 
@@ -617,16 +620,112 @@ An analysis of the energy transduction potential of each of these systems is bey
 Fortunately, with many orders of magnitude potential for improvement, we can expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future. %potential why? physical limits
 
 \subsection{Embedded Devices: Information Theory}
-\tbc
+
+Most recording methods envisioned thus far rely on the real-time transmission of neural activity data out of the brain.
+Physics and information theory impose fundamental limits on this process, including a minimum power consumption required to transmit data through a medium.
+The most basic of these results hold irrespective of whether the data transmission is wired or wireless, and regardless of the particular physical medium (optical, electrical, acoustic) used as the information carrier.
+
+A communication ``channel'' is a set of transmitters and receivers that share access to a single physical medium with fixed bandwidth.
+The bandwidth is the range of frequencies present in the time-varying signals used to transmit information.
+In wireless communications, information is transmitted by modulating a carrier wave.
+To allow modulation, the frequency of the carrier wave must be higher than the bandwidth: for example, a \SI{400}{\tera\hertz} visible light wave may be modulated at a \SI{100}{\giga\hertz} rate.
+The physical medium underlying a channel could be a wire (with a bandwidth set by its capacitive RC time constant), an optical fiber, free space electromagnetic waves over a certain frequency range, or other media.
+
+As a concrete example, consider a police department with \num{100} officers, each possessing a hand-held radio.
+The radios transmit vocalizations by modulating an \SI{80}{\mega\hertz} carrier wave at \SI{\ca 10}{\kilo\hertz}.
+This constitutes a single shared communications channel with \SI{10}{\kilo\hertz} bandwidth.
+Simultaneously, the fire department may communicate via a separate channel, also with a bandwidth of \SI{\ca 10}{\kilo\hertz}, by modulating a \SI{90}{\mega\hertz} carrier wave.
+The channels are separate because modulation introduced into one does not affect the other.
+If the neighboring town's police department makes the mistake of also operating at 80 MHz carrier frequency, then they share a channel and conflicts will arise.
 
 \subsubsection{Power Requirements for Single-Channel Data Transmission}
-\tbc
+
+We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming white Gaussian noise) to
+\[R\sub{max} = \BW \log_2 \left(1 + \SNR\right)\]
+where \BW is the channel bandwidth and \SNR is the signal-to-noise ratio.
+If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, which is weakened by path loss \pathloss. % remove "which is"
+Therefore the transmitted power $P_0$ is lower-bounded:
+\[P_0 > \kb T\ \BW\ \frac{2^{R\sub{max}/\BW}-1}{\pathloss}\]
+as shown in \autoref{fig:rfpower} (bottom).
+In a minimal mode of a transmitter-receiver system, there thus exists a tradeoff between required signal power and the bandwidth of the carrier radiation, due to the thermal noise floor, even in the absence of path loss ($\pathloss = 1$).
+
+Path loss weakens the proportion of the power that can reach the detector.
+Using the above equation, we can calculate, as a function of bandwidth, the power necessary to transmit a target whole-brain bit rate of \SI{100}{\giga\bit\per\second} through a medium with path loss dependent on the carrier wavelength, as shown in \autoref{fig:rfpower} (top).
+
+\begin{figure}[htbp]
+\caption{%
+Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
+Bottom: absorption length of water as a function of frequency, minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise but no path loss.
+Top: minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation due to water absorption over a distance of \SI{2}{\milli\meter}.
+While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions through tissue between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
+Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
+}
+\label{fig:rfpower}
+\centering
+\end{figure}
+
+For RF wavelengths, the radiation penetrates deeply but the achievable data rates are low without excessive power consumption, due to the limited bandwidth.
+For wavelengths intermediate between RF and infrared, the penetration depth is low and power must be expended to combat these losses, despite the high carrier bandwidth.
+Only in the infrared and visible ranges do the tradeoffs between power, bandwidth and penetration depth allow transmission of \SI{>100}{\giga\bit\per\second} out of the brain through a single channel without unacceptable power consumption.
+
+The analysis above has ignored the effects of noise sources other than thermal noise, but many additional noise sources will increase the amount of power needed to transmit data, via a decrease in the SNR at fixed input power.
+For optical transmission in the brain, the noise is dominated by time-correlated ``speckle noise'' below \SI{200}{\kilo\hertz}, which arises mostly from local blood flow~\cite{carp11}.
+This correlated noise, which cannot be filtered by simple averaging, could be avoided by modulating optical signals at frequencies above \SI{200}{\kHz}.
 
 \subsubsection{Spatially Multiplexed Data Transmission}
-\tbc
+
+As discussed above, transmitting information through a \emph{single} channel imposes limits on bit rate, carrier frequency and input power.
+It is conceivable to divide the data transmission burden over \emph{many} independent channels, however, i.e., over many pairs of transmitters and receivers, each operating at lower bandwidth (e.g., at radio frequencies).
+Indeed, this would be optimal in a scenario where many embedded devices measure and then transmit the activities of nearby neurons.
+As a concrete example of such \emph{spatial multiplexing}, an effective capacity of \SI{1}{\tera\bit\per\second} could conceivably be obtained by splitting the data over \num{1000} transmitter-receiver pairs each operating at \SI{1}{\giga\bit\per\second}, with the transmitters arranged in a \num{10 x 10 x 10} grid. % remove emphs?Importantly, in order to exceed the above limits for single-channel data transmission, it must be possible for these transmitter receiver pairs to share the same bandwidth and operate simultaneously without conflicts, for example by modulating distinguishable carrier waves or by transferring data over separate wires.
+The conditions under which this may occur, however, can be counter-intuitive.
+For example, for antennas to operate independently, they must be spaced apart from one another by roughly a wavelength.
+For \SI{10}{\giga\hertz} microwaves, the wavelength is \SI{\ca 3}{\centi\meter}, so no more than a handful of microwave transmitters can co-occupy the mouse brain while operating independently.
+Nevertheless, even with many non-independent transmitters co-occupying the brain and operating simultaneously over the same frequency spectrum, it may be possible under some conditions to ``factor out'' the effects of the coupling and allow an increase in channel capacity relative the single-channel result.To treat such scenarios, a generalization to Shannon's capacity theorem to multi-input-multi-output (MIMO) channels has shown that the maximal total data rate is
+\[R\sub{max} = \BW \cdot \log_2\left| \mat{I} + ( \SNR ) \mat{H}\mat{H}^* \right|\]
+where $\mat{I}$ is the identity matrix, $|\cdot|$ denotes the matrix determinant, $\mat{H}$ is the ($M \times N$ for $N$ transmitters and $M$ receivers) channel matrix giving the coupling between the vector of transmitted signals and the vector of received signals and $\mat{H}^*$ denotes the matrix adjoint of $\mat{H}$ \cite{tulino04}. The vector of received signals is then $\vec{y}=\mat{H}\vec{x}+\vec{n}$ where $\vec{x}$ is the vector of transmitted signals and $\vec{n}$ is a noise vector. Any matrix can be written as $\mat{H}=\mat{U}\mat{\Sigma}\mat{V}^*$ where $\mat{U}$ and $\mat{V}$ are unitary matrices, and $\mat{\Sigma}$ is a diagonal matrix whose elements are the \emph{singular values} $\lambda_i$. One can re-write the above equation as
+\[R\sub{max} = \BW \cdot \sum_{i=1}^{\min(M,N)} \log_2\left(1+\SNR \cdot \lambda_i^2\right)\]
+If the matrix H is of full rank, then the capacity for the multi-channel system can increase over the single-input-single-output (SISO) result by min(M,N) times~\cite{shiu00}.
+Note that the rank of the matrix corresponds to the number of non-zero singular values, so an analysis of the singular values of channel matrices can inform us about the multiplexing capacity of the channel.
+Furthermore, this multiplexing capacity can in principle be achieved even when the transmitters are not in communication with each other, which could potentially be important for scenarios involving many brain embedded transmitters~\cite{spencer04}.
+
+Transmission through a medium with negligible scattering is the simplest situation to analyze.
+In this case, evaluating the matrix $\mat{H}$ requires knowledge of the transmitter-transmitter, transmitter- receiver, and receiver-receiver distances, as well as the orientations and radiation patterns of the antennas (e.g., high gain antennas will have a highly directional radiation pattern).
+Depending on these factors, the beam from each transmitter will spread to impinge upon multiple receivers and the effective number of spatially independent beams will be reduced.
+With transmitter-transmitter and receiver-receiver distances larger than the wavelength, and highly directional antennas with appropriately chosen orientations, it is possible to increase the channel capacity linearly with $\min(M,N)$.
+
+Random scattering, in a coherent disordered medium where the mean free-path $\ell$ is much larger than the wavelength $\lambda$ and much smaller than the size of the disordered medium, is another condition where the matrix $\mat{H}$ is a random scattering matrix of full rank~\cite{moustakas00,popoff10}.
+Intuitively, for the case of two transmitters and two receivers separated by a disordered medium larger than the mean free path:
+if transmitter 1 is at least a mean-free path from transmitter 2 the path from transmitter 1 to receiver 1 and the path from transmitter 2 to receiver 2 would be uncorrelated with respect to one another (in terms of physical path, phase, amplitude fluctuations, and other properties).
+The rank of the matrix $\mat{H}$ would then be 2.
+Devising a code on the transmitter such that the receivers can distinguish between these two uncorrelated streams results in a doubling of the capacity, rather than simply averaging the noise floor, which would provide only a logarithmic capacity gain due to the increased SNR.
+
+Thus, contrary to intuition, a high degree of random scattering can potentially be useful for data transmission, by enabling spatial multiplexing of channels.
+This idea has been demonstrated experimentally in the context of ultrasound transmissions~\cite{derode03}.
+Biological tissue in the infrared range is well described as such a random scattering medium (e.g., mean free path \SI{\ca 200}{\micro\meter} at \SI{\ca 800}{\nano\meter} \emph{in vivo}).
+Therefore infrared light could be used for spatially multiplexed data transmission out of the brain.At wavelengths $\lambda$ comparable to critical brain dimensions in the mouse, however, an insufficient number of scattering events will occur to create multiple independent pathways for $N$ transmitters.
+Mathematically, the matrix $\mat{H}$ will have one highly dominant singular value and a number of much smaller remaining terms, such that the signals appearing at a receiver from two separate transmitters will be highly linearly dependent, differing by only a small phase angle.
+Therefore, there will be no capacity gain from multiple transmitters, and distinct transmitters will effectively share a single channel (reducing to the SISO result).
+
+Little is known about the biological interaction with electromagnetic fields at wavelengths much shorter than the critical brain dimensions but beyond the infrared, approximately \SI{100}{\giga\hertz} (\SI{\ca 3}{\milli\meter}) to \SI{100}{\tera\hertz} (\SI{\ca 3}{\micro\meter}) in the mouse.
+However, if multiple scattering occurs and the absorption is low, this may also be a regime conducive to MIMO communications~\cite{bakopoulos09,helmchen05}.
+Efficiently generating and processing radiation in this regime by embedded devices is an outstanding problem, however.
+The so-called ``THz-gap''~\cite{tonouchi07} exists because (moving towards higher frequencies starting from DC electronics), parasitic capacitances and passive losses limit the maximum frequency at which a field-effect transistor (FET) may oscillate and on the other hand (moving downward in frequency starting from optics), the band-gaps of opto-electronic devices limit the minimum frequency at which quantum transitions occur.
+Thus there is no high-power, low-cost, portable, room temperature \si{THz} source available.
+Advances in \si{THz} light generation, e.g. through the use of tunneling transistors, could be enabling.
 
 \subsubsection{Ultrasound as a Data Transmission Modality}
-\tbc
+An important caveat to these conclusions on wireless data transfer occurs if we consider the use of ultrasound rather than electromagnetic radiation
+Because the speed of sound is dramatically slower than that of light, the wavelength of \SI{10}{\mega\hertz} ultrasound is only \SI{\ca 150}{\micro\meter} (approximating the speed of sound in brain as the speed of sound in water, \SI{\ca 1500}{\meter\per\second}).
+Thus, many \SI{10}{\mega\hertz} ultrasound transmitters/receiver could be placed inside a mouse brain while maintaining their spatial separation above the wavelength, and a linear scaling of the MIMO channel capacity with the number of devices is likely possible in this regime, assuming that appropriate antenna gains and orientations can be achieved inside brain tissue. Beam orientation could present a challenge if micro-devices are oriented randomly after implantation.
+With an attenuation of \SI{0.5}{\dB\per\centi\meter\per\mega\hertz}~\cite{hoskins10}, the attenuation at \SI{10}{\mega\hertz} is only \SI{5}{\dB\per\centi\meter}.
+Thus ultrasound-baed transmission of power and data from embedded recording devices may be viable.
+
+In contrast, direct imaging of neural activity by ultrasound (e.g., using contrast agents which create local variations in tissue elastic modulus or density) may be more difficult.
+The wavelength of \SI{100}{\mega\hertz} ultrasound is \SI{\ca 15}{\micro\meter}, providing a theoretical diffraction limited spatial resolution that would be sufficient for resolving neuronal somas.
+Practical transducer designs operating at this frequency achieve axial and lateral resolutions in the range of \SIrange{15}{60}{\um}~\cite{foster00}.However, at these frequencies, power is attenuated by brain tissue with a coefficient of \SI{\ca 50}{\dB\per\centi\meter}~\cite{hoskins10} (\num{1e5}-fold attenuation per cm), which imposes a penetration limit (e.g., formeasurements with a dynamic range of 80 dB~\cite{foster00}).
+Attenuation of ultrasound by bone is stronger still, at \SI{22}{\dB\per\cm\per\MHz}~\cite{hoskins10}.
+Attenuation could therefore limit the use of ultrasound as a high-resolution neural recording modality in direct imaging modes, but multiplexed transmission of lower-frequency ultrasound from embedded devices could sidestep this issue.
 
 \subsubsection{Conclusions and Future Directions}
 \tbc
