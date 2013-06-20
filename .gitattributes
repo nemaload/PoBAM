@@ -1,2 +1,3 @@
-*.tex   diff=tex eol=lf
-*.bib   eol=lf
+*.tex   diff=tex text
+*.bib   text
+*.eps   diff=nodiff
