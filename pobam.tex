@@ -303,7 +303,7 @@ This could correspond to recording sites spaced on the vertices of a \num{\ca 20
 
 A more optimistic estimate, neglecting difficulties with spike sorting, derives from the maximum distance between an extracellular electrical recorder and a neuron from which it records spikes.
 In a first approximation, this is determined by two factors: the decay of the signal with distance from the spiking neuron and the background noise level at the recording site.
-In a crude approximation to signal detection theory, for one electrode to reliably detect the signal from a neuron, the size of the signal must be larger than the electrode's noise level. %fix repetitive
+We assume that for an electrode to reliably detect the signal from a given neuron, the magnitude of that neuron's signal must be larger than the electrode's noise level.
 
 The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scales roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
 However, this decay is strongly influenced by its detailed geometry and the properties of the extracellular space, making analytical calculation of the decay rate difficult.
