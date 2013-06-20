@@ -1,2 +1,2 @@
-*.tex   diff=tex eol=crlf
-*.bib   eol=crlf
+*.tex   diff=tex eol=lf
+*.bib   eol=lf
