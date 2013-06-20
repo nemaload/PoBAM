@@ -666,7 +666,7 @@ Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-bra
 We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming white Gaussian noise) to
 \[R\sub{max} = \BW \log_2 \left(1 + \SNR\right)\]
 where \BW is the channel bandwidth and \SNR is the signal-to-noise ratio.
-If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, which is weakened by path loss \pathloss. % remove "which is"
+If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, weakened by path loss \pathloss.
 Therefore the transmitted power $P_0$ is lower-bounded:
 \[P_0 > \kb T\ \BW\ \frac{2^{R\sub{max}/\BW}-1}{\pathloss}\]
 as shown in \autoref{fig:rfpower} (bottom).
