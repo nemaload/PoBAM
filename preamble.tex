@@ -26,18 +26,20 @@
 \titlespacing*{\subsection}{0pt}{2.4mm plus.5mm minus0.2mm}{0.9mm plus0.2mm minus0.2mm}
 \titlespacing*{\subsubsection}{0pt}{1.3mm plus.6mm minus0.2mm}{0.1mm plus0.1mm minus0.1mm}
 \titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{}{}
-\titlespacing{\paragraph}{0pt}{0.7mm plus0.3mm minus0.4mm}{2em plus1em minus0.9em}
-%\usepackage[font=it,labelfont={up,bf},margin=1.2cm]{caption}
-\usepackage{subfigure}
-\usepackage[subfigure]{ccaption}
-\captionnamefont{\bfseries}
-\captiontitlefont{\small}
-\captiondelim{. }
-\captionstyle{\centerlastline}
-\precaption{\rule{\linewidth}{0.4pt}\par}
-\postcaption{\vspace{1mm}}
-\setlength{\abovecaptionskip}{4mm}
-\setlength{\belowcaptionskip}{2mm}
+\titlespacing{\paragraph}{0pt}{0.4mm plus0.5mm minus0.3mm}{1.9em plus0.6em minus0.8em}
+\usepackage{caption}
+\usepackage{subfig}
+\DeclareCaptionFormat{ruled}{\hrulefill\\#1#2#3}
+\captionsetup[figure]{position=top,font={up,small},labelfont={up,bf},margin=8mm,labelsep=period,justification=centerlast,format=ruled}
+%\usepackage[subfigure]{ccaption}
+%\captionnamefont{\bfseries}
+%\captiontitlefont{\small}
+%\captiondelim{. }
+%\captionstyle{\centerlastline}
+%\precaption{\rule{\linewidth}{0.4pt}\par}
+%\postcaption{\vspace{1mm}}
+\setlength{\abovecaptionskip}{6mm plus3mm}
+\setlength{\belowcaptionskip}{2mm plus3mm}
 \usepackage[alwaysadjust]{paralist}
 \setdefaultleftmargin{1.1em}{1.5em}{0.8ex}{0.8ex}{0.8ex}{0.8ex}
 \usepackage{parskip}
@@ -220,7 +222,6 @@
 %\yyyymmdddate
 
 \hypersetup{%
-    bookmarks=true,         % show bookmarks bar?
     unicode=false,          % non-Latin characters in Acrobat‚Äôs bookmarks
     pdftoolbar=false,        % show Acrobat's toolbar?
     pdfmenubar=true,        % show Acrobat's menu?
@@ -236,6 +237,7 @@
     filecolor=magenta,      % color of file links
     urlcolor=cyan           % color of external links
 }
+\newcommand\figref[1]{\hyperref[#1]{Figure~\ref{#1}}}
 
 % fancy quotes
 \definecolor{quotemark}{gray}{0.7}
@@ -298,7 +300,7 @@
   \newcommand{\notes}[3]{\vspace{1.5cm}\begin{center} \parbox[b]{3cm}{\hfill #1 \hfill} \hspace{2cm} \textbf{#3} \hspace{2cm} \parbox[b]{3cm}{\hfill \textit{#2} \hfill} \\[-3mm] \rule{\textwidth}{0.4pt} \end{center}}
 
 \flushbottom
-\setlength{\parskip}{0.3cm plus3mm minus1mm}
+\setlength{\parskip}{0.3cm plus1mm minus1mm}
 \setlength{\parindent}{0cm}
 \setlength{\columnsep}{7mm}
 %\setlength{\premulticols}{1cm}

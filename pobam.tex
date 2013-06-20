@@ -47,8 +47,8 @@
 \maketitle
 \pagestyle{plain}
 \thispagestyle{empty}
-\captionwidth{0.8\linewidth}
-\changecaptionwidth
+%\captionwidth{0.8\linewidth}
+%\changecaptionwidth
 
 \begin{fquote}[Freeman Dyson][Imagined Worlds][1997]To understand in depth what is going on in a brain, we need tools that can fit inside or between neurons and transmit reports of neural events to receivers outside. We need observing instruments that are local, nondestructive and noninvasive, with rapid response, high band-width and high spatial resolution\ldots\hfill\ There is no law of physics that declares such an observational tool to be impossible.\end{fquote}
 
@@ -83,14 +83,21 @@ Each modality of neural recording has characteristic advantages and disadvantage
 Multi-electrode arrays enable the recording of \num{\ca 250} neurons at sub-millisecond temporal resolutions.
 Optical microscopy can currently record \num{\ca 100000} neurons at a \SI{1.25}{\second} timescale in behaving Zebrafish~\cite{ahrens13} (via light-sheet microscopy), or hundreds to thousands of neurons at a \SI{\ca100}{\milli\second} timescale in behaving mice~\cite{ziv13} (via two-photon microscopy). %Danio rerio (or whatever it's called)
 Magnetic resonance imaging (MRI) allows non-invasive whole brain recordings at a \SI{1}{\second} timescale in humans, but is far from single neuron spatial resolution.
-Molecular recording devices have been proposed for scalable physiological signal recording but have not yet been demonstrated in neurons~\cite{zamft12,glaser13,kording11a}. \autoref{fig:modalities} illustrates the recording modalities studied here.
+Molecular recording devices have been proposed for scalable physiological signal recording but have not yet been demonstrated in neurons~\cite{zamft12,glaser13,kording11a}.
+
+\autoref{fig:modalities} illustrates the recording modalities studied here.
 While further development of these methods promises to be a crucial driver for future neuroscience research, their fundamental scaling limits are not immediately obvious.
 
 \begin{figure}[htbp]
-\caption{Four generalized neural recording modalities are studied here. % TODO: sub figs
-}
-\label{fig:modalities}
 \centering
+\caption{Four generalized neural recording modalities are studied here.}  \label{fig:modalities}
+\subfloat[Optical]{\includegraphics[width=2.5in,trim=1.5mm 0mm 0mm 0mm,clip=true]{figs/optical_sketch_tc.eps}}
+\hspace{0.1in}
+\subfloat[Magnetic resonance]{\includegraphics[width=3.2in,trim=4mm 0mm 0mm 7mm,clip=true]{figs/mr_sketch_tc.eps}}
+\\
+\subfloat[Electrical]{\includegraphics[width=2.5in]{figs/electrode_sketch_tc.eps}}
+\hspace{0.5in}
+\subfloat[Molecular recording]{\includegraphics[width=2.7in,trim=0mm 0mm 3mm 0mm,clip=true]{figs/molecular_sketch_tc.eps}}
 \end{figure}
 
 Our analysis is predicated on assumptions that enable us to estimate scaling limits.
@@ -132,6 +139,7 @@ Black dashed line: the approximate diameter of the mouse brain.
 Inset: tissue scattering simulation based on Mie scattering theory and water absorption. Absorption length of water~\cite{kou93} (blue), simulated scattering length of cortical tissue in a simple Mie scattering model (red) and the attenuation length calculated based on these models (green) of infrared light (inset reproduced from \cite{kou93}, with permission).}
 \label{fig:attenuation}
 \centering
+\includegraphics[width=0.65\linewidth]{figs/Fig2.eps}
 \end{figure}
 
 \section{Challenges for Brain Activity Mapping}
@@ -335,6 +343,7 @@ In practice, the number of neurons per electrode distinguishable by spike-sortin
 }
 \label{fig:snrlimits}
 \centering
+\includegraphics[width=0.7\textwidth]{figs/Fig3.eps}
 \end{figure}
 
 \subsubsection{Implanting Electrodes in the Brain}
@@ -397,7 +406,6 @@ Because only one neuron is illuminated at a time, all of the light emissions cap
 Therefore, the emission pathway is limited less by scattering than by absorption and a single detector may collect a large number of scattered emission photons to obtain a sufficiently large integrated signal.
 Exploiting these ideas allows imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
 
-\begin{samepage}
 There are at least four options for overcoming the scattering of visible light to enable signal-separation from deep-brain neurons:
 
 \begin{enumerate}
@@ -410,7 +418,6 @@ This can currently be achieved with digital micro-mirror devices (DMDs), but not
 This could be done using optical fiber~\cite{mahalati13} and/or waveguide~\cite{zorzos10,zorzos12} technologies, which are developing rapidly.
 For example, single-mode fiber cables used in telecommunications can support \SI{>1}{\tera\byte\per\second} data rates with low light loss over hundreds of kilometers.
 \end{enumerate}
-\end{samepage}
 
 While implanted optics might seem to require a number of implanted photodetectors, fibers or waveguide ports comparable to the number of neurons, new developments suggest ways of imaging with far fewer elements.
 For example, compressive sensing or ghost imaging techniques based on random mask projections~\cite{wakin06,studer12,tian11,sun13} might allow a smaller number of photodetectors to be used.
@@ -579,6 +586,7 @@ Energy cost of elementary operations across a variety of recording and data tran
 }
 \label{fig:cmos}
 \centering
+\includegraphics[width=0.76\textwidth]{figs/Fig4.eps}
 \end{figure}
 
 \subsubsection{Powering Embedded Devices}
@@ -642,6 +650,19 @@ If the neighboring town's police department makes the mistake of also operating 
 
 \subsubsection{Power Requirements for Single-Channel Data Transmission}
 
+\begin{figure}[htbp]
+\caption{%
+Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
+Bottom: absorption length of water as a function of frequency, minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise but no path loss.
+Top: minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation due to water absorption over a distance of \SI{2}{\milli\meter}.
+While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions through tissue between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
+Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
+}
+\label{fig:rfpower}
+\centering
+\includegraphics[width=0.78\textwidth]{figs/Fig5.eps}
+\end{figure}
+
 We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming white Gaussian noise) to
 \[R\sub{max} = \BW \log_2 \left(1 + \SNR\right)\]
 where \BW is the channel bandwidth and \SNR is the signal-to-noise ratio.
@@ -653,18 +674,6 @@ In a minimal mode of a transmitter-receiver system, there thus exists a tradeoff
 
 Path loss weakens the proportion of the power that can reach the detector.
 Using the above equation, we can calculate, as a function of bandwidth, the power necessary to transmit a target whole-brain bit rate of \SI{100}{\giga\bit\per\second} through a medium with path loss dependent on the carrier wavelength, as shown in \autoref{fig:rfpower} (top).
-
-\begin{figure}[htbp]
-\caption{%
-Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
-Bottom: absorption length of water as a function of frequency, minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise but no path loss.
-Top: minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation due to water absorption over a distance of \SI{2}{\milli\meter}.
-While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions through tissue between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
-Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
-}
-\label{fig:rfpower}
-\centering
-\end{figure}
 
 For RF wavelengths, the radiation penetrates deeply but the achievable data rates are low without excessive power consumption, due to the limited bandwidth.
 For wavelengths intermediate between RF and infrared, the penetration depth is low and power must be expended to combat these losses, despite the high carrier bandwidth.
@@ -824,19 +833,19 @@ However, a major current limitation for fast agents is the requirement that they
 \autoref{fig:mriresolution} shows the achievable temporal resolution for various classes of activity-dependent MRI contrast agents as well as the spatial resolution limit due to water proton diffusion.
 
 \begin{figure}[htbp]
-\caption{Key factors determining the spatiotemporal resolution of dynamic MRI imaging. For a given contrast agent concentration, one can determine the minimal temporal resolution from panel~\subref{fig:mritemporal}, and from there calculate the minimal spatial resolution using panel~\subref{fig:mrispatial}.}
+\caption{Key factors determining the spatiotemporal resolution of dynamic MRI imaging. For a given contrast agent concentration, one can determine the minimal temporal resolution from panel~\protect\subref{fig:mritemporal}, and from there calculate the minimal spatial resolution using panel~\protect\subref{fig:mrispatial}.}
 \label{fig:mriresolution}
 \centering
-\subtop[Temporal resolution and contrast agent concentration allowing \SI{>5}{\percent} contrast, for different classes of dynamic MRI contrast agent (reproduced from~\cite{shapiro06}, with permission).]{
+\subfloat[Temporal resolution and contrast agent concentration allowing \SI{>5}{\percent} contrast, for different classes of dynamic MRI contrast agent (reproduced from~\cite{shapiro06}, with permission).]{
 \centering
-\hspace{3.5in}
 \label{fig:mritemporal}
+\includegraphics[width=3.5in]{figs/Fig6_temporal.eps}
 }
 \hspace{1mm}
-\subtop[Diffusion limited spatial resolution for water proton MRI as a function of temporal resolution.]{
+\subfloat[Diffusion limited spatial resolution for water proton MRI as a function of temporal resolution.]{
 \centering
-\hspace{3.5in}
 \label{fig:mrispatial}
+\includegraphics[width=3.5in]{figs/Fig6_spatial.eps}
 }
 \end{figure}
 
