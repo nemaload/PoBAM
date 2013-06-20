@@ -47,6 +47,8 @@
 \maketitle
 \pagestyle{plain}
 \thispagestyle{empty}
+\captionwidth{0.8\linewidth}
+\changecaptionwidth
 
 \begin{fquote}[Freeman Dyson][Imagined Worlds][1997]To understand in depth what is going on in a brain, we need tools that can fit inside or between neurons and transmit reports of neural events to receivers outside. We need observing instruments that are local, nondestructive and noninvasive, with rapid response, high band-width and high spatial resolution\ldots\hfill\ There is no law of physics that declares such an observational tool to be impossible.\end{fquote}
 
@@ -79,7 +81,7 @@ Other methods have been proposed, including the direct recording of neural activ
 
 Each modality of neural recording has characteristic advantages and disadvantages.
 Multi-electrode arrays enable the recording of \num{\ca 250} neurons at sub-millisecond temporal resolutions.
-Optical microscopy can currently record \num{\ca 100000} neurons at a \SI{1.25}{\second} timescale in behaving Zebrafish~\cite{ahrens13} (via light-sheet microscopy), or hundreds to thousands of neurons at a \SI{\ca100}{\milli\second} timescale in behaving mice~\cite{ziv13} (via two-photon microscopy).
+Optical microscopy can currently record \num{\ca 100000} neurons at a \SI{1.25}{\second} timescale in behaving Zebrafish~\cite{ahrens13} (via light-sheet microscopy), or hundreds to thousands of neurons at a \SI{\ca100}{\milli\second} timescale in behaving mice~\cite{ziv13} (via two-photon microscopy). %Danio rerio (or whatever it's called)
 Magnetic resonance imaging (MRI) allows non-invasive whole brain recordings at a \SI{1}{\second} timescale in humans, but is far from single neuron spatial resolution.
 Molecular recording devices have been proposed for scalable physiological signal recording but have not yet been demonstrated in neurons~\cite{zamft12,glaser13,kording11a}. \autoref{fig:modalities} illustrates the recording modalities studied here.
 While further development of these methods promises to be a crucial driver for future neuroscience research, their fundamental scaling limits are not immediately obvious.
@@ -158,7 +160,7 @@ In many cases, this constitutes a lower bound on what will be feasible in practi
 \subsection{Energy Dissipation}
 
 Brain tissue can sustain local temperature increases ($\Delta T$) of \SI{\ca 2}{\celsius} without severe damage \cite{azevedo09}.
-Assuming that the brain is receiving a constant power influx $P\sub{delivered}$ and that the local thermal transport properties of mouse brains are similar to those of humans \cite{allen02}, we can approximate the temperature change in deep-brain tissue as a function of the applied power \cite{horton13}:
+Assuming that the brain is receiving a constant power influx $P\sub{delivered}$ and that the local thermal transport properties of mouse brains are similar to those of humans \cite{allen02}, we can approximate the temperature change in deep-brain tissue as a function of the applied power \cite{sotero11}:
 \[\frac{\od T}{\od t} = \left.\left(P\sub{delivered} + P\sub{metabolic} - \rho\sub{blood} C\sub{blood}\,f\sub{blood} \Delta T\right)\right/C\sub{tissue}\]
 where $P\sub{metabolic} = \SI{0.0116}{\watt\per\gram}$ is the power per unit mass of basal metabolism, $C\sub{tissue} \approx \SI{3.7}{\joule\per\kelvin\per\gram} \approx 0.88\cdot C\sub{water}$ is the specific heat capacity of brain tissue, $\rho\sub{blood}=\SI{1.05}{\gram\per\centi\meter\cubed}$ is the density of blood, $C\sub{blood} = \SI{3.9}{\joule\per\kelvin\per\gram}$ is the specific heat capacity of blood, $f\sub{blood} = \SI{9.3e-9}{\meter\cubed\per\gram\per\second}$ is the volume flow rate of blood, and $\Delta T$ is the temperature difference between the brain tissue and the blood (at temperature \SI{37}{\celsius}).
 A steady-state temperature increase ($\od T/\od t = 0$) of \SI{2}{\celsius} corresponds to a power dissipation of \SI{\ca 40}{\milli\watt} per \SI{500}{\milli\gram} mouse brain.
@@ -254,8 +256,8 @@ Fluorescence lifetimes of activity indicators may limit temporal resolution
 Magnetic resonance imaging &
 Calculate spatial and temporal resolution of MRI based on spin relaxation times and spin diffusion &
 Proton MRI using tissue water \iskip
-Approximate values of T1 and T2 relaxation times and self-diffusion times for tissue water &
-To a first approximation, proton MRI is limited by the T1 relaxation time of water to \SI{\ca 100}{\milli\second} temporal resolution and by the self-diffusion of water to spatial resolutions of \SI{\ca 40}{\micro\meter}. T1 pre-mapping could allow T2 contrast on a \SI{\ca 10}{\milli\second} timescale.
+Approximate values of $T_1$ and $T_2$ relaxation times and self-diffusion times for tissue water &
+To a first approximation, proton MRI is limited by the $T_1$ relaxation time of water to \SI{\ca 100}{\milli\second} temporal resolution and by the self-diffusion of water to spatial resolutions of \SI{\ca 40}{\micro\meter}. $T_1$ pre-mapping could allow $T_2$ contrast on a \SI{\ca 10}{\milli\second} timescale.
 \\
 
 Ultrasound &
@@ -286,7 +288,7 @@ Typical electrical recording techniques keep active devices such as amplifiers o
 \subsubsection{Spatiotemporal Resolution}
 
 One way to estimate the minimal number of electrodes required to record from the entire mouse brain is to extrapolate the state of the art in spike sorting.
-In an optimistic scenario, $\ca 10$ neurons per electrode may be distinguishable using current spike-sorting algorithms \cite{strong98,sotero11,shapiro12}, although the theoretical upper bound is unknown.
+In an optimistic scenario, $\ca 10$ neurons per electrode may be distinguishable using current spike-sorting algorithms \cite{pedreira12,sahani99,camunas13}, although the theoretical upper bound is unknown.
 Indeed, most current techniques (e.g. hand-positioned tetrodes) optimize for signal separability, not for total number of recorded neurons.
 This scenario would necessitate $N=\num{7.5e6}$ electrodes to record from all mouse neurons.
 This could correspond to recording sites spaced on the vertices of a \num{\ca 200 x 200 x 200} site cubic lattice with \SI{\ca 40}{\micro\meter} edge length.
@@ -742,34 +744,181 @@ Because the speckle pattern is sensitive to the motion of a single scatterer~\ci
 
 \subsection{Magnetic Resonance Imaging}
 
+Magnetic resonance imaging (MRI) uses the resonant behavior of nuclear spins in a magnetic field to non-invasively probe the spatiotemporally varying chemical and magnetic properties of tissues.
+Although originally conceived as a means to image anatomy, MRI can be used to observe neural activity provided such activity is reflected in dynamic changes in local chemistry or magnetism.
 
+In a typical MRI study, a strong static field ($B = \SIrange{1}{15}{\tesla}$) is applied to polarize nuclear spins (usually \textsuperscript{1}H), causing them to resonate at a field-dependent Larmor frequency, $f=\gamma B$, where $\gamma$ is the gyromagnetic ratio of the nucleus (\SI{42}{\MHz\per\tesla} for \textsuperscript{1}H). %fix to 267 [CODATA]
+To obtain positional information, spatial field gradients are applied such that nuclei at different positions in the sample resonate at slightly different frequencies.
+Sequences of RF pulses and gradients are then applied to the sample, eliciting resonant emissions that contain information about spins' local chemical environment, magnetic field anisotropy and various other properties.
+
+Most functional studies rely on dynamic changes in two forms of relaxation experienced by RF-excited spins.
+The first form results from energy dissipation through interactions with other species (e.g. other spins or unpaired electrons), causing the spins to recover their lowest energy state on a timescale $T_1$ of \SIrange{100}{1000}{\milli\second}~\cite{rooney07}.
+The second form of relaxation reflects the dephasing of spin signals in a given sampling volume (voxel) over a timescale $T_2$ of \SIrange{10}{100}{\milli\second}~\cite{deichmann95} due to non-uniform Larmor frequencies caused, e.g., by the presence of local magnetic field inhomogeneities.
+
+In blood-oxygen level dependent functional MRI (BOLD-fMRI)---the most widely used form of neural MR imaging---increased neural activity in a given brain region alters the vascular concentration of paramagnetic deoxy-hemoglobin, which affects local magnetic field homogeneity and thereby alters $T_2$.
+Although nature was generous in gifting us this paramagnetic reporter of oxygen metabolism, the data it provides is only an indirect readout of neural activity, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}).
+A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain and transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}.
 
 \subsubsection{Spatiotemporal Resolution}
-\tbc
+
+The temporal resolution of MRI is limited by the dynamics of spin relaxation. For sequential MR signal acquisitions to be fully independent, spins must be allowed to recover their equilibrium magnetization on the timescale of $T_1$ (\SIrange{100}{1000}{\milli\second}).
+However, if local $T_1$ is static its pre- mapping could enable temporally variant $T_2$ effects to be observed at refresh rates on the faster $T_2$ timescale (\SIrange{10}{100}{\milli\second})~\cite{deichmann95}.
+It may also be possible to detect events that occur on a timescale shorter than T1 and T2 if the magnitude of the resulting change in spin dynamics overcomes the lack of independence between acquisitions.
+Note that these limitations are not overcome by ``fast'' pulse sequences such as echo-planar imaging (EPI)~\cite{stehling91} and fast low-angle shot (FLASH)~\cite{haase86} or the use of multiple detector coils~\cite{wiesinger06}.
+These techniques accelerate the acquisition of 2D and 3D images, but still require spins to be prepared for readout.
+
+The spatial resolution of current MRI techniques is limited by the diffusion of water molecules during the acquisition time~\cite{glover02}, since contrast at scales above the diffusion length will be attenuated by diffusion.
+The RMS distance of a water molecule from its origin, after diffusing in 3D for a time $T\sub{act}$, is
+\[d\sub{rms} = \sqrt{6D\sub{water}T\sub{acq}}\]
+where $D\sub{water}=\SI{2300}{\micro\meter\squared\per\second}$ is the self-diffusion coefficient of water.
+For $T\sub{acq}\approx\SI{100}{\milli\second}$, $d\sub{rms}\approx\SI{37}{\micro\meter}$, which sets the approximate spatial resolution.
+For ultra-short acquisitions at $T\sub{act}\approx\SI{10}{\milli\second}$, $d\sub{rms}\approx\SI{12}{\micro\meter}$.
+
+More technically, as described above, MRI uses field gradients to encode spatial positions in the RF frequency (wavenumber) components of the emitted radiation.
+The quality of the reconstruction of frequency space thus limits the achievable spatial resolution.
+$\Delta t$, the sampling interval of the detector, and the field gradient $G$, determine the wavenumber increment as
+\[\Delta k = \gamma G \Delta t\]
+The spatial resolution is then given by~\cite{glover02}:
+\[\Delta x\sub{$k$-space} = \frac{\pi}{\frac{T\sub{acq}}{\Delta t} \Delta k} = \frac{\pi}{T\sub{acq} \gamma G}\]
+Note that it is the gradient field, not the polarizing field $B_0$, which determines the resolution. For a gradient field of \SI{100}{\milli\tesla\per\meter} and an acquisition time of \SI{100}{\milli\second}, we have
+\[\frac{\pi}{\left(\SI{100}{\milli\second}\right)\left(\SI{267}{\MHz\per\tesla}\right)\left(\SI{100}{\milli\tesla\per\meter}\right)}\approx \SI{1.17}{\micro\meter}\]
+
+Furthermore, due to relaxation, the emissions from a spin at a given position do not constitute a pure tone with a well-defined frequency. Instead, each spin exhibits a frequency spread, which gives rise to a spatial resolution~\cite{glover02}:
+
+\[\Delta x\sub{relaxation} = \frac{2}{\gamma G T_2^*}\]
+where $T_2^*$ is the shortest relaxation time. Assuming $T_2^*=\SI{5}{\milli\second}$ and $G=\SI{100}{\milli\tesla\per\meter}$, gives
+\[\Delta x\sub{relaxation}\approx \SI{14}{\micro\meter}\]
+Therefore, for water protons, the resolution limit is set by diffusion over \SI{\ca 100}{\milli\second} acquisition timescales. For other spin species (e.g., with lower diffusion rate), it may be possible to achieve resolutions limited by frequency discrimination.
+
+Notably, there exists a practical trade-off between spatial resolution, temporal resolution, and sensitivity (SNR). In particular, to achieve high spatial resolution, it is necessary to densely sample $k$-space.
+Fast sampling sequences such as FLASH and EPI achieve speed by sampling each point of $k$-space using less signal and often at a lower resolution.
+Even at high field strengths (\SI{11.7}{\tesla}), this tradeoff results in practical EPI-fMRI with a spatial resolution of \SI{150 x 150 x 500}{\micro\meter} and a temporal resolution of \SI{200}{\milli\second}~\cite{yu12}.
+Achieving much higher spatial resolutions requires longer acquisitions and/or lower temporal sampling.
+For example, achieving a \SI{20}{\micro\meter} anatomical resolution in MRI of \emph{Drosophila} embryos required 54 minutes for a small field of view of \SI{2.5 x 2.5 x 5}{\milli\meter}~\cite{null08}.
+Furthermore, the flies were administered paramagnetic gadolinium chelates to shorten $T_1$ and thereby the acquisition time.
+Separately, frame rates of \SI{50}{\milli\second} have been obtained for dynamic imaging of the human heart, but required the use of strong priors to reduce data collection requirements~\cite{zhang10}.
 
 \subsubsection{Energy Dissipation}
-\tbc
+
+Energy is dissipated into the brain when the excited spins relax to their equilibrium magnetization in the applied field.
+The energy associated with this relaxation is of order the Zeeman energy:
+\[\Delta E\sub{Zeeman} = \gamma h B_0\]
+To obtain an upper bound on the heat dissipation of MRI, we first assume that the brain is entirely water, that every proton spin is initially aligned by the field and then excited by the RF pulse, and that all spins relax during a $T_1$ relaxation time of \SI{\ca 600}{\ms}.
+In this scenario, even an applied field of as high as \SI{\ca 40}{\tesla} would generate dissipation within the \SI{\ca 50}{\milli\watt} energy dissipation limit.
+In reality, the energy dissipation is 4--5 orders of magnitude smaller, because only a tiny fractional excess of the spins are initially aligned by the field (\num{\ca 1e-5} for fields on the order of \SI{1}{\tesla}).
+Therefore, thermal dissipation associated with spin excitation in MRI is unlikely to cause problems unless field strengths much greater than the largest currently fields used (\SI{\ca 20}{\tesla}) are invoked, or spins with much higher gyromagnetic ratios are used.
+
+Practically, the main energy consideration in MRI is the absorption by tissues of RF energy applied during imaging pulse sequences and the switching of magnetic field gradients.
+Such absorption is typically calculated through numerical solutions of the Maxwell Equations taking into account the precise geometry, tissue properties and applied fields for a particular experimental setup~\cite{collins04}.
+The typical specific absorption rate (SAR) is well under \SI{10}{\watt\per\kilogram} (or \SI{5}{\milli\watt} per \SI{500}{\milli\gram}), and is restricted by the FDA to less than \SI{3}{\watt\per\kilogram} for human studies.
 
 \subsubsection{Imaging Agents}
-\tbc
 
-\subsection{Molecular Recording}
-\tbc
+All the preceding discussion about spatiotemporal resolution presumes the existence of local time-varying signals (e.g., changes in $T_1$ or $T_2$) corresponding to the dynamics of neural activity.
+Such signals are not naturally present in the brain with the exception of the hemodynamic BOLD response, the limitations of which are discussed above.
+In the past 15 years, efforts have been undertaken to develop chemical and biomolecular imaging agents that can be introduced into the brain to produce MRI detectable signals corresponding to specific aspects of neural function (analogously to fluorescent dyes and proteins).
+Notable examples include $T_1$ and $T_2$ sensors of calcium~\cite{atanasijevic06,li99} and a $T_1$ sensor of neurotransmitter release~\cite{shapiro10}.
+Depending on their mode of action, these imaging agents can provide temporal resolutions ranging from \SI{10}{\milli\second} to \SI{10}{\second}~\cite{shapiro06}.
+However, a major current limitation for fast agents is the requirement that they be present in tissues at \si{\micro\Molar} concentrations, posing major challenges for delivery and genetic expression.
 
-\subsubsection{Spatiotemporal Resolution}
-\tbc
+\autoref{fig:mriresolution} shows the achievable temporal resolution for various classes of activity-dependent MRI contrast agents as well as the spatial resolution limit due to water proton diffusion.
 
-\subsubsection{Energy Dissipation}
-\tbc
-
-\subsubsection{Volume Displacement}
-\tbc
+\begin{figure}[htbp]
+\caption{Key factors determining the spatiotemporal resolution of dynamic MRI imaging. For a given contrast agent concentration, one can determine the minimal temporal resolution from panel~\subref{fig:mritemporal}, and from there calculate the minimal spatial resolution using panel~\subref{fig:mrispatial}.}
+\label{fig:mriresolution}
+\centering
+\subtop[Temporal resolution and contrast agent concentration allowing \SI{>5}{\percent} contrast, for different classes of dynamic MRI contrast agent (reproduced from~\cite{shapiro06}, with permission).]{
+\centering
+\hspace{3.5in}
+\label{fig:mritemporal}
+}
+\hspace{1mm}
+\subtop[Diffusion limited spatial resolution for water proton MRI as a function of temporal resolution.]{
+\centering
+\hspace{3.5in}
+\label{fig:mrispatial}
+}
+\end{figure}
 
 \subsubsection{Conclusions and Future Directions}
-\tbc
+
+Current MRI techniques rely on the excitation of proton spins in water, however, and are thus limited to imaging at \SI{>100}{\ms} timescales unless SNR is severely compromised, due to the low polarizability and long $T_1$ relaxation time of proton spins.
+There is also a spatial resolution limit of tens of microns over these timescales due to water's fast diffusion. Methods which couple neural activity to non-diffusible, highly polarized spins could in principle ameliorate this situation.
+
+\subsection{Molecular Recording}
+
+An alternative to electrical, optical or MRI recording is the local storage of data in molecular substrates.
+Each neuron could be engineered to write a record of its own time-varying electrical activities onto a biological macromolecule, allowing off-line extraction of data after the experiment.
+Such systems could, in principle, be genetically encoded, and would thus naturally record from all neurons at the same time.
+
+One proposed implementation of such a ``molecular ticker tape'' would utilize an engineered DNA polymerase with a Ca\textsuperscript{2$+$}-sensitive or membrane-voltage-sensitive error-rate~\cite{zamft12} to record time-varying neural activities onto DNA~\cite{glaser13} as patterns of nucleotide misincorporations relative to a known template DNA strand (for alternative local recording techniques see~\cite{friedland09,bonnet13}).
+The time-varying signal would later be recovered by DNA sequencing and subsequent statistical analysis~\cite{glaser13}.
+DNA polymerases found in nature can add up to \num{\ca 1000} nucleotides per second~\cite{kelman95}, and non-replicative polymerases such as DNA polymerase $\iota$ may have error rates of \SI{>70}{\percent} on template T bases~\cite{frank07}.
+Similar strategies could be implemented using RNA polymerases or potentially using other enzyme/hetero-polymer systems.
+
+\subsubsection{Spatiotemporal Resolution}
+
+An analysis of the projected temporal resolution of molecular ticker-tapes as a function of polymerase biochemical parameters can be found in~\cite{glaser13}.
+This work suggests that molecular ticker tapes are unlikely to record at \SI{<10}{\ms} temporal resolution for durations longer than seconds in the absence of engineered polymerases with kinetic parameters beyond the limits of those found in nature, even when \num{10,000} templates per cell are recorded simultaneously.
+Recording at lower temporal resolutions, however, appears feasible using naturalistic biochemical parameters.
+Mechanisms to improve synchronization of the ensemble of polymerases within each cell, or to encode time-stamps into the synthesized DNA, could improve temporal resolution and decrease the number of required template strands per neuron.
+
+\subsubsection{Energy Dissipation}
+% swap paragraphs?
+\paragraph{Nucleotide metabolism}
+DNA polymerization imposes a metabolic load on the cell.
+Replication of the 3 billion bp human genome takes approximately eight hours in normally dividing cells~\cite{murray12}, which equates to a nucleotide incorporation rate of \SI{\ca 100}{\kHz}.
+Therefore, in order not to exceed the metabolic rates associated with normal genome replication, molecular ticker tapes operating at \SI{1}{\kHz} polymerization speed~\cite{kelman95} would be limited to approximately 100 simultaneously replicated templates per cell.
+Even more recordings would be possible for RNA ticker tapes.
+The mammalian cell polymerizes at least \num{1e11} NTPs per 16-hour cell cycle (in HeLa cells)~\cite{jackson00}.
+Therefore, \num{\ca 1,700} RNA tickertapes, each operating at \SI{1}{\kHz}, could be placed in a cell before generating a metabolic impact equal to that of the cell's baseline transcription rate.
+While these comparisons to baseline physiological levels are reasonable guidelines, it is likely that a neuron can support higher metabolic loads associated with larger numbers of templates.
+The maximal rate of neuronal aerobic respiration is \SI{\ca 5}{\femto\mole} of ATP minute via oxidative respiration (see the section on bio-luminescence). Assuming \num{\ca 1} ATP equivalent consumed per nucleotide incorporation, if neuronal metabolism were entirely dedicated to polymerization, it could support the incorporation of up to \num{6e9} nucleotides per minute, or \num{1e5} simultaneously replicated DNA templates at \SI{1}{\kHz}. % ATP *per* minute?
+
+\paragraph{Power dissipation}
+Normal DNA and RNA synthesis do not produce problematic energy dissipation and molecular tickertapes will likewise not be highly dissipative, at least in the regime where nucleic acid polymerization rates do not exceed those associated with genome replication or transcription.
+
+\subsubsection{Volume Displacement}
+
+The nucleus of a neuron occupies \SI{\ca 6}{\percent} of a neuron's volume ($(\SI{4}{\um})^3/(\SI{10}{\um})^3$).
+Ticker tapes operating at \SI{1}{\kHz} with \num{10,000} simultaneously replicated templates could record for \num{300} seconds before the total length of DNA synthesized equals the human genome length.
+In the case of RNA polymerase II-based transcription, \SI{2.75}{\hour} of recording by \num{10,000} recorders is required to reach the net transcript length in the cell.
+Therefore, with appropriate mechanisms to fold/pack the nucleic acids generated by molecular ticker tapes, they would not impose unreasonable requirements on cellular volume displacement over minutes to hours.
+
+\subsubsection{Conclusions and Future Directions}
+
+Molecular recording of neural activity has the advantages of inherent scalability, single-cell precision, and low energy and volume footprints.
+Making molecular recording work at temporal resolutions approaching \SI{1}{\kHz}, however, will require multiple new developments in synthetic biology, including protein engineering to create a fast polymerase (\SI{>1}{\kHz}) that strongly couples proxies for neural activity to nucleotide incorporation probabilities.
+An attractive potential payoff from molecular approaches to activity mapping is the prospect of seamlessly combining---within a single brain---the readout of activity patterns with the readout of structural connectome barcodes~\cite{zador12}, transcriptional profiles (cell type information) or other (epi-)genetic signatures which are accessible via high-throughput nucleic acid sequencing.
+
 
 \section{Discussion}
-\tbc
+
+We have analyzed the physical constraints on scalable neural recording for selected modalities of measurement, data storage, data transmission and power harvesting.
+Each analysis is based on assumptions, about the brain, or about device physics, or about system architecture, which may be violated.
+Understanding these assumptions can point towards strategies to work around them, and in some cases we have suggested possible directions for such workarounds.
+Even valid assumptions about natural brains may be subject to modification through synthetic biology or external perturbation.
+Notably, methods for rapidly removing heat from the brain could be important for supporting a range of highly dissipative recording modalities, while assumptions about transmission bandwidth may be relaxed if some information is stored locally and read out after the fact.
+
+We have not considered all possible recording modalities here.
+For example, modalities like X-ray imaging have been used on live cells~\cite{moosmann13} and might find use in neural recording if suitable contrast agents could be devised.
+X-rays interact with electron shells via photoelectric absorption and Compton scattering and with band structure in materials.
+X-ray phosphors utilize substitutions in an ionic lattice to generate visible or UV light emission upon X-ray absorption~\cite{issler95}.
+In principle, some of these mechanisms could be engineered as neural activity sensors, e.g., in an absorption-contrast mode suitable for tomographic reconstruction~\cite{larabell04}.
+Similarly, electron spin resonance operates at $\ca$100$\times$ higher Larmor frequency compared to proton MRI which improves polarizability of the spins.
+Due to Pauli exclusion, use of this technique requires unpaired electrons, which can be found e.g. in nitrogen vacancy diamond nano-crystals~\cite{horowitz12}, which are also highly voltage sensitive~\cite{dolde11} and amenable to optical control and readout of the spin state.
+
+Our analysis illustrates challenges and opportunities for technology development.
+While we have shown that MRI is limited by the diffusion of water, using non-diffusible spins could in principle allow micron resolutions.
+While light scattering creates severe limitations on optical imaging, and multi-photon approaches are highly dissipative, embedded optical microscopies or novel fluorescent or bio-luminescent indicators (e.g., operating in the infrared) could overcome these limits.
+Novel contrast agents that exploit unused parts of the EM spectrum could allow entirely new forms of imaging.
+Ultra-low-power electronics is required to perform recording locally, but molecular recording devices could sidestep power constraints on electronics, at the cost of decreased temporal resolution, lack of real-time readout, and increased engineering complexity.
+New signal processing architectures such as compressive sensing could reduce bandwidth requirements and inspire new microscope designs.
+Hybrid techniques such as photo-acoustic~\cite{filonov12} or ultrasound-encoded optical~\cite{wang12} microscopies could result in performance greater than the sum of the component technologies.
+Combining activity information with structural information could allow static and dynamic information to disambiguate one another.
+Our goal here has not been to pick winners, but to aid a broad community in analyzing the problem.
+A challenge of this magnitude requires a return to first principles, and a fundamental reconsideration of the architectures of neural recording systems, not just incremental improvement of existing methods.
+We hope that knowledge of the constraints governing scalable neural recording will enable the invention of entirely new, transformative approaches.
 
 \section{Acknowledgments}
 
@@ -785,7 +934,6 @@ Neuroscience Award.
 B.~Stranges, B.~Zamft, R.~Kalhor and G.~Church acknowledge support from the Office of Naval Research and the NIH Centers of Excellence in Genomic Science.
 M.~Shapiro is supported by the Miller Research Institute, the Burroughs~Wellcome Career~Award~at~the~Scientific Interface and the W.M. Keck Foundation.
 
-\nocite{*}
 \printbibliography[notsubtype=hide]
 
 \end{document}

@@ -11,6 +11,7 @@
 \usepackage{verbatim}
 
 \usepackage{soul}
+
 \usepackage{isomath}
 \newcommand{\mat}[1]{\matrixsym{#1}}
 \renewcommand{\vec}[1]{\vectorsym{#1}}
@@ -27,14 +28,13 @@
 \titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{}{}
 \titlespacing{\paragraph}{0pt}{0.7mm plus0.3mm minus0.4mm}{2em plus1em minus0.9em}
 %\usepackage[font=it,labelfont={up,bf},margin=1.2cm]{caption}
-\usepackage{ccaption}
+\usepackage{subfigure}
+\usepackage[subfigure]{ccaption}
 \captionnamefont{\bfseries}
 \captiontitlefont{\small}
 \captiondelim{. }
 \captionstyle{\centerlastline}
-\captionwidth{\linewidth}
-\changecaptionwidth
-\precaption{\hrule\par}
+\precaption{\rule{\linewidth}{0.4pt}\par}
 \postcaption{\vspace{1mm}}
 \setlength{\abovecaptionskip}{4mm}
 \setlength{\belowcaptionskip}{2mm}
@@ -196,9 +196,10 @@
      \newunit}%
   \printfield{titleaddon}}
 \renewcommand*{\relatedpunct}{\space}
-\renewcommand*{\relateddelim}{\addcomma\space}
+\renewcommand*{\relateddelim}{\printtext{\space and\space\nopunct}}
 \xapptobibmacro{pageref}{\renewcommand{\newunitpunct}{\addsemicolon\space}}{}{}
 \xapptocmd{\bibsetup}{\flushbottom\raggedright}{}{}
+%\xapptocmd{\bibfont}{\small}
 %\newbibmacro*{related:prelim}[1]{\entrydata{#1}{\mkbibparens{\usebibmacro{date}}\nopunct\space\bibstring{on}\usebibmacro{doi+eprint+url}}}
 \newbibmacro*{related:prelim}[1]{\entrydata{#1}{\usebibmacro{doi+eprint+url}\setunit{\addspace}\printtext{\bibopenparen}\usebibmacro{date}\iffieldundef{note}{}{\newunit\printfield{note}}\printtext{\bibcloseparen}}}
 \NewBibliographyString{prelim,prelims,on}
@@ -208,7 +209,7 @@
   backrefpage = {{cited on p. }},
   backrefpages = {{cited on pp. }},
   prelim = {preliminary version on\nopunct},
-  prelims = {preliminary versions\nopunct},
+  prelims = {preliminary versions at\nopunct},
   on = {on\nopunct},
 }
 
