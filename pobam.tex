@@ -685,10 +685,10 @@ This correlated noise, which cannot be filtered by simple averaging, could be av
 
 \subsubsection{Spatially Multiplexed Data Transmission}
 
-As discussed above, transmitting information through a \emph{single} channel imposes limits on bit rate, carrier frequency and input power.
-It is conceivable to divide the data transmission burden over \emph{many} independent channels, however, i.e., over many pairs of transmitters and receivers, each operating at lower bandwidth (e.g., at radio frequencies).
+As discussed above, transmitting information through a single channel imposes direct limits on bit rate, carrier frequency and input power.
+However, it is conceivable to divide the data transmission burden over many independent channels, i.e., over many pairs of transmitters and receivers, each operating at lower bandwidth (e.g., at radio frequencies).
 Indeed, this would be optimal in a scenario where many embedded devices measure and then transmit the activities of nearby neurons.
-As a concrete example of such \emph{spatial multiplexing}, an effective capacity of \SI{1}{\tera\bit\per\second} could conceivably be obtained by splitting the data over \num{1000} transmitter-receiver pairs each operating at \SI{1}{\giga\bit\per\second}, with the transmitters arranged in a \num{10 x 10 x 10} grid. % remove emphs?Importantly, in order to exceed the above limits for single-channel data transmission, it must be possible for these transmitter receiver pairs to share the same bandwidth and operate simultaneously without conflicts, for example by modulating distinguishable carrier waves or by transferring data over separate wires.
+As a concrete example of such ``spatial multiplexing,'' an effective capacity of \SI{1}{\tera\bit\per\second} could conceivably be obtained by splitting the data over \num{1000} transmitter-receiver pairs each operating at \SI{1}{\giga\bit\per\second}, with the transmitters arranged in a \num{10 x 10 x 10} grid.Importantly, in order to exceed the above limits for single-channel data transmission, it must be possible for these transmitter receiver pairs to share the same bandwidth and operate simultaneously without conflicts, for example by modulating distinguishable carrier waves or by transferring data over separate wires.
 The conditions under which this may occur, however, can be counter-intuitive.
 For example, for antennas to operate independently, they must be spaced apart from one another by roughly a wavelength.
 For \SI{10}{\giga\hertz} microwaves, the wavelength is \SI{\ca 3}{\centi\meter}, so no more than a handful of microwave transmitters can co-occupy the mouse brain while operating independently.
