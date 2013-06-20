@@ -480,7 +480,7 @@ For three-photon excitation, the situation will be even worse as higher peak lig
 
 Could the single-pulse energy be reduced while maintaining efficient two-photon excitation? The number of two-photon (2P) transitions excited per fluorophore per pulse is $n_a = F^2 C / t$, where $F$ is the number of photons per pulse per area, in units of \si{photon\per\centi\meter\squared}, $C$ is the two-photon cross-section in units of \si{\centi\meter\tothe{4}\second\per photon}, and $t$ is the pulse duration in \si{\second}.
 This can be expanded as
-\[n_a = \left(\frac{4E\left(\NA\right)^2}{h c \lambda}\right)^2 \frac{C}{t}\] %todo: planck constant?
+\[n_a = \left(\frac{4E\left(\NA\right)^2}{h c \lambda}\right)^2 \frac{C}{t}\]
 where $\NA$ is the numerical aperture of the focusing optics, and $\lambda$ is the stimulation wavelength.
 For a typical 2P experiment with \SI{100}{\femto\second}, \SI{0.1}{\nano\joule} pulses, assuming typical 2P cross section~\cite{masters06} of \SI{1e-49}{\centi\meter\tothe{4}\second\per photon}, $\lambda=\SI{900}{\nano\meter}$ and $\NA=1.0$, $n_a \approx \frac{1}{20}$.
 While multiple pulses per neuron per frame are thus required to excite each fluorophore in every frame, a single pulse per neuron per frame will likely excite at least one fluorophore when there are \num{>20} fluorophores per excitation spot.
@@ -627,7 +627,7 @@ Thus, the first priority is to reduce the power consumption associated with embe
 In principle, methods such as photovoltaics using infrared light, RF harvesting via diode rectification, or glucose fuel cells, could supply power to embedded neural recorders, but again, significant improvements in the power efficiency of electronics are necessary to enable this.
 Other potential energy harvesting strategies include or materials/enzymes harnessing local biological gradients such in voltage, osmolarity, or temperature.
 An analysis of the energy transduction potential of each of these systems is beyond the scope of this discussion.
-Fortunately, with many orders of magnitude potential for improvement, we can expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future. %potential why? physical limits
+Fortunately, with many orders of magnitude potential for improvement before physical limits are reached, we can expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future.
 
 \subsection{Embedded Devices: Information Theory}
 
