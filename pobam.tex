@@ -557,11 +557,11 @@ Note that realistic analog front ends (which are subject to $1/f$ noise and requ
 
 Local on-chip digital computation also incurs an energy cost.
 Current CMOS digital circuits consume 5--6 orders of magnitude~\cite{tucker11,koomey11,yablonovitch08,tucker11b} more energy per switching event (\SI{\ca 1}{\femto\joule\per\bit} including charging of the wires~\cite{tucker11}) compared to \ref{eq:landauer} (e.g., for a digital CMOS inverter, and ignoring the static power associated with the leakage current).
-This corresponds to a \SI{\ca 1}{\femto\farad} total load capacitance at \SI{1}{\volt} operating voltage. For \SI{100}{\giga\hertz} switching rates ($\SI{1e8}{neurons} \times \SI{1}{\kilo\hertz}$) as above, this corresponds to \SIrange{0.02}{0.2}{\milli\watt}.
-Realistic architectures, however, will incur overhead in the number of switching events required to store, compress and/or transmit neural signals, likely bringing the power consumption into an unacceptable range (e.g., \num{1000} bits processed per sample would be \SI{200}{\milli\watt} here).
+This corresponds to a \SI{\ca 1}{\femto\farad} total load capacitance at \SI{1}{\volt} operating voltage. For \SI{100}{\giga\hertz} switching rates ($\SI{1e8}{neurons} \times \SI{1}{\kilo\hertz}$) as above, this corresponds to \SIrange{0.01}{0.1}{\milli\watt}.
+Realistic architectures, however, will incur overhead in the number of switching events required to store, compress and/or transmit neural signals, likely bringing the power consumption into an unacceptable range (e.g., \num{1000} bits processed per sample would be \SI{100}{\milli\watt} here).
 To take a concrete example, commercial RFID tags consume \SI{\ca 10}{\micro\watt}~\cite{rfidsheet}.
 At a chip rate of \SI{256}{\kilo\bit\per\second} with a Miller encoding of 2, this yields \SI{7.8e-11}{\joule\per\bit}, which is \num{\ca 10} orders of magnitude higher than \ref{eq:landauer}.
-Appling current RFID technology to whole mouse brain recording at \SI{1}{\kilo\bit\per\second\per neuron} would thus draw \SI{\ca 8}{\watt} of power.
+Applying current RFID technology to whole mouse brain recording at \SI{1}{\kilo\bit\per\second\per neuron} would thus draw \SI{\ca 8}{\watt} of power.
 Therefore, at least 2--3 orders of magnitude reduction in power consumption will be necessary in order to apply embedded electronics for whole-brain neural recording.
 
 Until recently, the energy efficiency of digital computing has scaled on an exponential improvement curve~\cite{koomey11}.
