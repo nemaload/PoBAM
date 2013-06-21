@@ -54,9 +54,9 @@
 
 \begin{abstract}
 \noindent
-Simultaneously measuring the activities of all neurons in a mammalian brain at millisecond resolution is a challenge that goes beyond the limits of existing techniques in neuroscience.
+Simultaneously measuring the activities of all neurons in a mammalian brain at millisecond resolution is a challenge beyond the limits of existing techniques in neuroscience.
 Entirely new approaches may be required, motivating an analysis of the fundamental physical constraints on the problem.
-Here, we outline the physical principles governing brain activity mapping using optical, electrical, magnetic resonance, and molecular modalities of neural recording.
+We outline the physical principles governing brain activity mapping using optical, electrical, magnetic resonance, and molecular modalities of neural recording.
 Focusing on the mouse brain, we analyze the scalability of each method, concentrating on the limitations imposed by spatiotemporal resolution, energy dissipation, and volume displacement.
 Based on this analysis, all existing approaches require orders of magnitude improvement in key parameters.
 Electrical recording is limited by the low multiplexing capacity of electrodes and their lack of intrinsic spatial resolution,
@@ -67,7 +67,7 @@ Understanding the physical limits of brain activity mapping may provide insight 
 For example, unconventional methods for delivering electrodes may enable unprecedented numbers of recording sites,
 embedded optical devices could allow optical detectors to be placed within a few scattering lengths of the measured neurons,
 and new classes of molecularly engineered sensors might obviate cumbersome hardware architectures.
-We also study the physics of powering and communicating with microscale devices embedded in brain tissue and find that, while radio-frequency electromagnetic data transmission suffers from a severe power--bandwidth tradeoff, communication via infrared light or via ultrasound may allow high data rates due to the possibility of spatial multiplexing.
+We also study the physics of powering and communicating with microscale devices embedded in brain tissue and find that, while radio-frequency electromagnetic data transmission suffers from a severe power--bandwidth tradeoff, communication via infrared light or ultrasound may allow high data rates due to the possibility of spatial multiplexing.
 The use of embedded local recording and wireless data transmission would only be viable, however, given major improvements to the power efficiency of microelectronic neural recording devices.
 \end{abstract}
 
@@ -90,7 +90,7 @@ While further development of these methods promises to be a crucial driver for f
 
 \begin{figure}[htbp]
 \centering
-\caption{Four generalized neural recording modalities are studied here. (a) Extracellular electrical recording probes the electrical potential due to nearby neurons. (b) Optical microscopy detects light emissions from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 1/2 the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) Magnetic resonance imaging detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment of the spins by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) Molecular recording devices have been proposed, in which a “ticker-tape” record of neural activity over time is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
+\caption{Four generalized neural recording modalities. (a) Extracellular electrical recording probes the voltage due to nearby neurons. (b) Optical microscopy detects light emissions from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 1/2 the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) Magnetic resonance imaging detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) Molecular recording devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
 \subfloat[Electrical]{\includegraphics[width=2.5in]{figs/electrode_sketch_tc.eps}}
 \hspace{0.1in}
 \subfloat[Optical]{\includegraphics[width=2.5in,trim=1.5mm 0mm 0mm 0mm,clip=true]{figs/optical_sketch_tc.eps}}
@@ -114,7 +114,7 @@ We anticipate that as much can be learned from where our logic breaks down as fr
 \paragraph{Mouse brain}
 The mouse brain contains \num{\ca 7.5e7} neurons in a volume of \SI{\ca 420}{\milli\meter\cubed}~\cite{vincent10} and weighs about \SI{0.5}{\gram}.
 For comparison, the human brain has roughly \num{8e10} neurons~\cite{azevedo09} in a volume of \SI{1200}{\centi\meter\cubed}~\cite{allen02}.
-The human brain consumes \SI{\ca 15}{\watt} of power (performing the equivalent of roughly \num{1e17} floating point computational operations on that meager power budget)~\cite{sarpeshkar10}.
+The human brain consumes \SI{\ca 15}{\watt} of power (performing the equivalent of roughly \num{1e17} floating point computational operations on that power budget)~\cite{sarpeshkar10}.
 Because power consumption scales approximately linearly with the number of neurons~\cite{houzel11}, the mouse brain is expected to utilize \SI{\ca 15}{\milli\watt} (for comparison, the metabolic rate of the \SIrange{\ca 20}{30}{\gram} mouse is \SIrange{\ca 200}{600}{\milli\watt} depending on its degree of physical activity~\cite{speakman13}).
 
 \paragraph{Neural activities}
@@ -123,19 +123,19 @@ The average rate of neuronal spiking is \SI{\ca 5}{\hertz}~\cite{sarpeshkar10}, 
 The activities of nearby neurons can be highly correlated.
 
 \paragraph{Absorption and scattering of radiation}
-All existing methods of neural recording utilize electromagnetic waves, from the ultra-low frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
+All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
 Electromagnetic waves are attenuated in brain tissue by absorption and scattering.
 As an approximation to the electromagnetic absorption of brain tissue, we treat the absorption by water, the brain's main constituent (\SIrange{68}{80}{\percent} by mass in humans \cite{dobbing73,fatouros99}).
 At visible and IR wavelengths, there is far worse scattering than absorption: absorption lengths range from \SI{\ca 1.5}{\milli\meter} (blue light) to about \SI{\ca 1}{\centi\meter} (infrared light), while scattering lengths are in the hundreds of microns.
 The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
-\autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering simulation (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
-This provides an initial indication of which wavelengths can be used to measure deep-brain signals.
+\autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering model (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
+This provides a preliminary indication of which wavelengths can be used to measure deep-brain signals.
 
 \begin{figure}[htbp]
 \caption{%
 The penetration depth (attenuation length) of electromagnetic radiation in water as a function of wavelength (data from \cite{jonasz07}).
 Black dashed line: the approximate diameter of the mouse brain.
-Inset: tissue scattering simulation based on Mie scattering theory and water absorption. Absorption length of water~\cite{kou93} (blue), scattering length of cortical tissue in a simple Mie scattering model (red) and the attenuation length (green) of infrared light calculated based on these models (inset reproduced from \cite{kou93}, with permission).}
+Inset: approximate tissue model based on Mie scattering theory and water absorption. Absorption length of water~\cite{kou93} (blue), scattering length of cortical tissue in a simple Mie scattering model (red) and the attenuation length (green) of infrared light calculated based on these approximations (inset reproduced from \cite{kou93}, with permission).}
 \label{fig:attenuation}
 \centering
 \includegraphics[width=0.5\linewidth]{figs/Fig2.eps}
@@ -149,10 +149,10 @@ As such, we consider three primary challenges:
 \subsection{Spatiotemporal Resolution}
 
 A sampling rate of \SI{1}{\kilo\hertz} is necessary to capture the fastest trains of action potentials at single-spike resolution.
-A minimal data rate of \num{7.5e10} bits processed per second is required to record 1 bit per mouse neuron at \SI{1}{\kilo\hertz}.
+A minimal data rate of \num{7.5e10} bits processed per second is then required to record 1 bit per mouse neuron at \SI{1}{\kilo\hertz}.
 
 In electrical recording, higher sampling rates (e.g. \SIrange{10}{40}{\kilo\hertz}) are often necessary to distinguish neurons based on spike shapes when each electrode monitors multiple neurons.
-One bit per neuron sampling at \SI{1}{\kilo\hertz} would likely not be sufficient to reliably distinguish spikes above noise: transmitting \SI{\ca 10}{\bit} samples at \SI{\ca 10}{\kilo\hertz} (full waveform) or \SIrange{\ca 10}{20}{\bit} time-stamps upon spike detection would be more realistic.
+More fundamentally, one bit per neuron sampling at \SI{1}{\kilo\hertz} would likely not be sufficient to reliably distinguish spikes above noise: transmitting \SI{\ca 10}{\bit} samples at \SI{\ca 10}{\kilo\hertz} (full waveform) or \SIrange{\ca 10}{20}{\bit} time-stamps upon spike detection would be more realistic.
 On the other hand, it may be possible to locally compress measurements of a spike train before transmission.
 In the fly, the entropy of spike trains has been measured to be up to \SI{\ca 180}{\bit\per\second}, and the information about a stimulus encoded by a spike train (mutual information) was as high as \SI{\ca 90}{\bit\per\second}~\cite{strong98}. This would suggest that in the worst case, a compression factor of 5$\times$--10$\times$ should be possible, relative to a \SI{1000}{\bit\per\second} raw binary sampling. As a na\"{\i}ve estimate of the entropy as a function of firing rate, one can write the entropy $H$ in \si{\bit\per\second}, assuming \SI{1}{\milli\second} long spikes and \SI{1000}{\hertz} sampling rate, as
 \[H \approx \left(-P\sub{spike}\cdot\log_2\!\left(P\sub{spike}\right) - \left(1 - P\sub{spike}\right)\cdot\log_2\!\left(1 - P\sub{spike}\right)\right) \cdot \SI{1000}{\bit\per\second}\]
@@ -160,8 +160,8 @@ In the fly, the entropy of spike trains has been measured to be up to \SI{\ca 18
 where $P\sub{spike}$ is the probability of spiking during the sampling interval.
 For the average firing rate of \SI{5}{\hertz}, $P\sub{spike}=0.005$ and $H=\SI{45}{\bit\per\second}$, corresponding to a compression factor of $\ca 20\times$.
 However, at \SI{500}{\hertz}, $P\sub{spike}=0.5$ with $H\approx\SI{1000}{\bit\per\second}$, i.e., no compressibility. 
-Therefore, compression could conceivably reduce the data transmission burden of activity mapping by 1--2 orders of magnitude, depending on the neurons and activity regimes under consideration.
-Based on the above considerations, we assume \SI{1}{\bit\per neuron\per\milli\second} or \SI{100}{\giga\bit\per\second} for the entire mouse brain, as a ``minimal whole brain data rate'' in what follows.
+Therefore, compression could conceivably reduce the data transmission burden for activity mapping by 1--2 orders of magnitude, depending on the neurons and activity regimes under consideration.
+Based on the above, we assume \SI{1}{\bit\per neuron\per\milli\second} or \SI{100}{\giga\bit\per\second} for the entire mouse brain, as a ``minimal whole brain data rate'' in what follows.
 In many cases, this constitutes a lower bound on what will be feasible in practice.
 
 \subsection{Energy Dissipation}
@@ -179,17 +179,17 @@ Increasing convective heat loss from the brain by increasing blood flow (e.g. vi
 Note that radiative loss of heat from the brain was ignored here since infrared light emitted by deep-brain tissue is quickly re-absorbed by nearby tissue.
 We have also assumed that conductive heat loss is negligible compared to the heat extracted by blood flow.
 
-In addition to the whole-brain steady-state power, there are limits on the acceptable power density.
+In addition to the whole-brain steady-state power, there are limits on the acceptable applied power density.
 For radio-frequency electromagnetic radiation, the specific absorption rate (SAR) limit on the power density exposed to tissue (calibrated for \SI{\ca 1}{\celsius} temperature change) is  \SI{\ca 10}{\milli\watt\per\centi\meter\squared}, while for ultrasound (which couples less strongly to dissipative loss mechanisms in tissue) the SAR limits are up to 72$\times$ higher.
 The power density limit for visible and near-IR light exposures are also in the \SIrange{\ca 10}{100}{\milli\watt\per\centi\meter\squared} range for \SI{\ca 1}{\milli\second} long exposures, decreasing as the exposure time lengthens (based on the IEC 60825 formulas~\cite{iec60825}).
 High local power dissipation (transient or steady-state) can also modify the electrical properties of excitable membranes, altering neuronal activity patterns.
 For example, heating of cell membranes and surrounding solution by millisecond optical pulses leads to changes in membrane electrical capacitance mediated by the ionic double layer~\cite{shapiro12}.
-Slower temperature changes (scale of seconds) resulting from RF radiation lead to accelerated ion channel and transporter kinetics~\cite{shapiro13}.
+Slower temperature changes (on a scale of seconds) resulting from RF radiation lead to accelerated ion channel and transporter kinetics~\cite{shapiro13}.
 Both of these effects are appreciable when the temperature changes are on the order of \SIrange{1}{10}{\degreeCelsius}.
 
 \subsection{Sensitivity to Volume Displacement}
 
-To prevent damage to the brain, we assume that a recording technique should not introduce a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess.
+To prevent damage to the brain, we assume that a recording technique should not cause a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess.
 
 The nature of the volume displacement is important---sheets of instrumentation that sever long-range connectivity, for example, would disrupt normal brain function regardless of the degree of volume displacement.
 Conversely, higher volume displacement might be possible if introduced during the early development of the brain, so that the brain can adapt.
@@ -226,8 +226,8 @@ Compute minimal number recorders based on max distance from recorder to recorded
 
 Implanted electrical recorders &
 Compute power dissipation of electronic devices that digitally sample neuronal activity &
-Physical limit: $\left.\kb T\ln\left(2\right)\right/\si{\bit}$ processed, practical limit $\left.\ca 10 \kb T\right/\si{\bit}$ \iskip
-Current CMOS digital circuits: $\left.\num{>1e5}\kb T\right/\si{\bit}$&
+Physical limit: $\left.\kb T\ln\left(2\right)\right/\si{\bit}$ erased, practical limit $\left.\ca 10 \kb T\right/\si{\bit}$ processed \iskip
+Current CMOS digital circuits: $\left.\num{>1e5}\kb T\right/\si{\bit}$ processed &
 Requires at least 2--3 orders of magnitude increase in the power efficiency of electronics relative to current devices to scale to whole-brain simultaneous recordings \iskip
 Minimalist architectures should be developed to reduce local data processing overhead
 \\
@@ -235,8 +235,8 @@ Minimalist architectures should be developed to reduce local data processing ove
 Wireless data transmission &
 Compute tradeoff between power efficiency and channel bandwidth using information theory &
 Transmitter must supply enough power to overcome noise and path loss &
-Data transmission at optical or near-optical frequencies is necessary to achieve sufficient data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain data would draw excessive power due to bandwidth constraints. 
-\iskip Bandwidth cannot effectively be split over multiple independent RF channels.
+Data transmission at optical or near-optical frequencies is necessary to achieve sufficient single-channel data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain data would draw excessive power due to bandwidth constraints. 
+\iskip Bandwidth cannot effectively be split over multiple independent RF channels, but IR light or ultrasound may allow spatial multiplexing.
 \\
 
 Optical imaging &
@@ -272,12 +272,12 @@ Calculate spatial resolution, signal strength and bandwidth limits on ultrasound
 Speed of sound in brain \iskip
 Attenuation rate of ultrasound in brain &
 Attenuation of ultrasound by brain tissue and bone may be prohibitive at the \SI{\ca 100}{\mega\hertz} frequencies needed for single-cell resolution ultrasound imaging \iskip
-Ultrasound may be a viable medium for multiplexed data transmission from embedded devices
+Ultrasound may be a viable medium for spatially multiplexed data transmission from embedded devices
 \\
 
 Molecular recording &
-Compute metabolic load and DNA volume for synthesis of large nucleic acid polymers \iskip
-Evaluate temporal resolution in simulated experiments &
+Compute metabolic load and DNA volume for rapid synthesis of large nucleic acid polymers \iskip
+Evaluate temporal resolution in simulated experiments using kinetic models &
 Polymerase biochemical parameter ranges \iskip
 Metabolic requirements of genome replication &
 Molecular recording devices fall within physical limits but their development poses major challenges in synthetic biology
@@ -304,8 +304,8 @@ A more optimistic estimate, neglecting difficulties with spike sorting, derives 
 In a first approximation, this is determined by two factors: the decay of the signal with distance from the spiking neuron and the background noise level at the recording site.
 We assume that for an electrode to reliably detect the signal from a given neuron, the magnitude of that neuron's signal must be larger than the electrode's noise level.
 
-The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scales roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
-However, this decay is strongly influenced by its detailed geometry and the properties of the extracellular space, making analytical calculation of the decay rate difficult.
+The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scale roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
+However, this decay is strongly influenced by the detailed geometry of neuronal currents and the properties of the extracellular space, making analytical calculation of the decay rate difficult (at large distances, a $1/r^2$ dipole falloff is expected).
 
 Several sources of background noise enter the recordings.
 Johnson noise, which arises from thermal fluctuations in the electrode, is \[V\sub{johnson} = \left(4\kb T Z \BW\right)^{1/2}\]
@@ -325,7 +325,7 @@ This would be exacerbated by correlated firing patterns of nearby neurons.
 We require \SI{<1}{\percent} total volume displacement from $N$ recorders.
 Wires from each electrode must make it to the surface of the brain, which implies an average length $\ell\approx\SI{4}{\milli\meter}$ for the mouse brain (depending on assumptions about the wiring geometry).
 
-As a rough approximation we consider each recorder to require a volume displacement associated with a single cylindrical wire, with length $\ell$ and radius $r$.
+As a rough approximation we consider each recorder to produce a volume displacement associated with a single cylindrical wire, with length $\ell$ and radius $r$.
 Thus $r$ must satisfy \[\pi r^2\ell N\sub{min,rd} < 0.01V\sub{brain}\]
 Using $N\sub{min,rd} = 110,000$ or $21,000$ recording sites and $\ell\approx\SI{4}{\milli\meter}$ requires wires of radius $r\sub{max} \approx \SI{8.0}{\micro\meter}$, or \SI{3.4}{\micro\meter}, respectively.
 While these dimensions are readily achievable using lithographic micro-fabrication, there would be a challenge to produce \emph{isolated} wires of such dimensions at scale.
@@ -349,8 +349,8 @@ In practice, the number of neurons per electrode distinguishable by spike-sortin
 
 There are several technology options for introducing many electrodes into a brain.
 For example, flexible nanowire electrodes could be threaded through the capillary network~\cite{llinas05}.
-Capillaries are present in the brain at a density of \SIrange{2500}{3000}{\milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. 
-The cerebrospinal ventricles may also provide a convenient location for embedding recording hardware.
+Capillaries are present in the brain at a density of \SIrange{2500}{3000}{\per\milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. 
+The cerebrospinal ventricles may also provide a convenient location for recording hardware.
 Neural tissues could be grown around pre-fabricated electrode arrays~\cite{jadhav12}, or silicon probes arrays with many nano-fabricated recording sites per probe~\cite{du11} could be inserted into the brain.
 
 Mechanical forces during insertion and retraction of silicon and tungsten microelectrodes from brain tissue have been measured in rat cortex at \SI{\ca 1}{\milli\newton} for electrodes of \SI{\ca 25}{\micro\meter} radius~\cite{jensen03}.
@@ -367,11 +367,10 @@ the development of highly multiplexed probes, thinner wires, smaller electrode i
 amplifiers with lower input-referred noise levels, novel methods to implant large numbers of electrodes,
 multilayer lithography for routing electrical traces, spike sorting algorithms capable of handling temporally overlapping, non-independent spikes and adaptively modeling the noise, and hybrid systems integrating electrical recording with
 implantable optics or other methods.
-Furthermore, highly miniaturized embedded electronics (see the below section) could allow shorter wires, reducing volume displacement.
 
 A caveat, however, pertains to the ability to relate the measured electrical signals to specific cells within a circuit.
 As the set of neurons recorded by each electrode grows to encompass a large volume around the electrode, it will become more difficult to attribute the recorded spikes to particular neurons.
-Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode.
+Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode (unless the spatial density of recording sites is increased such that many electrodes sample the same neuron).
 A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation.
 Until these issues can be resolved, readouts with intrinsic spatial resolving power may be more appropriate than pure electrical recording for the goal of whole-brain activity mapping (as opposed to sparsely sampling neural activities at high temporal resolutions).
 
@@ -394,17 +393,17 @@ In confocal techniques only photons from the point of interest are measured due 
 Multi-photon and confocal techniques scan the focal spot in order to isolate the signals from different neurons.
 Optical techniques therefore achieve spatial resolution by multiplexing spatially (e.g., epi-fluorescence imaging) or temporally (e.g., beam scanning), and often by a combination of the two.
 
-Single-photon, visible-light techniques, including epi-fluorescence, light sheet and confocal techniques only allow imaging to a depth defined by the scattering lengths of the relevant photons.
+Single-photon techniques including epi-fluorescence, light sheet and confocal techniques only allow imaging to a depth defined by the scattering lengths of the visible-wavelength photons (matched to the excitation and emission spectra of current indicators).
 Importantly, scattering not only causes signal attenuation, but also causes noise and impairs signal separation (e.g., by expanding width of the point spread function due to photon diffusion).
 The scattering length of visible light in brain tissue is \SI{>200}{\micro\meter}~\cite{horton13} while some wavelengths of infrared light have attenuation lengths of \SI{\ca 500}{\micro\meter} (see \autoref{fig:attenuation}).
 Infrared light may thus pass through \SIrange{\ca 1}{2}{\milli\meter} of tissue without prohibitively strong scattering~\cite{horton13,kobat09}, while depths of \SI{>500}{\micro\meter} cannot easily be reached for dyes with absorption and emission peaks in the visible range.
 Activity dependent dyes operating in the infrared~\cite{filonov11,shcherbakova13} could thus be decisive for improvements in imaging depth.
 
 Multi-photon techniques allow deeper penetration.
-Two or more infrared photons can be combined to excite a fluorophore with an excitation peak in the visible range, leading to the emission of a visible photon.
+Two or more infrared photons can combine to excite a fluorophore with an excitation peak in the visible range, leading to the emission of a visible photon.
 Because only one neuron is illuminated at a time, all of the light emissions captured by the detector originate from the illuminated neuron, regardless of the extent of scattering of the outgoing light.
 Therefore, the emission pathway is limited less by scattering than by absorption and a single detector may collect a large number of scattered emission photons to obtain a sufficiently large integrated signal.
-Exploiting these ideas allows imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
+Exploiting these ideas has resulted in imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
 
 There are at least four options for overcoming the scattering of visible light to enable signal-separation from deep-brain neurons:
 
@@ -416,13 +415,13 @@ Because the scattering properties change over time, this must be done quickly, p
 This can currently be achieved with digital micro-mirror devices (DMDs), but not with phase-only spatial light modulators (SLMs)~\cite{alivisatos13}.
 \item Light sources and/or detectors could be positioned close to the measured neurons, necessitating the use of embedded optical devices.
 This could be done using optical fiber~\cite{mahalati13} and/or waveguide~\cite{zorzos10,zorzos12} technologies, which are developing rapidly.
-For example, single-mode fiber cables used in telecommunications can support \SI{>1}{\tera\byte\per\second} data rates with low light loss over hundreds of kilometers.
+For example, single-mode fiber cables can support \SI{>1}{\tera\byte\per\second} data rates with low light loss over hundreds of kilometers.
 \end{enumerate}
 
-While implanted optics might seem to require a number of implanted photodetectors, fibers or waveguide ports comparable to the number of neurons, new developments suggest ways of imaging with far fewer elements.
+While implanted optics might seem to require a number of implanted photodetectors, fibers or waveguide ports comparable to the number of neurons, new developments suggest ways of imaging with fewer elements.
 For example, compressive sensing or ghost imaging techniques based on random mask projections~\cite{wakin06,studer12,tian11,sun13} might allow a smaller number of photodetectors to be used.
 In an illustrative case, an imaging system may be constructed simply from a single photodetector and a transmissive LCD screen presenting a series of random binary mask patterns~\cite{huang13}, where the number of required mask patterns is much smaller than the number of image pixels due to a compressive reconstruction.
-Furthermore, it is possible to directly image through gradient index of refraction (GRIN) lenses~\cite{murray12} or optical fibers~\cite{mahalati13,kang10,flusberg05}.
+Furthermore, it is possible to directly image through gradient index of refraction (GRIN) lenses~\cite{murray12} or optical fibers~\cite{mahalati13,kang10,flusberg05}, thus multiplexing multiple observed neurons per fiber.
 
 Hybrid techniques combining optics with other modalities may also provide new ways to overcome scattering.
 For example, ultrasound encoding~\cite{wang12}, which frequency-tags light emissions emerging from a known location via a mechanical Doppler shift of the emitter~\cite{mahan98}, is powerful in that it provides a generic mechanism to sidestep problems of elastic optical scattering, but it requires distinguishing MHz frequency modulations in THz light waves (part per million frequency discrimination) and tags only a small fraction of the emitted photons.
@@ -461,27 +460,27 @@ detector noise,
 scattering and absorption lengths,
 and others. Unfortunately, many of these variables are unknown or highly dependent on particular experimental parameters.
 
-A detailed analysis of photon count requirements for spike detection (in the context of calcium imaging) can be found in~\cite{wilt13}, which derived a relationship between the number of background photon counts ($N\sub{bg}$) and the required number of signal photon counts for high fidelity spike detection given photon shot noise, scaling roughly as $N\sub{signal} > 3\sqrt{2N\sub{bg}}$, even at low absolute photon count rates.
+A statistical analysis of photon count requirements for spike detection (in the context of calcium imaging) can be found in~\cite{wilt13}, which derived a relationship between the number of background photon counts ($N\sub{bg}$) and the required number of signal photon counts required for high fidelity spike detection given photon shot noise, scaling roughly as $N\sub{signal} > 3\sqrt{2N\sub{bg}}$, even at low absolute photon count rates.
 While this analysis governs the number of detected photons, the number of emitted photons will be higher due to losses.
 In one example using two-photon excitation, \SI{5}{\percent} of the emitted photons were captured by the photodetector~\cite{kim99}.
 
-\paragraph{Current technology}
+\paragraph{Multi-photon: current technology}
 Multi-photon excitation poses a particularly severe power problem due to the high light intensities required to excite nonlinear optical processes.
 In typical multi-photon experiments on mice, \SI{\ca 50}{\milli\watt} of time-averaged laser power is used with a dwell time of \SI{\ca 3}{\micro\second}~\cite{wilson07}.
 This would allow imaging \num{\ca 300} neurons at millisecond resolution with a single scanned excitation beam.
-Current multi-photon imaging experiments are therefore at or near the permissible energy dissipation limit and improvements cannot come at the cost of greatly increased light power delivery.
+Current multi-photon imaging experiments are already near the permissible energy dissipation limit and improvements cannot come at the cost of greatly increased light power delivery.
 
-\paragraph{Theoretical calculations}
+\paragraph{Multi-photon: theoretical calculations}
 Multi-photon experiments rely on short laser pulses with high peak light intensities at a focused excitation spot to excite nonlinear transitions~\cite{kim99}.
 This imposes an experimentally relevant physical limit: at least one excitation pulse of sufficient intensity per neuron per frame is required in order to excite multi-photon fluorescence during each frame.
 Assuming \SI{1}{\kilo\hertz} frame rate and \SI{0.1}{\nano\joule} pulses, delivering only one pulse per neuron per frame would dissipate roughly $\left(\num{1e8}\right)\left(\SI{1}{\kilo\hertz}\right)\left(\SI{0.1}{\nano\joule}\right)=\SI{10}{\watt}$ in the mouse brain, which is clearly prohibitive.
-As previously noted, this is a lower bound because, in general, more than one excitation pulse per neuron per frame will be required to excite detectable fluorescence (e.g., one reference reported 12 pulses per spot~\cite{kim99}).
+This is a lower bound because, in general, more than one excitation pulse per neuron per frame will be required to excite detectable fluorescence (e.g., one reference reported 12 pulses per spot~\cite{kim99}).
 For three-photon excitation, the situation will be even worse as higher peak light intensities are required to excite three-photon fluorescence.
 
 Could the single-pulse energy be reduced while maintaining efficient two-photon excitation? The number of two-photon (2P) transitions excited per fluorophore per pulse is $n_a = F^2 C / t$, where $F$ is the number of photons per pulse per area, in units of \si{photon\per\centi\meter\squared}, $C$ is the two-photon cross-section in units of \si{\centi\meter\tothe{4}\second\per photon}, and $t$ is the pulse duration in \si{\second}.
-This can be expanded as
+This can be approximated as
 \[n_a = \left(\frac{4E\left(\NA\right)^2}{h c \lambda}\right)^2 \frac{C}{t}\]
-where $\NA$ is the numerical aperture of the focusing optics, and $\lambda$ is the stimulation wavelength.
+where $\NA$ is the numerical aperture of the focusing optics, $E$ is the pulse energy and $\lambda$ is the stimulation wavelength.
 For a 2P experiment with \SI{100}{\femto\second}, \SI{0.1}{\nano\joule} pulses, assuming a 2P cross section~\cite{masters06} of \SI{1e-49}{\centi\meter\tothe{4}\second\per photon}, $\lambda=\SI{900}{\nano\meter}$ and $\NA=1.0$, $n_a \approx \frac{1}{20}$.
 While multiple pulses per neuron per frame are thus required to excite each fluorophore in every frame, a single pulse per neuron per frame will likely excite at least one fluorophore when there are \num{>20} fluorophores per excitation spot.
 If the single-pulse energy is reduced much further at fixed pulse duration, however, the excitation efficiency will become unacceptably low.
@@ -531,7 +530,7 @@ If a large amount of local storage is used, the real-time transmission bandwidth
 For example, flash memory, which will likely be the densest form of electronic memory storage in the near future, can store \SI{1}{\mega\bit} of data in a device \SI{100}{\micro\meter} on a side.
 Even denser forms of memory storage are under development and could perhaps be used in a one-time-write mode in the context of neural recording long before they become commercially viable for use as rewritable media in the consumer electronics industry.
 
-Here we consider the power dissipation associated with such embedded electronic devices, as well as the constraints on possible methods to power them.
+Here we consider the power dissipation associated with embedded electronic recording devices, as well as the constraints on possible methods to power them.
 In the next section, we describe how physics constrains the achievable data transmission rates from such devices.
 
 \subsubsection{Power Requirements for Recording}
@@ -539,7 +538,7 @@ In the next section, we describe how physics constrains the achievable data tran
 Any embedded system needs to process data, in preparation either for local storage or wireless transmission.
 Physics defines hard limits on the required power consumption associated with data processing (neglecting the possibility of reversible logic architectures~\cite{bennett73}), arising from the entropy cost for erasing a bit of information~\cite{landauer61}:
 \[E\sub{Landauer} = \ln(2)\ \kb T\approx \SI{3e-21}{\joule\per\bit} \label{eq:landauer} \tag{the Landauer limit}\]
-Ambitious yet physically realistic values for beyond-CMOS logic would thus lie in the tens of $\kb T$ per bit processed.
+Ambitious yet physically realistic values for beyond-CMOS logic lie in the tens of $\kb T$ per bit processed~\cite{yablonovitch08}.
 Scaling \SI{40}{$\kb T$\per\bit} to record raw voltage waveforms at a minimal \SI{1}{\kilo\bit\per\second\per neuron} (e.g. \SI{1}{\kilo\hertz} sampling rate, 1 bit processed per neuron per sample), the total power consumption for whole mouse brain recording could in principle be as low as \SI{\ca 16}{\nano\watt}.
 Thus, at the physical limits of power efficiency, implanted devices could in principle digitally buffer and locally store a complete record of a mammalian brain's activity.
 While this leaves \num{>1e6}-fold room for overhead due to increased data processing burden (more required bit flips per second), or energetic inefficiency of the switching device (greater dissipation per bit), realistic devices in the near-term may in fact require this much overhead, if not more.
@@ -568,13 +567,13 @@ Therefore, at least 2--3 orders of magnitude reduction in power consumption will
 Until recently, the energy efficiency of digital computing has scaled on an exponential improvement curve~\cite{koomey11}.
 This was a consequence of Moore's law and Dennard scaling, where both the capacitance of each transistors as well as its associated interconnect and the operating voltages were reducing with the device dimensions.
 Unfortunately however, issues related to device variability and the three dimensional structures needed to maintain good transistor performance in terms of on-to-off current ratio have largely stopped the reduction in effective capacitance per device; current devices are stuck at \SIrange{\ca 100}{200}{\atto\farad} for a minimum sized transistor.
-Furthermore, the exponential increase in leakage current that comes along with the scaling of the threshold voltage in this scenario also eventually precluded substantial further decreases in voltage at a given performance level.
+Furthermore, the exponential increase in leakage current that comes along with the scaling of the threshold voltage in this scenario also have precluded substantial further decreases in voltage at a given performance level.
 Indeed, for the past several technology generations (since about 2005), CMOS devices have operated at a supply voltage of \SI{\ca 1}{\volt}.
-While neural processing does not demand very stringent transistor speeds and so reductions below \SI{\ca 1}{\volt} are certainly feasible, a fundamental limitation in scaling the supply voltage still remains.
+While neural signal processing does not demand very stringent transistor speeds and so reductions below \SI{\ca 1}{\volt} are certainly feasible, a fundamental limitation in scaling the supply voltage still remains.
 Specifically, CMOS has a well-defined minimum-energy per bit and an associated minimum- energy operating voltage that is defined by the tradeoff between static (leakage) and dynamic (switching) energy:
 as the operating voltage is decreased, the capacitive switching energy decreases, but the ratio of currents in the on and off states, $I\sub{off}/I\sub{on}$, increases exponentially, increasing the energy associated with leakage (this effect is independent of the threshold voltage in the sub-threshold regime).
 For practical circuits, the supply voltage that leads to this minimum energy is on the order of \SIrange{300}{500}{\milli\volt}, and thus supply voltage scaling will at most provide 3$\times$--10$\times$ improvement in energy over today's designs.
-Thus, a paradigm shift is needed to reduce power by several orders of magnitude if we are to approach the physical limits.
+Thus, a paradigm shift in microelectronic hardware is needed to reduce power by several orders of magnitude if we are to approach the physical limits.
 Developing a switching device operating in the \si{\milli\volt} range, rather than the \SI{1}{\volt} range of current transistors, would allow $\left(\SI{1}{\volt}/\SI{1}{\milli\volt}\right)^2=\num{1e6}$ fold reduction in power consumption~\cite{yablonovitch08}.
 Electronic circuits constructed using analog techniques~\cite{sarpeshkar98}, which sometimes rely on bio-inspired computational architectures show promise for reducing energy costs by up to five orders of magnitude~\cite{rapoport09,sarpeshkar98,mandal07}, depending on the nature of the computation and the required level of precision.
 
@@ -582,7 +581,7 @@ Electronic circuits constructed using analog techniques~\cite{sarpeshkar98}, whi
 
 \begin{figure}[htbp]
 \caption{
-Energy cost of elementary operations across a variety of recording and data transmission modalities, expressed in units of the thermal energy (left axis) and as a power assuming \SI{100}{\giga\hertz} switching rate (right axis). \hyperref[eq:landauer]{The Landauer limit} of $\kb T \ln 2$ sets the minimum energy associated with a logically irreversible bit flip. The a practical limit for computation will likely lie in the tens of $\kb T$ per bit, comparable to the free energy release for hydrolysis of a single ATP molecular (or addition of a single nucleotide to DNA or RNA). The energy of a single infrared photon is \SI{\ca 50}{$\kb T$}. Single gates in current CMOS chips dissipate \SIrange{\ca 1e5}{1e6}{$\kb T$} per switching event, including the capacitive charging of the wires interconnecting the gates (red curve). The switching energy for the gate, not including the wires, is \num{\ca 100}$\times$ lower (blue curve). The power efficiency of CMOS has been on an exponential improvement trend due to the continuing miniaturization of components according to Moore's law (data re-digitized from~\cite{tucker11}), although the power efficiency gains have slowed recently. Current RFID chips compute and communicate at \SIrange{\ca 1e9}{1e10}{$\kb T$} (\SI{>10}{\pico\joule}) per bit transmitted, while the energy per floating point operation in a 2010 laptop was \SI{\ca 1e12}{$\kb T$}. The power associated with a minimal low-noise CMOS analog front end for signal amplification corresponds to \SI{500}{\milli\watt} at whole mouse brain scale. A single two-photon laser pulse at \SI{0.1}{\nano\joule} pulse energy corresponds to \SI{\ca 1e10}{$\kb T$}. For comparison, the \SI{40}{\milli\watt} approximate maximal power dissipation of a neural recording, according to \anref{sec:constraints} above, with its equivalent per-bit energy of \SI{\ca 1e8}{$\kb T$} assuming the minimal \SI{100}{\giga\bit\per\second} bit rate.
+Energy cost of elementary operations across a variety of recording and data transmission modalities, expressed in units of the thermal energy (left axis) and as a power assuming \SI{100}{\giga\hertz} switching rate (right axis). \hyperref[eq:landauer]{The Landauer limit} of $\kb T \ln 2$ sets the minimum energy associated with a logically irreversible bit flip. The a practical limit for computation will likely lie in the tens of $\kb T$ per bit, comparable to the free energy release for hydrolysis of a single ATP molecule (or addition of a single nucleotide to DNA or RNA). The energy of a single infrared photon is \SI{\ca 50}{$\kb T$}. Single gates in current CMOS chips dissipate \SIrange{\ca 1e5}{1e6}{$\kb T$} per switching event, including the capacitive charging of the wires interconnecting the gates (red curve). The switching energy for the gate, not including the wires, is \num{\ca 100}$\times$ lower (blue curve). The power efficiency of CMOS has been on an exponential improvement trend due to the continuing miniaturization of components according to Moore's law (data re-digitized from~\cite{tucker11}), although the power efficiency gains have slowed recently. Current RFID chips compute and communicate at \SIrange{\ca 1e9}{1e10}{$\kb T$} (\SI{>10}{\pico\joule}) per bit transmitted, while the total energy cost per floating point operation in a 2010 laptop was \SI{\ca 1e12}{$\kb T$}. The power associated with a minimal low-noise CMOS analog front end for signal amplification corresponds to \SI{500}{\milli\watt} at whole mouse brain scale. A single two-photon laser pulse at \SI{0.1}{\nano\joule} pulse energy corresponds to \SI{\ca 1e10}{$\kb T$}. For comparison, the \SI{40}{\milli\watt} approximate maximal power dissipation of a neural recording setup, according to \anref{sec:constraints} above, with its equivalent per-bit energy of \SI{\ca 1e8}{$\kb T$} assuming the minimal \SI{100}{\giga\bit\per\second} bit rate.
 }
 \label{fig:cmos}
 \centering
@@ -595,11 +594,11 @@ Embedded systems need power, which could be supplied via electromagnetic or acou
 
 There are two key regimes for wireless electromagnetic power transfer: non-linear device rectification and photovoltaics.
 If the single-photon energy is sufficient to allow electrons to move from the valence to the conduction band---that is, $\text{band gap} < h\nu/q$, where $q$ is the electron charge, $h$ is Planck's constant, and $\nu$ is the frequency of the photon---a photovoltaic effect can occur.
-Otherwise, light energy is converted to voltage by an antenna and non-linear device rectification may occur.
+Otherwise, electromagnetic energy is converted to voltage by an antenna and non-linear device rectification may occur.
 In this regime (single photon energy much lower than the band gap), power conversion is governed by the total RF power and by the impedances of the antenna and the rectifier, rather than by the individual photon energy.
 For a monochromatic RF source, there is no thermodynamic or quantum limit to the RF to DC conversion efficiency, other than the resistive losses and threshold voltages for a semiconductor process.
 For rectification, when the input voltage to the rectifier is much higher than a semiconductor process threshold, conversion efficiencies of \SI{85}{\percent} have been achieved~\cite{sun02}.
-At low input voltages relative to the semiconductor process threshold, efficiencies as high as \SI{25}{\percent} and \SI{2}{\micro\watt} load have been achieved (see \cite{mandal07} for an analysis of low power efficiency).
+At low input voltages relative to the semiconductor process threshold, efficiencies as high as \SI{25}{\percent} and \SI{2}{\micro\watt} load have been achieved (see \cite{mandal07} for an analysis of power efficiency).
 Ultimately, rectification improvements are dependent on the same improvements which will be needed for next-generation low-power computing: \si{\milli\volt} scale switching devices (promising research directions include tunnel FETs~\cite{ionescu11}, electromechanical relays~\cite{liu12} and other options).
 Wireless power transfer also imposes range constraints due to the loss in power density with distance.
 For directional power transfer, placing the receiver at the edge of the transmitter's near field (the Rayleigh distance $D^2/4\lambda$ where $D$ is the transmitter aperture) has advantages in terms of energy capture efficiency~\cite{ozeri10}, whereas for omni-directional antennas it is advantageous to place the receiver as close as possible to the transmitter.
@@ -607,8 +606,7 @@ For directional power transfer, placing the receiver at the edge of the transmit
 Alternatively, if the photon energy is above the silicon band gap ($\lambda < \frac{h c}{qV\sub{th}} \approx \SI{3}{\micro\meter}$ or less for silicon), the chip is essentially acting as a photovoltaic cell.
 There is no thermodynamic or quantum limit to the conversion efficiency of light to DC electrical power for monochromatic sources, other than resistive losses and dark currents in the material (\SI{86}{\percent} in GaAs for example~\cite{bett08}). 
 In the use of infrared light for photovoltaics, the penetration of the photons through tissue is decreased compared to radio frequencies.
-To supply \SI{10}{\micro\watt} (typical of current wirelessly-powered RFID chips) photovoltaically to a \SI{10 x 10}{\micro\meter} (cell sized) chip at \SI{34}{\percent} photovoltaic efficiency requires a light intensity of \SI{\ca 300}{\kilo\watt\per\meter\squared} at the chip.
-Whole-brain illumination at this intensity would be prohibitive, although it could be supplied at localized spots.
+To supply \SI{10}{\micro\watt} (typical of current wirelessly-powered RFID chips) photovoltaically to a \SI{10 x 10}{\micro\meter} (cell sized) chip at \SI{34}{\percent} photovoltaic efficiency requires a light intensity of \SI{\ca 300}{\kilo\watt\per\meter\squared} at the chip, which is prohibitive.
 Therefore, in order to be compatible with wireless power transfer, the power dissipation of embedded electronics must be decreased by several orders of magnitude.
 
 Piezoelectric harvesting of ultrasound energy by micro-devices is also a possibility. The efficiency of electrical harvesting of mechanical strain energy in piezoelectrics can be above \SI{30}{\percent} for materials with high electromechanical coupling coefficients (e.g., PZT)~\cite{safari08, xu12}. The losses in the piezoelectric transduction process are well described by models such as the KLM model~\cite{krimholtz70,castillo03}.
@@ -622,9 +620,9 @@ Unfortunately, current non-microbial glucose fuel cells obtain only \SI{\ca 180}
 Thus there is a need for \num{1e4}- and \num{1e6}-fold improvements in peak and steady state power densities, respectively, for non-microbial glucose fuel cells to power brain-embedded electronics of the complexity of today's RFID chips (or better, the corresponding decrease in power requirements for the chips, as emphasized above).
 
 \subsubsection{Conclusions and Future Directions}
-The power consumption of today's microelectronic devices is more than 6 orders of magnitude higher than the physical limit for irreversible computing, and 2--3 orders of magnitude higher than would be permissible for use in whole brain millisecond resolution activity mapping, even under favorable assumptions on the required switching rates and neglecting both the much higher powers associated with noise rejection in the analog front end and the CMOS leakage current.
+The power consumption of today's microelectronic devices is more than 6 orders of magnitude higher than the physical limit for irreversible computing, and 2--3 orders of magnitude higher than would be permissible for use in whole brain millisecond resolution activity mapping, even under favorable assumptions on the required switching rates and neglecting both the power associated with noise rejection in the analog front end and the CMOS leakage current.
 Thus, the first priority is to reduce the power consumption associated with embedded electronics.
-In principle, methods such as photovoltaics using infrared light, RF harvesting via diode rectification, or glucose fuel cells, could supply power to embedded neural recorders, but again, significant improvements in the power efficiency of electronics are necessary to enable this.
+In principle, methods such as infrared light photovoltaics, RF harvesting via diode rectification, or glucose fuel cells, could supply power to embedded neural recorders, but again, significant improvements in the power efficiency of electronics are necessary to enable this.
 Other potential energy harvesting strategies include or materials/enzymes harnessing local biological gradients such in voltage, osmolarity, or temperature.
 An analysis of the energy transduction potential of each of these systems is beyond the scope of this discussion.
 Fortunately, with many orders of magnitude potential for improvement before physical limits are reached, we can expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future.
@@ -653,9 +651,9 @@ If the neighboring town's police department makes the mistake of also operating 
 \begin{figure}[htbp]
 \caption{%
 Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
-Bottom: absorption length of water as a function of frequency, minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise but no path loss.
-Top: minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation due to water absorption over a distance of \SI{2}{\milli\meter}.
-While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions through tissue between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
+Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
+Top: minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
+While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
 Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
 }
 \label{fig:rfpower}
@@ -663,9 +661,9 @@ Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-bra
 \includegraphics[width=0.78\textwidth]{figs/Fig5.eps}
 \end{figure}
 
-We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming white Gaussian noise) to
+We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming additive white Gaussian noise) to
 \[R\sub{max} = \BW \log_2 \left(1 + \SNR\right)\]
-where \BW is the channel bandwidth and \SNR is the signal-to-noise ratio.
+where \BW is the channel bandwidth and $\SNR$ is the signal-to-noise ratio.
 If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, weakened by path loss \pathloss.
 Therefore the transmitted power $P_0$ is lower-bounded:
 \[P_0 > \kb T\ \BW\ \frac{2^{R\sub{max}/\BW}-1}{\pathloss}\]
@@ -694,7 +692,8 @@ Importantly, in order to exceed the above limits for single-channel data transmi
 The conditions under which this may occur, however, can be counter-intuitive.
 For example, for antennas to operate independently, they must be spaced apart from one another by roughly a wavelength.
 For \SI{10}{\giga\hertz} microwaves, the wavelength is \SI{\ca 3}{\centi\meter}, so no more than a handful of microwave transmitters can co-occupy the mouse brain while operating independently.
-Nevertheless, even with many non-independent transmitters co-occupying the brain and operating simultaneously over the same frequency spectrum, it may be possible under some conditions to ``factor out'' the effects of the coupling and allow an increase in channel capacity relative the single-channel result.
+
+Even with many non-independent transmitters co-occupying the brain and operating simultaneously over the same frequency spectrum, it may be possible under some conditions to ``factor out'' the effects of the coupling and allow an increase in channel capacity relative the single-channel result.
 To treat such scenarios, a generalization to Shannon's capacity theorem to multi-input-multi-output (MIMO) channels has shown that the maximal total data rate is
 \[R\sub{max} = \BW \cdot \log_2\left| \mat{I} + ( \SNR ) \mat{H}\mat{H}^* \right|\]
 where $\mat{I}$ is the identity matrix, $|\cdot|$ denotes the matrix determinant, $\mat{H}$ is the ($M \times N$ for $N$ transmitters and $M$ receivers) channel matrix giving the coupling between the vector of transmitted signals and the vector of received signals and $\mat{H}^*$ denotes the matrix adjoint of $\mat{H}$ \cite{tulino04}. The vector of received signals is then $\vec{y}=\mat{H}\vec{x}+\vec{n}$ where $\vec{x}$ is the vector of transmitted signals and $\vec{n}$ is a noise vector. Any matrix can be written as $\mat{H}=\mat{U}\mat{\Sigma}\mat{V}^*$ where $\mat{U}$ and $\mat{V}$ are unitary matrices, and $\mat{\Sigma}$ is a diagonal matrix whose elements are the \emph{singular values} $\lambda_i$. One can re-write the above equation as
@@ -710,7 +709,7 @@ With transmitter-transmitter and receiver-receiver distances larger than the wav
 
 Random scattering, in a coherent disordered medium where the mean free-path $\ell$ is much larger than the wavelength $\lambda$ and much smaller than the size of the disordered medium, is another condition where the matrix $\mat{H}$ is a random scattering matrix of full rank~\cite{moustakas00,popoff10}.
 Intuitively, for the case of two transmitters and two receivers separated by a disordered medium larger than the mean free path:
-if transmitter 1 is at least a mean-free path from transmitter 2 the path from transmitter 1 to receiver 1 and the path from transmitter 2 to receiver 2 would be uncorrelated with respect to one another (in terms of physical path, phase, amplitude fluctuations, and other properties).
+if transmitter 1 is at least a mean-free path from transmitter 2 (or potentially as close as a few wavelengths~\cite{berkovits91}) the path from transmitter 1 to receiver 1 and the path from transmitter 2 to receiver 2 would be uncorrelated with respect to one another (in terms of physical path, phase, amplitude fluctuations, and other properties).
 The rank of the matrix $\mat{H}$ would then be 2.
 Devising a code on the transmitter such that the receivers can distinguish between these two uncorrelated streams results in a doubling of the capacity, rather than simply averaging the noise floor, which would provide only a logarithmic capacity gain due to the increased SNR.
 
@@ -755,7 +754,7 @@ While one might hope that multiple independent channels could be multiplexed ins
 Therefore, radio-frequency electromagnetic transmission of whole brain activity data from embedded devices does not appear to be a viable option for brain activity mapping.
 On the other hand, an analysis of the channel capacity for IR transmissions in a diffusive medium suggests that, because of its high frequency and decent penetration depth, infrared radiation may provide a viable substrate for transmitting activity data from embedded devices.
 For example, data could be transmitted via modulating the multiple-scattering speckle pattern of infrared light by varying the backscatter from an embedded optical device, such as an LCD pixel, in an activity-dependent fashion.
-Because the speckle pattern is sensitive to the motion of a single scatterer~\cite{berkovits91}, coherent multiple scattering could effectively act as an optical amplifier. Furthermore, multiplexed data transmission via ultrasound is likely possible.
+Because the speckle pattern is sensitive to the motion of a single scatterer~\cite{berkovits91}, coherent multiple scattering could effectively act as an optical amplifier. Furthermore, multiplexed data transmission via ultrasound is likely possible because of its short wavelength in tissue at reasonable carrier frequencies.
 
 \subsection{Magnetic Resonance Imaging}
 
@@ -772,14 +771,14 @@ The second form of relaxation reflects the dephasing of spin signals in a given 
 
 In blood-oxygen level dependent functional MRI (BOLD-fMRI)---the most widely used form of neural MR imaging---increased neural activity in a given brain region alters the vascular concentration of paramagnetic deoxy-hemoglobin, which affects local magnetic field homogeneity and thereby alters $T_2$.
 Although nature was generous in gifting us this paramagnetic reporter of oxygen metabolism, the data it provides is only an indirect readout of neural activity, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}).
-A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain and transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}.
+A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain to transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}.
 
 \subsubsection{Spatiotemporal Resolution}
 
 The temporal resolution of MRI is limited by the dynamics of spin relaxation. For sequential MR signal acquisitions to be fully independent, spins must be allowed to recover their equilibrium magnetization on the timescale of $T_1$ (\SIrange{100}{1000}{\milli\second}).
 However, if local $T_1$ is static its pre- mapping could enable temporally variant $T_2$ effects to be observed at refresh rates on the faster $T_2$ timescale (\SIrange{10}{100}{\milli\second})~\cite{deichmann95}.
 It may also be possible to detect events that occur on a timescale shorter than T1 and T2 if the magnitude of the resulting change in spin dynamics overcomes the lack of independence between acquisitions.
-Note that these limitations are not overcome by ``fast'' pulse sequences such as echo-planar imaging (EPI)~\cite{stehling91} and fast low-angle shot (FLASH)~\cite{haase86} or the use of multiple detector coils~\cite{wiesinger06}.
+Note that these limitations on the repetition time of the underlying pulse sequence are not overcome by ``fast'' pulse sequences such as echo-planar imaging (EPI)~\cite{stehling91} and fast low-angle shot (FLASH)~\cite{haase86} or by the use of multiple detector coils~\cite{wiesinger06}.
 These techniques accelerate the acquisition of 2D and 3D images, but still require spins to be prepared for readout.
 
 The spatial resolution of current MRI techniques is limited by the diffusion of water molecules during the acquisition time~\cite{glover02}, since contrast at scales above the diffusion length will be attenuated by diffusion.
@@ -885,7 +884,7 @@ DNA polymerization imposes a metabolic load on the cell.
 Replication of the 3 billion bp human genome takes approximately eight hours in normally dividing cells~\cite{murray12}, which equates to a nucleotide incorporation rate of \SI{\ca 100}{\kHz}.
 Therefore, in order not to exceed the metabolic rates associated with normal genome replication, molecular ticker tapes operating at \SI{1}{\kHz} polymerization speed~\cite{kelman95} would be limited to approximately 100 simultaneously replicated templates per cell.
 Even more recordings would be possible for RNA ticker tapes.
-The mammalian cell polymerizes at least \num{1e11} NTPs per 16-hour cell cycle (in HeLa cells)~\cite{jackson00}.
+The mammalian cell polymerizes at least \num{1e11} NTPs per 16-hour cell cycle (data from HeLa cells)~\cite{jackson00}.
 Therefore, \num{\ca 1,700} RNA tickertapes, each operating at \SI{1}{\kHz}, could be placed in a cell before generating a metabolic impact equal to that of the cell's baseline transcription rate.
 While these comparisons to baseline physiological levels are reasonable guidelines, it is likely that a neuron can support higher metabolic loads associated with larger numbers of templates.
 The maximal rate of neuronal aerobic respiration is \SI{\ca 5}{\femto\mole} of ATP minute via oxidative respiration (see the section on bio-luminescence). Assuming \num{\ca 1} ATP equivalent consumed per nucleotide incorporation, if neuronal metabolism were entirely dedicated to polymerization, it could support the incorporation of up to \num{6e9} nucleotides per minute, or \num{1e5} simultaneously replicated DNA templates at \SI{1}{\kHz}. % ATP *per* minute?
@@ -931,6 +930,7 @@ Ultra-low-power electronics is required to perform recording locally, but molecu
 New signal processing architectures such as compressive sensing could reduce bandwidth requirements and inspire new microscope designs.
 Hybrid techniques such as photo-acoustic~\cite{filonov12} or ultrasound-encoded optical~\cite{wang12} microscopies could result in performance greater than the sum of the component technologies.
 Combining activity information with structural information could allow static and dynamic information to disambiguate one another.
+
 Our goal here has not been to pick winners, but to aid a broad community in analyzing the problem.
 A challenge of this magnitude requires a return to first principles, and a fundamental reconsideration of the architectures of neural recording systems, not just incremental improvement of existing methods.
 We hope that knowledge of the constraints governing scalable neural recording will enable the invention of entirely new, transformative approaches.
