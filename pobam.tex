@@ -90,7 +90,7 @@ While further development of these methods promises to be a crucial driver for f
 
 \begin{figure}[htbp]
 \centering
-\caption{Four generalized neural recording modalities. (a) Extracellular electrical recording probes the voltage due to nearby neurons. (b) Optical microscopy detects light emissions from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 1/2 the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) Magnetic resonance imaging detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) Molecular recording devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
+\caption{Four generalized neural recording modalities. \emph{Extracellular electrical recording} probes the voltage due to nearby neurons. \emph{Optical microscopy} detects light emissions from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 1/2 the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. \emph{Magnetic resonance imaging} detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. \emph{Molecular recording} devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
 \subfloat[Electrical]{\includegraphics[width=2.5in]{figs/electrode_sketch_tc.eps}}
 \hspace{0.1in}
 \subfloat[Optical]{\includegraphics[width=2.5in,trim=1.5mm 0mm 0mm 0mm,clip=true]{figs/optical_sketch_tc.eps}}
@@ -226,7 +226,8 @@ Compute minimal number recorders based on max distance from recorder to recorded
 
 Implanted electrical recorders &
 Compute power dissipation of electronic devices that digitally sample neuronal activity &
-Physical limit: $\left.\kb T\ln\left(2\right)\right/\si{\bit}$ erased, practical limit $\left.\ca 10 \kb T\right/\si{\bit}$ processed \iskip
+Physical limit: $\left.\kb T\ln\left(2\right)\right/\si{\bit}$ erased \iskip
+Practical limit: $\left.\ca 10 \kb T\right/\si{\bit}$ processed \iskip
 Current CMOS digital circuits: $\left.\num{>1e5}\kb T\right/\si{\bit}$ processed &
 Requires at least 2--3 orders of magnitude increase in the power efficiency of electronics relative to current devices to scale to whole-brain simultaneous recordings \iskip
 Minimalist architectures should be developed to reduce local data processing overhead
@@ -838,20 +839,10 @@ However, a major current limitation for fast agents is the requirement that they
 \autoref{fig:mriresolution} shows the achievable temporal resolution for various classes of activity-dependent MRI contrast agents as well as the spatial resolution limit due to water proton diffusion.
 
 \begin{figure}[htbp]
-\caption{Key factors determining the spatiotemporal resolution of dynamic MRI imaging. For a given contrast agent concentration, one can determine the minimal temporal resolution from panel~\protect\subref{fig:mritemporal}, and find the minimal spatial resolution from panel~\protect\subref{fig:mrispatial}.}
+\caption{Key factors determining the spatiotemporal resolution of dynamic MRI imaging. (a) Temporal resolution and contrast agent concentration allowing \SI{>5}{\percent} contrast, for different classes of dynamic MRI contrast agent (reproduced from~\cite{shapiro06}, with permission). (b) Diffusion limited spatial resolution for water proton MRI as a function of temporal resolution.}
 \label{fig:mriresolution}
 \centering
-\subfloat[Temporal resolution and contrast agent concentration allowing \SI{>5}{\percent} contrast, for different classes of dynamic MRI contrast agent (reproduced from~\cite{shapiro06}, with permission).]{
-\centering
-\label{fig:mritemporal}
-\includegraphics[width=3.5in]{figs/Fig6_temporal.eps}
-}
-\hspace{1mm}
-\subfloat[Diffusion limited spatial resolution for water proton MRI as a function of temporal resolution.]{
-\centering
-\label{fig:mrispatial}
-\includegraphics[width=3.5in]{figs/Fig6_spatial.eps}
-}
+\includegraphics[width=0.78\textwidth]{figs/Fig6.eps}
 \end{figure}
 
 \subsubsection{Conclusions and Future Directions}
