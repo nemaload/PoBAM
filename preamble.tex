@@ -170,12 +170,13 @@
        \ifpunctmark{'}{}{\bibnamedelimc}}%
      \mkbibnamelast{{\bfseries #1}}\isdot
      \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}%
-     \ifblank{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamefirst{#2}\isdot}}
+     %\ifblank{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamefirst{#2}\isdot}
+	}
     {\usebibmacro{name:delim}{#1}%
      \usebibmacro{name:hook}{#1}%
      \mkbibnamelast{{\bfseries #1}}\isdot
      \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}%
-     \ifblank{#2#3}{}{\revsdnamepunct}%
+     %\ifblank{#2#3}{}{\revsdnamepunct}%
      \ifblank{#2}{}{\bibnamedelimd\mkbibnamefirst{#2}\isdot}%
      \ifblank{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}
 \DeclareFieldFormat{pages}{\mkcomprange{#1}}
@@ -197,8 +198,8 @@
         \printfield[titlecase]{subtitle}}}%
      \newunit}%
   \printfield{titleaddon}}
-\renewcommand*{\relatedpunct}{\space}
-\renewcommand*{\relateddelim}{\printtext{\space and\space\nopunct}}
+%\renewcommand*{\relatedpunct}{\space}
+%\renewcommand*{\relateddelim}{\printtext{\space and\space\nopunct}}
 \xapptobibmacro{pageref}{\renewcommand{\newunitpunct}{\addsemicolon\space}}{}{}
 \xapptocmd{\bibsetup}{\flushbottom\raggedright}{}{}
 %\xapptocmd{\bibfont}{\small}
