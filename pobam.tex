@@ -61,14 +61,14 @@ Focusing on the mouse brain, we analyze the scalability of each method, concentr
 Based on this analysis, all existing approaches require orders of magnitude improvement in key parameters.
 Electrical recording is limited by the low multiplexing capacity of electrodes and their lack of intrinsic spatial resolution,
 optical methods are constrained by the scattering of visible light in brain tissue,
-magnetic resonance is hindered by the diffusion and relaxation timescales of the spin species,
+magnetic resonance is hindered by the diffusion and relaxation timescales of water protons,
 and the implementation of molecular recording is complicated by the stochastic kinetics of enzymes.
 Understanding the physical limits of brain activity mapping may provide insight into opportunities for novel solutions.
 For example, unconventional methods for delivering electrodes may enable unprecedented numbers of recording sites,
 embedded optical devices could allow optical detectors to be placed within a few scattering lengths of the measured neurons,
 and new classes of molecularly engineered sensors might obviate cumbersome hardware architectures.
 We also study the physics of powering and communicating with microscale devices embedded in brain tissue and find that, while radio-frequency electromagnetic data transmission suffers from a severe power--bandwidth tradeoff, communication via infrared light or ultrasound may allow high data rates due to the possibility of spatial multiplexing.
-The use of embedded local recording and wireless data transmission would only be viable, however, given major improvements to the power efficiency of microelectronic neural recording devices.
+The use of embedded local recording and wireless data transmission would only be viable, however, given major improvements to the power efficiency of microelectronic devices.
 \end{abstract}
 
 \section{Introduction}
@@ -525,7 +525,7 @@ The preceding sections have assumed that electrical or optical signals from the 
 This could allow for shorter wires in electrical recording approaches, and for shorter light path lengths in optical recording approaches, as well as for more facile (e.g., non-surgical) delivery mechanisms for the recording hardware.
 
 Integrated circuits have shrunk to a remarkable degree: in about 3 years, following the Moore's law trajectory, it will likely be possible to fit the equivalent of Intel's original 4004 micro-processor in a \SI{10 x 10}{\micro\meter} chip area.
-Functional wirelessly powered radio-frequency identification (RFID) chips as small as \SI{50}{\micro\meter} in diameter have been developed and tags with chip-integrated antennas function at the \SI{400}{\micro\meter} scale.
+Functional wirelessly powered radio-frequency identification (RFID) chips as small as \SI{50}{\micro\meter}~\cite{Usami2007} in diameter have been developed and tags with chip-integrated antennas function at the \SI{400}{\micro\meter}~\cite{ImpinjMonzaFive} scale.
 Integrated neural sensors including analog front ends are also scaling to unprecedented form factors, e.g., a \SI{250 x 450}{\micro\meter} wireless implant (operating at \SI{\ca 1}{\milli\meter} range in air from a wireless power transmitter generating \SI{\ca 50}{\milli\watt} of transmitted power) including the antenna (with \SI{\ca 1}{\milli\meter} electrode shank to separate signal from ground) drawing only \SI{2.5}{\micro\watt} per recording channel~\cite{biederman13}.
 Note that for a single such embedded recording device, the heat dissipation constraint is set not by the device's own dissipation (\SI{10}{\micro\watt} for four recording channels) but rather by the RF specific absorption rate limit associated with the \SI{50}{\milli\watt} transmit power.
 Remarkably, cells such as macrophages (\SI{\ca 13}{\micro\meter} in size) can engulf structures up to at least \SI{20}{\micro\meter} in diameter~\cite{cannon92} and have been studied as potential delivery vehicles for nano-particle drugs~\cite{Kadiu11}, suggesting possibilities for non-surgical delivery of embedded electronics to the brain.
@@ -585,7 +585,7 @@ Electronic circuits constructed using analog techniques~\cite{sarpeshkar98}, whi
 
 \begin{figure}[htbp]
 \caption{
-Energy cost of elementary operations across a variety of recording and data transmission modalities, expressed in units of the thermal energy (left axis) and as a power assuming \SI{100}{\giga\hertz} switching rate (right axis). \hyperref[eq:landauer]{The Landauer limit} of $\kb T \ln 2$ sets the minimum energy associated with a logically irreversible bit flip. The a practical limit will likely lie in the tens of $\kb T$ per bit, comparable to the free energy release for hydrolysis of a single ATP molecule (or addition of a single nucleotide to DNA or RNA). The energy of a single infrared photon is \SI{\ca 50}{$\kb T$}. Single gates in current CMOS chips dissipate \SIrange{\ca 1e5}{1e6}{$\kb T$} per switching event, including the capacitive charging of the wires interconnecting the gates (red curve). The switching energy for the gate, not including wires, is \num{\ca 100}$\times$ lower (blue curve). The power efficiency of CMOS has been on an exponential improvement trend due to the miniaturization of components according to Moore's law (data re-digitized from~\cite{tucker11}), although power efficiency gains have slowed recently. Current RFID chips compute and communicate at \SIrange{\ca 1e9}{1e10}{$\kb T$} (\SI{>10}{\pico\joule}) per bit transmitted, while the total energy cost per floating point operation in a 2010 laptop was \SI{\ca 1e12}{$\kb T$}. The power associated with a minimal low-noise CMOS analog front end for signal amplification corresponds to \SI{\ca 500}{\milli\watt} at whole mouse brain scale. A single two-photon laser pulse at \SI{0.1}{\nano\joule} pulse energy corresponds to \SI{\ca 1e10}{$\kb T$}. For comparison, the \SI{40}{\milli\watt} approximate maximal power dissipation of a neural recording setup, according to \anref{sec:constraints} above, with its equivalent per-bit energy of \SI{\ca 1e8}{$\kb T$} at the minimal \SI{100}{\giga\bit\per\second} bit rate.
+Energy cost of elementary operations across a variety of recording and data transmission modalities, expressed in units of the thermal energy (left axis) and as a power assuming \SI{100}{\giga\hertz} switching rate (right axis). \hyperref[eq:landauer]{The Landauer limit} of $\kb T \ln 2$ sets the minimum energy associated with a logically irreversible bit flip. The practical limit will likely lie in the tens of $\kb T$ per bit, comparable to the free energy release for hydrolysis of a single ATP molecule (or addition of a single nucleotide to DNA or RNA). The energy of a single infrared photon is \SI{\ca 50}{$\kb T$}. Single gates in current CMOS chips dissipate \SIrange{\ca 1e5}{1e6}{$\kb T$} per switching event, including the capacitive charging of the wires interconnecting the gates (red curve). The switching energy for the gate, not including wires, is \num{\ca 100}$\times$ lower (blue curve). The power efficiency of CMOS has been on an exponential improvement trend due to the miniaturization of components according to Moore's law (data re-digitized from~\cite{tucker11}), although power efficiency gains have slowed recently. Current RFID chips compute and communicate at \SIrange{\ca 1e9}{1e10}{$\kb T$} (\SI{>10}{\pico\joule}) per bit transmitted, while the total energy cost per floating point operation in a 2010 laptop was \SI{\ca 1e12}{$\kb T$}. The power associated with a minimal low-noise CMOS analog front end for signal amplification corresponds to \SI{\ca 500}{\milli\watt} at whole mouse brain scale. A single two-photon laser pulse at \SI{0.1}{\nano\joule} pulse energy corresponds to \SI{\ca 1e10}{$\kb T$}. For comparison, the \SI{40}{\milli\watt} approximate maximal power dissipation of a neural recording setup, according to \anref{sec:constraints} above, with its equivalent per-bit energy of \SI{\ca 1e8}{$\kb T$} at the minimal \SI{100}{\giga\bit\per\second} bit rate.
 }
 \label{fig:cmos}
 \centering
@@ -627,7 +627,7 @@ Thus there is a need for \num{1e4}- and \num{1e6}-fold improvements in peak and 
 The power consumption of today's microelectronic devices is more than 6 orders of magnitude higher than the physical limit for irreversible computing, and 2--3 orders of magnitude higher than would be permissible for use in whole brain millisecond resolution activity mapping, even under favorable assumptions on the required switching rates and neglecting both the power associated with noise rejection in the analog front end and the CMOS leakage current.
 Thus, the first priority is to reduce the power consumption associated with embedded electronics.
 In principle, methods such as infrared light photovoltaics, RF harvesting via diode rectification, or glucose fuel cells, could supply power to embedded neural recorders, but again, significant improvements in the power efficiency of electronics are necessary to enable this.
-Other potential energy harvesting strategies include or materials/enzymes harnessing local biological gradients such in voltage, osmolarity, or temperature.
+Other potential energy harvesting strategies include materials/enzymes harnessing local biological gradients such in voltage, osmolarity, or temperature.
 An analysis of the energy transduction potential of each of these systems is beyond the scope of this discussion.
 Fortunately, with many orders of magnitude potential for improvement before physical limits are reached, we can expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future.
 
@@ -668,7 +668,7 @@ Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-bra
 We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming additive white Gaussian noise) to
 \[R\sub{max} = \BW \log_2 \left(1 + \SNR\right)\]
 where $\BW$ is the channel bandwidth and $\SNR$ is the signal-to-noise ratio.
-If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, weakened by path loss \pathloss.
+If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ \si{\watt\per\hertz} and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, weakened by path loss \pathloss.
 Therefore the transmitted power $P_0$ is lower-bounded:
 \[P_0 > \kb T\ \BW\ \frac{2^{R\sub{max}/\BW}-1}{\pathloss}\]
 as shown in \autoref{fig:rfpower} (bottom).
@@ -757,7 +757,7 @@ While one might hope that multiple independent channels could be multiplexed ins
 Therefore, radio-frequency electromagnetic transmission of whole brain activity data from embedded devices does not appear to be a viable option for brain activity mapping.
 On the other hand, an analysis of the channel capacity for IR transmissions in a diffusive medium suggests that, because of its high frequency and decent penetration depth, infrared radiation may provide a viable substrate for transmitting activity data from embedded devices.
 For example, data could be transmitted via modulating the multiple-scattering speckle pattern of infrared light by varying the backscatter from an embedded optical device, such as an LCD pixel, in an activity-dependent fashion.
-Because the speckle pattern is sensitive to the motion of a single scatterer~\cite{berkovits91}, coherent multiple scattering could effectively act as an optical amplifier. Furthermore, multiplexed data transmission via ultrasound is likely possible because of its short wavelength in tissue at reasonable carrier frequencies.
+Because the speckle pattern is sensitive to the motion of a single scatterer~\cite{berkovits91}, coherent multiple scattering could effectively act as an optical amplifier and as a means to create independent communication pathways. Furthermore, multiplexed data transmission via ultrasound is likely possible because of its short wavelength in tissue at reasonable carrier frequencies.
 It may also be of interest to explore network architectures~\cite{Bush2011} in which data is transmitted at low transmit power over short distances via local hops between neighboring nodes capable of signal restoration.
 
 \subsection{Magnetic Resonance Imaging}
@@ -765,7 +765,7 @@ It may also be of interest to explore network architectures~\cite{Bush2011} in w
 Magnetic resonance imaging (MRI) uses the resonant behavior of nuclear spins in a magnetic field to non-invasively probe the spatiotemporally varying chemical and magnetic properties of tissues.
 Although originally conceived as a means to image anatomy, MRI can be used to observe neural activity provided such activity is reflected in dynamic changes in local chemistry or magnetism.
 
-In an MRI study, a strong static field ($B = \SIrange{1}{15}{\tesla}$) is applied to polarize nuclear spins (usually \textsuperscript{1}H), causing them to resonate at a field-dependent Larmor frequency, $f=\gamma B$, where $\gamma$ is the gyromagnetic ratio of the nucleus (\SI{267.5222}{\mega\hertz\per\tesla} for \textsuperscript{1}H~\cite{codata10}).
+In an MRI study, a strong static field ($B = \SIrange{1}{15}{\tesla}$) is applied to polarize nuclear spins (usually \textsuperscript{1}H), causing them to resonate at a field-dependent Larmor frequency \[f = \frac{\gamma}{2\pi} B\] where $\gamma$ is the gyromagnetic ratio of the nucleus (\SI{267.522}{\mega\hertz\per\tesla} for \textsuperscript{1}H~\cite{codata10}).
 To obtain positional information, spatial field gradients are applied such that nuclei at different positions in the sample resonate at slightly different frequencies.
 Sequences of RF pulses and gradients are then applied to the sample, eliciting resonant emissions that contain information about spins' local chemical environment, magnetic field anisotropy and various other properties.
 
@@ -780,7 +780,7 @@ A significant area of current and future work is aimed at developing new molecul
 \subsubsection{Spatiotemporal Resolution}
 
 The temporal resolution of MRI is limited by the dynamics of spin relaxation. For sequential MR signal acquisitions to be fully independent, spins must be allowed to recover their equilibrium magnetization on the timescale of $T_1$ (\SIrange{100}{1000}{\milli\second}).
-However, if local $T_1$ is static its pre- mapping could enable temporally variant $T_2$ effects to be observed at refresh rates on the faster $T_2$ timescale (\SIrange{10}{100}{\milli\second})~\cite{deichmann95}.
+However, if local $T_1$ is static its pre-mapping could enable temporally variant $T_2$ effects to be observed at refresh rates on the faster $T_2$ timescale (\SIrange{10}{100}{\milli\second})~\cite{deichmann95}.
 It may also be possible to detect events that occur on a timescale shorter than T1 and T2 if the magnitude of the resulting change in spin dynamics overcomes the lack of independence between acquisitions.
 Note that these limitations on the repetition time of the underlying pulse sequence are not eliminated by ``fast'' pulse sequences such as echo-planar imaging (EPI)~\cite{stehling91} and fast low-angle shot (FLASH)~\cite{haase86} or by the use of multiple detector coils~\cite{wiesinger06}.
 These techniques accelerate the acquisition of 2D and 3D images, but still require spins to be prepared for readout.
@@ -820,9 +820,9 @@ Separately, frame rates of \SI{50}{\milli\second} have been obtained for dynamic
 
 Energy is dissipated into the brain when the excited spins relax to their equilibrium magnetization in the applied field.
 The energy associated with this relaxation is of order the Zeeman energy:
-\[\Delta E\sub{Zeeman} = \gamma h B_0\]
+\[\Delta E\sub{Zeeman} = \frac{\gamma}{2\pi} h B_0\]
 To obtain an upper bound on the heat dissipation of MRI, we first assume that the brain is entirely water, that every proton spin is initially aligned by the field and then excited by the RF pulse, and that all spins relax during a $T_1$ relaxation time of \SI{\ca 600}{\ms}.
-In this scenario, even an applied field of as high as \SI{\ca 40}{\tesla} would generate dissipation within the \SI{\ca 50}{\milli\watt} energy dissipation limit.
+In this scenario, even an applied field of as high as \SI{\ca 200}{\tesla} would generate dissipation within the \SI{\ca 50}{\milli\watt} energy dissipation limit.
 In reality, the energy dissipation is 4--5 orders of magnitude smaller, because only a tiny fractional excess of the spins are initially aligned by the field (\num{\ca 1e-5} for fields on the order of \SI{1}{\tesla}).
 Therefore, thermal dissipation associated with spin excitation in MRI is unlikely to cause problems unless field strengths much greater than the largest currently fields used (\SI{\ca 20}{\tesla}) are invoked, or spins with much higher gyromagnetic ratios are used.
 
