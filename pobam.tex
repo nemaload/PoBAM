@@ -19,7 +19,7 @@
 \author[9]{Jan Rabaey\rlap{,}}
 \author[$\jointlast$8,10]{Edward~S.~Boyden\rlap{,}}
 \author[$\jointlast$1,2,3]{George~M.~Church\rlap{,}}
-\author[$\jointlast$11,12]{Konrad~P.~K\"ording}
+\author[$\jointlast$11,12]{Konrad~P.~Kording}
 
 \affil[$\jointfirst$]{Joint first authors}
 \affil[$\jointlast$]{Joint last authors}
@@ -27,18 +27,18 @@
 \newcommand\et{{\em \&}}
 
 \definecolor{deemph}{gray}{0.48}
-\affil[1]{Biophysics {\color{deemph}Program,} Harvard {\color{deemph}Univ., Boston,~MA~02115, USA}}
-\affil[2]{Wyss Institute {\color{deemph}for Biologically Inspired Engineering at} Harvard {\color{deemph}Univ., Boston,~MA~02115, USA}}
-\affil[3]{{\color{deemph} Dept.\ of Genetics,} Harvard Medical School{\color{deemph}, Boston,~MA~02115, USA}}
-\affil[4]{Plum Labs LLC, Somerville,~MA{\color{deemph}~02143, USA}}
-\affil[5]{Division of Chemistry and Chemical Engineering, California Institute of Technology{\color{deemph}, Pasadena,~CA~91125, USA}}
-\affil[6]{{\color{deemph}Interdepartmental} Neuroscience {\color{deemph}Program,} Northwestern Univ.{\color{deemph}, Chicago,~IL~60611, USA}}
-\affil[7]{Nemaload, San Francisco, CA{\color{deemph}~94107, USA}}
-\affil[8]{Media Lab{\color{deemph}oratory,} Massachusetts Institute of Technology{\color{deemph}, Cambridge,~MA~02139, USA}}
-\affil[9]{{\color{deemph}Dept.\ of} Electrical Engineering and Computer Science{\color{deemph}, Univ. of California at} Berkeley{\color{deemph}, Berkeley,~CA~94720, USA}}
-\affil[10]{{\color{deemph}Depts.\ of} Brain and Cognitive Sciences {\color{deemph}\et\ of} Biological Engineering, Massachusetts Institute of Technology{\color{deemph}, Cambridge,~MA~02139, USA}}
-\affil[11]{{\color{deemph}Depts.\ of} Physical Medicine and Rehabilitation {\color{deemph}\et\ of} Physiology, Northwestern Univ.{\color{deemph}\ Feinberg} School of Medicine{\color{deemph}, Chicago,~IL~60611,~USA}}
-\affil[12]{{\color{deemph}Sensory Motor Performance Program,} The Rehabilitation Institute of Chicago{\color{deemph}, Chicago,~IL~60611,~USA}}
+\affil[1]{Biophysics {Program,} Harvard {Univ., Boston,~MA~02115, USA}}
+\affil[2]{Wyss Institute {for Biologically Inspired Engineering at} Harvard {Univ., Boston,~MA~02115, USA}}
+\affil[3]{{ Dept.\ of Genetics,} Harvard Medical School{, Boston,~MA~02115, USA}}
+\affil[4]{Plum Labs LLC, Cambridge,~MA{~02142, USA}}
+\affil[5]{Division of Chemistry and Chemical Engineering, California Institute of Technology{, Pasadena,~CA~91125, USA}}
+\affil[6]{{Interdepartmental} Neuroscience {Program,} Northwestern Univ.{, Chicago,~IL~60611, USA}}
+\affil[7]{Nemaload, San Francisco, CA{~94107, USA}}
+\affil[8]{Media Lab{oratory,} Massachusetts Institute of Technology{, Cambridge,~MA~02139, USA}}
+\affil[9]{{Dept.\ of} Electrical Engineering and Computer Science{, Univ. of California at} Berkeley{, Berkeley,~CA~94720, USA}}
+\affil[10]{{Depts.\ of} Brain and Cognitive Sciences {\et\ of} Biological Engineering, Massachusetts Institute of Technology{, Cambridge,~MA~02139, USA}}
+\affil[11]{{Depts.\ of} Physical Medicine and Rehabilitation {\et\ of} Physiology, Northwestern Univ.{\ Feinberg} School of Medicine{, Chicago,~IL~60611,~USA}}
+\affil[12]{{Sensory Motor Performance Program,} The Rehabilitation Institute of Chicago{, Chicago,~IL~60611,~USA}}
 
 \renewcommand{\maketitlehookc}{{\small\raggedright Correspondence to: \texttt{adam.h.marblestone\,\textnormal{(at)}\,\,gmail.com}}}
 
@@ -91,13 +91,13 @@ While further development of these methods promises to be a crucial driver for f
 \begin{figure}[htbp]
 \centering
 \caption{Four generalized neural recording modalities. (a) \emph{Extracellular electrical recording} probes the voltage due to nearby neurons. (b) \emph{Optical microscopy} detects light emissions from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 1/2 the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) \emph{Magnetic resonance imaging} detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) \emph{Molecular recording} devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
-\subfloat[Electrical]{\includegraphics[width=2.5in]{figs/electrode_sketch_tc.eps}}
+\subfloat[Electrical]{\includegraphics[width=2.5in, clip=false]{figs/electrode_sketch_tc.eps}}
 \hspace{0.1in}
-\subfloat[Optical]{\includegraphics[width=2.5in,trim=1.5mm 0mm 0mm 0mm,clip=false]{figs/optical_sketch_tc.eps}}
+\subfloat[Optical]{\includegraphics[width=2.5in, clip=false]{figs/optical_sketch_tc.eps}}
 \\
-\subfloat[MRI]{\includegraphics[width=3.2in,trim=4mm 0mm 0mm 7mm,clip=true]{figs/mr_sketch_tc.eps}}
+\subfloat[MRI]{\includegraphics[width=3in,clip=false]{figs/mr_sketch_tc.eps}}
 \hspace{0.5in}
-\subfloat[Molecular]{\includegraphics[width=2.7in,trim=0mm 0mm 3mm 0mm,clip=true]{figs/molecular_sketch_tc.eps}}
+\subfloat[Molecular]{\includegraphics[width=2.5in,clip=false]{figs/molecular_sketch_tc.eps}}
 \end{figure}
 
 Our analysis is predicated on assumptions that enable us to estimate scaling limits.
@@ -154,7 +154,7 @@ A minimal data rate of \num{7.5e10} bits processed per second is then required t
 In electrical recording, higher sampling rates (e.g. \SIrange{10}{40}{\kilo\hertz}) are often necessary to distinguish neurons based on spike shapes when each electrode monitors multiple neurons.
 More fundamentally, one bit per neuron sampling at \SI{1}{\kilo\hertz} would likely not be sufficient to reliably distinguish spikes above noise: transmitting \SI{\ca 10}{\bit} samples at \SI{\ca 10}{\kilo\hertz} (full waveform) or \SIrange{\ca 10}{20}{\bit} time-stamps upon spike detection would be more realistic.
 On the other hand, it may be possible to locally compress measurements of a spike train before transmission.
-In the fly, the entropy of spike trains has been measured to be up to \SI{\ca 180}{\bit\per\second}, and the information about a stimulus encoded by a spike train (mutual information) was as high as \SI{\ca 90}{\bit\per\second}~\cite{strong98}. This would suggest that in the worst case, a compression factor of 5$\times$--10$\times$ should be possible, relative to a \SI{1000}{\bit\per\second} raw binary sampling. As a na\"{\i}ve estimate of the entropy as a function of firing rate, one can write the entropy $H$ in \si{\bit\per\second}, assuming \SI{1}{\milli\second} long spikes and \SI{1000}{\hertz} sampling rate, as
+In the blowfly Calliphore vicina, the entropy of spike trains has been measured to be up to \SI{\ca 180}{\bit\per\second}, and the information about a stimulus encoded by a spike train (mutual information) was as high as \SI{\ca 90}{\bit\per\second}~\cite{strong98}. This would suggest that in the worst case, a compression factor of 5$\times$--10$\times$ should be possible, relative to a \SI{1000}{\bit\per\second} raw binary sampling. As a na\"{\i}ve estimate of the entropy as a function of firing rate, one can write the entropy $H$ in \si{\bit\per\second}, assuming \SI{1}{\milli\second} long spikes and \SI{1000}{\hertz} sampling rate, as
 \[H \approx \left(-P\sub{spike}\cdot\log_2\!\left(P\sub{spike}\right) - \left(1 - P\sub{spike}\right)\cdot\log_2\!\left(1 - P\sub{spike}\right)\right) \cdot \SI{1000}{\bit\per\second}\]
 
 where $P\sub{spike}$ is the probability of spiking during the sampling interval.
@@ -220,7 +220,7 @@ Compute minimal number recorders based on max distance from recorder to recorded
 \iskip Approximate noise levels at recording site}
 &
 {Maximum recording distance $r\sub{max}\approx\SIrange{100}{200}{\micro\meter}$ from electrode to neuron measured
-\iskip \num{\ca 100,000} recording sites are required per mouse brain at current noise levels
+\iskip \num{\ca 100000} recording sites are required per mouse brain at current noise levels
 \iskip However, $\ca\num{1e7}$ electrodes are required in practice to enable sorting of noisy, temporally overlapping spikes using current algorithms}
 \\
 
@@ -310,7 +310,7 @@ However, this decay is strongly influenced by the detailed geometry of neuronal 
 
 Several sources of background noise enter the recordings.
 Johnson noise, which arises from thermal fluctuations in the electrode, is \[V\sub{johnson} = \left(4\kb T Z \BW\right)^{1/2}\]
-which for physiological temperature, electrodes of impedance $Z = \SI{0.5}{\mega\ohm}$, and \SI{10}{\kilo\hertz} bandwidth is \SI{\ca 9}{\micro\volt}.
+which for physiological temperature, electrodes of impedance $Z = \SI{0.5}{\mega\ohm}$, and $BW = \SI{10}{\kilo\hertz}$ bandwidth is $V\sub{johnson} \approx \SI{9}{\micro\volt}$.
 The recordings are also affected by interference from other neurons, which has been reported to exceed the Johnson noise, and is non-stationary due to changes in the cells' firing properties~\cite{sahani99}. 
 The noise and interference from these sources realistically produces \SIrange{>10}{20}{\micro\volt} of voltage fluctuations~\cite{camunas13}.
 Current recording setups thus have signal to interference-plus-noise ratios (SINRs) of \num{<100}, where the SINR is defined as the ratio of the peak voltage from immediately adjacent neurons to the voltage fluctuation floor of the electrode.
@@ -328,7 +328,7 @@ Wires from each electrode must make it to the surface of the brain, which implie
 
 As a rough approximation we consider each recorder to produce a volume displacement associated with a single cylindrical wire, with length $\ell$ and radius $r$.
 Thus $r$ must satisfy \[\pi r^2\ell N\sub{min,rd} < 0.01V\sub{brain}\]
-Using $N\sub{min,rd} = 110,000$ or $21,000$ recording sites and $\ell\approx\SI{4}{\milli\meter}$ requires wires of radius $r\sub{max} \approx \SI{8.0}{\micro\meter}$, or \SI{3.4}{\micro\meter}, respectively.
+Using $N\sub{min,rd} = 110000$ or $21000$ recording sites and $\ell\approx\SI{4}{\milli\meter}$ requires wires of radius $r\sub{max} \approx \SI{8.0}{\micro\meter}$, or \SI{3.4}{\micro\meter}, respectively.
 While these dimensions are readily achievable using lithographic micro-fabrication, there would be a challenge to produce \emph{isolated} wires of such dimensions at scale.
 Still, the volume constraints are unlikely to limit whole-mouse-brain electrical recording even in the most pessimistic scenario.
 
@@ -497,7 +497,6 @@ This would be feasible from the perspective of heat dissipation.
 By contrast, in a 1-photon fluorescent scenario, if 100 excitation photons must be delivered into the brain to generate a single fluorescent emission photon, the power requirement becomes \SI{10}{\milli\watt}, which is on the threshold of the steady-state heat dissipation limit.
 Therefore, bioluminescent indicators could potentially circumvent problems of heat dissipation associated with whole-brain optical imaging even in the 1-photon case.
 
-Bioluminescence may, however, incur unacceptable metabolic costs in the regime of millisecond resolution whole mouse brain imaging.
 The widely used bioluminescent protein firefly luciferase is \SI{\ca 80}{\percent} efficient in converting ATP hydrolysis coupled with luciferin oxidation into photon production, yielding \num{\ca 0.8} photons per ATP-luciferin pair consumed~\cite{seliger60}, and has \SI{\ca 90}{\percent} energetic efficiency in converting free energy to light production.
 Heat dissipation associated with the luciferase biochemistry itself is therefore not a significant overhead relative to the \SI{100}{\micro\watt} of emitted photons calculated above.
 In the same scenario, however, the brain would consume \num{\ca 6e8} additional ATP molecules per minute per neuron in order to power the bioluminescence, which is within the limits of cellular aerobic respiration rates (\SI{\ca 1}{\femto\mole\ O\textsubscript{2}} per minute per cell~\cite{molter09}, with \num{\ca 30} ATP per 6 O\textsubscript{2}, hence \num{3e9} molecules ATP synthesized per minute from ADP via glucose oxidation), but not by a large margin.
@@ -554,8 +553,8 @@ Importantly, in order to decrease the input-referred voltage noise of this ampli
 For a simple differential transistor amplifier, the minimal bias current scales as
 \[I\sub{d} = \frac{\pi}{2} \frac{4\kb T}{V\sub{n,max}^2} \frac{\kb T}{q} \BW\]
 where $V\sub{n,max}$ is the input-referred voltage noise of the amplifier and $q$ is the electron charge.
-For an extraceullar recording with $\BW = \SI{10}{\kilo\hertz}$ and $V\sub{n,max} = \SI{10}{\micro\volt}$, this implies a minimal bias current $I\sub{d}\approx\SI{60}{\nano\ampere}$ or a minimal static power of $\left(I\sub{d} V\sub{dd}\right)\approx\SI{6e-8}{\watt}$ at \SI{1}{\volt} operating voltage.
-Assuming 10 neurons per recording channel, we then have 7.5 million recording channels for a mouse brain, which gives a power dissipation associated with signal amplification of \SI{\ca 500}{\milli\watt}, which is prohibitive.
+For an extraceullar recording with $\BW = \SI{10}{\kilo\hertz}$ and $V\sub{n,max} = \SI{10}{\micro\volt}$, this implies a minimal bias current $I\sub{d}\approx\SI{60}{\nano\ampere}$ or a minimal static power of $\left(I\sub{d} V\sub{dd}\right)\approx\SI{6e-8}{\watt}$ at $V\sub{dd}\approx\SI{1}{\volt}$ operating voltage.
+Assuming 10 neurons per recording channel, we then have 7.5 million recording channels for a mouse brain, which gives a power dissipation associated with signal amplification of \SI{\ca 500}{\milli\watt}.
 Note that realistic analog front ends (which are subject to $1/f$ noise and require multiple gain stages) draw 6$\times$--10$\times$ greater bias current, quantified by the noise efficiency factor (NEF)~\cite{steyaert87}, to achieve the same input-referred noise levels.
 
 Local on-chip digital computation also incurs an energy cost.
@@ -654,8 +653,8 @@ If the neighboring town's police department makes the mistake of also operating 
 \begin{figure}[htbp]
 \caption{%
 Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
-Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
-Top: minimal power to transmit data at \SIlist{100;1000;10,000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
+Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
+Top: minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
 While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
 Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
 }
@@ -690,7 +689,6 @@ As discussed above, transmitting information through a single channel imposes di
 However, it is conceivable to divide the data transmission burden over many independent channels, i.e., over many pairs of transmitters and receivers, each operating at lower bandwidth (e.g., at radio frequencies).
 Indeed, this would be optimal in a scenario where many embedded devices measure and then transmit the activities of nearby neurons.
 As a concrete example of such ``spatial multiplexing,'' an effective capacity of \SI{1}{\tera\bit\per\second} could conceivably be obtained by splitting the data over \num{1000} transmitter-receiver pairs each operating at \SI{1}{\giga\bit\per\second}, with the transmitters arranged in a \num{10 x 10 x 10} grid.
-Importantly, in order to exceed the above limits for single-channel data transmission, it must be possible for these transmitter receiver pairs to share the same bandwidth and operate simultaneously without conflicts, for example by modulating distinguishable carrier waves or by transferring data over separate wires.
 Importantly, in order to exceed the above limits for single-channel data transmission, it must be possible for these transmitter receiver pairs to share the same bandwidth and operate simultaneously without conflicts, for example by modulating distinguishable carrier waves or by transferring data over separate wires.
 The conditions under which this may occur, however, can be counter-intuitive.
 For example, for antennas to operate independently, they must be spaced apart from one another by roughly a wavelength.
@@ -774,7 +772,7 @@ The first form results from energy dissipation through interactions with other s
 The second form of relaxation reflects the dephasing of spin signals in a given sampling volume (voxel) over a timescale $T_2$ of \SIrange{10}{100}{\milli\second}~\cite{deichmann95} due to non-uniform Larmor frequencies caused, e.g., by the presence of local magnetic field inhomogeneities.
 
 In blood-oxygen level dependent functional MRI (BOLD-fMRI)---the most widely used form of neural MR imaging---increased neural activity in a given brain region alters the vascular concentration of paramagnetic deoxy-hemoglobin, which affects local magnetic field homogeneity and thereby alters $T_2$.
-Although nature was generous in gifting us this paramagnetic reporter of oxygen metabolism, the data it provides is only an indirect readout of neural activity, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}).
+Although the existence of this paramagnetic reporter of oxygen metabolism is fortuitous, the data it provides is only an indirect readout of neural activity, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}).
 A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain to transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}.
 
 \subsubsection{Spatiotemporal Resolution}
@@ -786,7 +784,7 @@ Note that these limitations on the repetition time of the underlying pulse seque
 These techniques accelerate the acquisition of 2D and 3D images, but still require spins to be prepared for readout.
 
 The spatial resolution of current MRI techniques is limited by the diffusion of water molecules during the acquisition time~\cite{glover02}, since contrast at scales above the diffusion length will be attenuated by diffusion.
-The RMS distance of a water molecule from its origin, after diffusing in 3D for a time $T\sub{act}$, is
+The RMS distance of a water molecule from its origin, after diffusing in 3D for a time $T\sub{acq}$, is
 \[d\sub{rms} = \sqrt{6D\sub{water}T\sub{acq}}\]
 where $D\sub{water}=\SI{2300}{\micro\meter\squared\per\second}$ is the self-diffusion coefficient of water.
 For $T\sub{acq}\approx\SI{100}{\milli\second}$, $d\sub{rms}\approx\SI{37}{\micro\meter}$, which sets the approximate spatial resolution.
@@ -798,8 +796,8 @@ $\Delta t$, the sampling interval of the detector, and the field gradient $G$, d
 \[\Delta k = \gamma G \Delta t\]
 The spatial resolution is then given by~\cite{glover02}:
 \[\Delta x\sub{$k$-space} = \frac{\pi}{\frac{T\sub{acq}}{\Delta t} \Delta k} = \frac{\pi}{T\sub{acq} \gamma G}\]
-Note that it is the gradient field, not the polarizing field $B_0$, which determines the resolution. For a gradient field of \SI{100}{\milli\tesla\per\meter} and an acquisition time of \SI{100}{\milli\second}, we have
-\[\frac{\pi}{\left(\SI{100}{\milli\second}\right)\left(\SI{267}{\MHz\per\tesla}\right)\left(\SI{100}{\milli\tesla\per\meter}\right)}\approx \SI{1.17}{\micro\meter}\]
+Note that it is the gradient field, not the polarizing field $B_0$, which determines the resolution. For a gradient field of \SI{100}{\milli\tesla\per\meter} and an acquisition time of \SI{100}{\milli\second}
+\[\Delta x\sub{$k$-space} = \frac{\pi}{\left(\SI{100}{\milli\second}\right)\left(\SI{267}{\MHz\per\tesla}\right)\left(\SI{100}{\milli\tesla\per\meter}\right)}\approx \SI{1.17}{\micro\meter}\]
 
 Furthermore, due to relaxation, the emissions from a spin at a given position do not constitute a pure tone with a well-defined frequency. Instead, each spin exhibits a frequency spread, which gives rise to a spatial resolution~\cite{glover02}:
 
@@ -867,7 +865,7 @@ Similar strategies could be implemented using RNA polymerases or potentially usi
 \subsubsection{Spatiotemporal Resolution}
 
 An analysis of the projected temporal resolution of molecular ticker-tapes as a function of polymerase biochemical parameters can be found in~\cite{glaser13}.
-This work suggests that molecular ticker tapes are unlikely to record at \SI{<10}{\ms} temporal resolution for durations longer than seconds in the absence of engineered polymerases with kinetic parameters beyond the limits of those found in nature, even when \num{10,000} templates per cell are recorded simultaneously.
+This work suggests that molecular ticker tapes are unlikely to record at \SI{<10}{\ms} temporal resolution for durations longer than seconds in the absence of engineered polymerases with kinetic parameters beyond the limits of those found in nature, even when \num{10000} templates per cell are recorded simultaneously.
 Recording at lower temporal resolutions, however, appears feasible using naturalistic biochemical parameters.
 Mechanisms to improve synchronization of the ensemble of polymerases within each cell, or to encode time-stamps into the synthesized DNA, could improve temporal resolution and decrease the number of required template strands per neuron.
 
@@ -889,8 +887,8 @@ Normal DNA and RNA synthesis do not produce problematic energy dissipation and m
 \subsubsection{Volume Displacement}
 
 The nucleus of a neuron occupies \SI{\ca 6}{\percent} of a neuron's volume ($(\SI{4}{\um})^3/(\SI{10}{\um})^3$).
-Ticker tapes operating at \SI{1}{\kHz} with \num{10,000} simultaneously replicated templates could record for \num{300} seconds before the total length of DNA synthesized equals the human genome length.
-In the case of RNA polymerase II-based transcription, \SI{2.75}{\hour} of recording by \num{10,000} recorders is required to reach the net transcript length in the cell.
+Ticker tapes operating at \SI{1}{\kHz} with \num{10000} simultaneously replicated templates could record for \num{300} seconds before the total length of DNA synthesized equals the human genome length.
+In the case of RNA polymerase II-based transcription, \SI{2.75}{\hour} of recording by \num{10000} recorders is required to reach the net transcript length in the cell.
 Therefore, with appropriate mechanisms to fold/pack the nucleic acids generated by molecular ticker tapes, they would not impose unreasonable requirements on cellular volume displacement over minutes to hours.
 
 \subsubsection{Conclusions and Future Directions}
@@ -903,7 +901,7 @@ An attractive potential payoff from molecular approaches to activity mapping is 
 \section{Discussion}
 
 We have analyzed the physical constraints on scalable neural recording for selected modalities of measurement, data storage, data transmission and power harvesting.
-Each analysis is based on assumptions, about the brain, or about device physics, or about system architecture, which may be violated.
+Each analysis is based on assumptions -- about the brain, device physics, or system architecture -- which may be violated.
 Understanding these assumptions can point towards strategies to work around them, and in some cases we have suggested possible directions for such workarounds.
 Even valid assumptions about natural brains may be subject to modification through synthetic biology or external perturbation.
 Notably, methods for rapidly removing heat from the brain could be important for supporting a range of highly dissipative recording modalities, while assumptions about transmission bandwidth may be relaxed if some information is stored locally and read out after the fact.
@@ -935,7 +933,7 @@ We thank K. Esvelt for helpful discussions on bioluminescent proteins; D. Boysen
 
 A.~Marblestone is supported by the Fannie and John Hertz Foundation fellowship.
 D.~Dalrymple is supported by the Thiel Foundation.
-K.~K\"ording is funded in part by the Chicago Biomedical Consortium with support from the Searle Funds at The Chicago Community Trust.
+K.~Kording is funded in part by the Chicago Biomedical Consortium with support from the Searle Funds at The Chicago Community Trust.
 E.~Boyden is supported by the National Institutes of Health (NIH), the National Science Foundation, the MIT
 McGovern Institute and Media Lab, the New York Stem Cell Foundation Robertson Investigator
 Award, the Human Frontiers Science Program, and the Paul Allen Distinguished Investigator in
