@@ -15,13 +15,10 @@
 \usepackage{isomath}
 \newcommand{\mat}[1]{\matrixsym{#1}}
 \renewcommand{\vec}[1]{\vectorsym{#1}}
-\usepackage{sectsty}
-%\sectionfont{\Large\scshape}
-%\subsectionfont{\large\scshape}
-%\subsubsectionfont{\scshape}
-%\renewcommand{\thesection}{\relax}
-%\setcounter{secnumdepth}{-1}
 \usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries\scshape}
+\titleformat*{\subsection}{\large\bfseries\scshape}
+\titleformat*{\subsubsection}{\bfseries\scshape}
 \titlespacing*{\section}{0pt}{3.5mm plus1mm minus0.5mm}{1.7mm plus0.4mm minus0.4mm}
 \titlespacing*{\subsection}{0pt}{2.4mm plus.5mm minus0.2mm}{0.9mm plus0.2mm minus0.2mm}
 \titlespacing*{\subsubsection}{0pt}{1.3mm plus.6mm minus0.2mm}{0.1mm plus0.1mm minus0.1mm}
