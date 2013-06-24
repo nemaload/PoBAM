@@ -152,8 +152,10 @@
 \renewcommand{\newunitpunct}{\addcomma\space}
 \renewcommand{\newblockpunct}{\unspace\penalty-8\relax\space}
 \renewcommand{\labelnamepunct}{\addperiod}
-\renewcommand{\multinamedelim}{\addsemicolon\space}
-\renewcommand{\finalnamedelim}{\addsemicolon\space\printtext{and}\space}
+%\renewcommand{\multinamedelim}{\addsemicolon\space}
+%\DefineBibliographyExtras{american}{\renewcommand{\finalandcomma}{\addsemicolon}}
+\renewcommand{\relatedpunct}{\space}
+\renewcommand{\relateddelim}{\printtext{\space and\space\nopunct}}
 \renewcommand{\mkbibnamelast}[1]{\textsc{#1}}
 \DeclareNameAlias{default}{last-first/first-last}
 \renewbibmacro{name:last-first}[4]{%
@@ -195,8 +197,6 @@
         \printfield[titlecase]{subtitle}}}%
      \newunit}%
   \printfield{titleaddon}}
-%\renewcommand*{\relatedpunct}{\space}
-%\renewcommand*{\relateddelim}{\printtext{\space and\space\nopunct}}
 \xapptobibmacro{pageref}{\renewcommand{\newunitpunct}{\addsemicolon\space}}{}{}
 \xapptocmd{\bibsetup}{\flushbottom\raggedright}{}{}
 %\xapptocmd{\bibfont}{\small}
