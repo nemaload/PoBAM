@@ -350,7 +350,7 @@ In practice, the number of neurons per electrode distinguishable by spike-sortin
 
 There are several technology options for introducing many electrodes into a brain.
 For example, flexible nanowire electrodes could be threaded through the capillary network~\cite{llinas05}.
-Capillaries are present in the brain at a density of \SIrange{2500}{3000}{\per\milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. 
+Capillaries are present in the brain at a density of \SIrange{2500}{3000}{per \milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. 
 The cerebrospinal ventricles may also provide a convenient location for recording hardware.
 Neural tissues could be grown around pre-fabricated electrode arrays~\cite{jadhav12}, or silicon probes arrays with many nano-fabricated recording sites per probe~\cite{du11} could be inserted into the brain.
 
@@ -358,7 +358,7 @@ Mechanical forces during insertion and retraction of silicon and tungsten microe
 These forces are comparable to the Euler bucking force $F$ of a \SI{2}{\milli\meter} long cylindrical tungsten rod of \SI{5}{\micro\meter} radius
 \[F=\frac{\pi^2 E I}{(K L)^2} \approx \SI{1}{\milli\newton}\]
 where $E=\SI{411}{\giga\pascal}$ is the elastic modulus of tungsten, $I=(\pi/2)(\SI{5}{\micro\meter})^4$ is the area moment of inertia of the cylindrical wire cross-section, $L\approx\SI{2}{\milli\meter}$ is the length of the wire, and $K$ is the column effective length factor which depends on the boundary conditions and is set to $K=1$ here for simplicity.
-This suggests that it may be possible to push structures of \SI{<10}{\micro\meter} diameter into brain tissue (see \cite{najafi90} for related calculations).
+This suggests that it may be possible to push structures of \SI{<10}{\micro\meter} diameter into brain tissue (see \cite{najafi90} for related calculations). It might be advantageous to pull rather than push wires into the brain (e.g., using applied fields, or cellular oxen~\cite{Weibel23082005} to carry the wires), since the thinnest wires could withstand tension forces much higher than the compressive force at which they buckle.
 
 \subsubsection{Conclusions and Future Directions}
 
@@ -665,7 +665,7 @@ Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-bra
 
 We first treat the case in which there is a single channel for transmitting data out of the brain. The Shannon Capacity Theorem~\cite{cover06} sets the maximal bit rate for a channel (assuming additive white Gaussian noise) to
 \[R\sub{max} = \BW \log_2 \left(1 + \SNR\right)\]
-where \BW is the channel bandwidth and $\SNR$ is the signal-to-noise ratio.
+where $\BW$ is the channel bandwidth and $\SNR$ is the signal-to-noise ratio.
 If there is only thermal noise the $\SNR = P/(N_0 \BW)$, where $N_0$ is the thermal noise power spectral density of $\kb T$ and $P=(\pathloss)P_0$ is the power of the transmitted signals $P_0$, weakened by path loss \pathloss.
 Therefore the transmitted power $P_0$ is lower-bounded:
 \[P_0 > \kb T\ \BW\ \frac{2^{R\sub{max}/\BW}-1}{\pathloss}\]
