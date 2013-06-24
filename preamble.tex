@@ -16,9 +16,9 @@
 \newcommand{\mat}[1]{\matrixsym{#1}}
 \renewcommand{\vec}[1]{\vectorsym{#1}}
 \usepackage{sectsty}
-\sectionfont{\Large\scshape}
-\subsectionfont{\large\scshape}
-\subsubsectionfont{\scshape}
+%\sectionfont{\Large\scshape}
+%\subsectionfont{\large\scshape}
+%\subsubsectionfont{\scshape}
 %\renewcommand{\thesection}{\relax}
 %\setcounter{secnumdepth}{-1}
 \usepackage{titlesec}
@@ -74,7 +74,7 @@
 \renewcommand\Authsep{\hskip 0.39em minus 0.05em}
 \renewcommand\Authands{~{\fontsize{8.7}{8.4}\selectfont{and}}\hskip 0.51em minus 0.08em}
 \renewcommand\Authfont{\fontsize{9}{12}\selectfont\setlength{\baselineskip}{15pt}}
-\renewcommand\Affilfont{\fontfamily{ugm}\selectfont\footnotesize}
+\renewcommand\Affilfont{\footnotesize}
 \protected\def\jointfirst{\vartriangleleft}
 \newcommand{\jointlast}{\hspace{-0.3pt}\vartriangleright}
 
@@ -265,7 +265,7 @@
                   }%
          \item[]%
          \begin{picture}(0,0)%
-         \put(-16.6,-5){\makebox(0,0){\scalebox{4.4}{\fontfamily{cmr}\selectfont\textcolor{quotemark}{``}}}}%
+         \put(-16.6,-5){\makebox(0,0){\scalebox{4.4}{\selectfont\textcolor{quotemark}{``}}}}%
          \end{picture}%
          \begingroup}%
          
@@ -275,7 +275,7 @@
  \hspace{0.8\textwidth}%
  \begin{picture}(0,0)(0,0)%
  \put(1.3,14){\makebox(0,0){%
- \scalebox{4.4}{\fontfamily{cmr}\selectfont\color{quotemark}''}}}%
+ \scalebox{4.4}{\selectfont\color{quotemark}''}}}%
  \end{picture}}%
  \vskip -2.7em%
  \ifx\tempa\empty%
