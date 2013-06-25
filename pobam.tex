@@ -90,7 +90,7 @@ While further development of these methods promises to be a crucial driver for f
 
 \begin{figure}[htbp]
 \centering
-\caption{Four generalized neural recording modalities. (a) \emph{Extracellular electrical recording} probes the voltage due to nearby neurons. (b) \emph{Optical microscopy} detects light emissions from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 1/2 the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) \emph{Magnetic resonance imaging} detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) \emph{Molecular recording} devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
+\caption{Four generalized neural recording modalities. (a) \emph{Extracellular electrical recording} probes the voltage due to nearby neurons. (b) \emph{Optical microscopy} detects light emission from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 2x the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) \emph{Magnetic resonance imaging} detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) \emph{Molecular recording} devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
 \subfloat[Electrical]{\includegraphics[width=2.5in, clip=false]{figs/electrode_sketch_tc.eps}}
 \hspace{0.1in}
 \subfloat[Optical]{\includegraphics[width=2.5in, clip=false]{figs/optical_sketch_tc.eps}}
@@ -114,13 +114,13 @@ We anticipate that as much can be learned from where our logic breaks down as fr
 \paragraph{Mouse brain}
 The mouse brain contains \num{\ca 7.5e7} neurons in a volume of \SI{\ca 420}{\milli\meter\cubed}~\cite{vincent10} and weighs about \SI{0.5}{\gram}.
 For comparison, the human brain has roughly \num{8e10} neurons~\cite{azevedo09} in a volume of \SI{1200}{\centi\meter\cubed}~\cite{allen02}.
-The human brain consumes \SI{\ca 15}{\watt} of power (performing the equivalent of roughly \num{1e17} floating point computational operations per second on that power budget)~\cite{sarpeshkar10}.
+The human brain consumes \SI{\ca 15}{\watt} of power (performing the equivalent of roughly \num{1e17} floating point computational operations per second on that power budget, according to one interpretation~\cite{sarpeshkar10}).
 Because power consumption scales approximately linearly with the number of neurons~\cite{houzel11}, the mouse brain is expected to utilize \SI{\ca 15}{\milli\watt} (for comparison, the metabolic rate of the \SIrange{\ca 20}{30}{\gram} mouse is \SIrange{\ca 200}{600}{\milli\watt} depending on its degree of physical activity~\cite{speakman13}).
 
 \paragraph{Neural activities}
 Action potentials (spikes) last \SI{\ca 2}{\milli\second}.
 The average rate of neuronal spiking is \SI{\ca 5}{\hertz}~\cite{sarpeshkar10}, but some neurons spike at \SI{500}{\hertz} or even faster~\cite{gittis10}.
-The activities of nearby neurons can be highly correlated.
+The activities of neurons can be highly correlated.
 
 \paragraph{Absorption and scattering of radiation}
 All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
@@ -129,7 +129,7 @@ As an approximation to the electromagnetic absorption of brain tissue, we treat 
 At visible and IR wavelengths, there is far worse scattering than absorption: absorption lengths range from \SI{\ca 1.5}{\milli\meter} (blue light) to about \SI{\ca 1}{\centi\meter} (infrared light), while scattering lengths are in the hundreds of microns.
 The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
 \autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering model (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
-This gives a preliminary indication of which wavelengths can be used to measure deep-brain signals.
+This gives a preliminary indication of which wavelengths can be used to measure deep-brain signals with external detectors.
 
 \begin{figure}[htbp]
 \caption{%
@@ -143,7 +143,7 @@ Inset: approximate tissue model based on Mie scattering theory and water absorpt
 
 \section{Challenges for Brain Activity Mapping}
 \label{sec:challenges}
-Any activity mapping technology must extract the required information without disrupting normal neuronal activity.
+Any activity mapping technology must ideally extract the required information without disrupting normal neuronal activity.
 As such, we consider three primary challenges:
 
 \subsection{Spatiotemporal Resolution}
@@ -154,7 +154,7 @@ A minimal data rate of \num{7.5e10} bits processed per second is then required t
 In electrical recording, higher sampling rates (e.g. \SIrange{10}{40}{\kilo\hertz}) are often necessary to distinguish neurons based on spike shapes when each electrode monitors multiple neurons.
 More fundamentally, one bit per neuron sampling at \SI{1}{\kilo\hertz} would likely not be sufficient to reliably distinguish spikes above noise: transmitting \SI{\ca 10}{\bit} samples at \SI{\ca 10}{\kilo\hertz} (full waveform) or \SIrange{\ca 10}{20}{\bit} time-stamps upon spike detection would be more realistic.
 On the other hand, it may be possible to locally compress measurements of a spike train before transmission.
-In the blowfly Calliphore vicina, the entropy of spike trains has been measured to be up to \SI{\ca 180}{\bit\per\second}, and the information about a stimulus encoded by a spike train (mutual information) was as high as \SI{\ca 90}{\bit\per\second}~\cite{strong98}. This would suggest that in the worst case, a compression factor of 5$\times$--10$\times$ should be possible, relative to a \SI{1000}{\bit\per\second} raw binary sampling. As a na\"{\i}ve estimate of the entropy as a function of firing rate, one can write the entropy $H$ in \si{\bit\per\second}, assuming \SI{1}{\milli\second} long spikes and \SI{1000}{\hertz} sampling rate, as
+In the blowfly Calliphore vicina, the entropy of spike trains has been measured to be up to \SI{\ca 180}{\bit\per\second}, and the information about a stimulus encoded by a spike train was as high as \SI{\ca 90}{\bit\per\second}~\cite{strong98}. Extrapolating from fly to mouse, this would suggest that in the worst case, a compression factor of 5$\times$--10$\times$ should be possible, relative to a \SI{1000}{\bit\per\second} raw binary sampling. As a na\"{\i}ve estimate of the entropy as a function of firing rate, one can write the entropy $H$ in \si{\bit\per\second}, assuming \SI{1}{\milli\second} long spikes and \SI{1000}{\hertz} sampling rate, as
 \[H \approx \left(-P\sub{spike}\cdot\log_2\!\left(P\sub{spike}\right) - \left(1 - P\sub{spike}\right)\cdot\log_2\!\left(1 - P\sub{spike}\right)\right) \cdot \SI{1000}{\bit\per\second}\]
 
 where $P\sub{spike}$ is the probability of spiking during the sampling interval.
@@ -192,7 +192,7 @@ Both of these effects are appreciable when the temperature changes are on the or
 To prevent damage to the brain, we assume that a recording technique should not cause a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess.
 
 The nature of the volume displacement is important---sheets of instrumentation that sever long-range connectivity, for example, would disrupt normal brain function regardless of the degree of volume displacement.
-Conversely, higher volume displacement might be possible if introduced during the early development of the brain, so that the brain can adapt.
+Conversely, higher volume displacement might be possible if introduced during the early development of the brain, insomuch as the brain can adapt without disrupting natural computation.
 
 \section{Evaluation of Modalities}
 
@@ -303,7 +303,7 @@ This could correspond to recording sites spaced on the vertices of a \num{\ca 20
 
 A more optimistic estimate, neglecting difficulties with spike sorting, derives from the maximum distance between an extracellular electrical recorder and a neuron from which it records spikes.
 In a first approximation, this is determined by two factors: the decay of the signal with distance from the spiking neuron and the background noise level at the recording site.
-We assume that for an electrode to reliably detect the signal from a given neuron, the magnitude of that neuron's signal must be larger than the electrode's noise level.
+We assume that for an electrode to reliably detect the signal from a given neuron, the magnitude of that neuron's signal must be larger than the electrode's noise level. Note, however, that knowledge of spike shapes could potentially be used to extract low-amplitude spikes from noise.
 
 The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scale roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
 However, this decay is strongly influenced by the detailed geometry of neuronal currents and the properties of the extracellular space, making analytical calculation of the decay rate difficult (at large distances, a $1/r^2$ dipole falloff is expected).
@@ -351,7 +351,7 @@ In practice, the number of neurons per electrode distinguishable by spike-sortin
 \subsubsection{Implanting Electrodes in the Brain}
 
 There are several technology options for introducing many electrodes into a brain.
-For example, flexible nanowire electrodes could be threaded through the capillary network~\cite{llinas05}.
+For example, flexible nanowire electrodes could, in theory, be threaded through the capillary network~\cite{llinas05}.
 Capillaries are present in the brain at a density of \SIrange{2500}{3000}{per \milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. 
 The cerebrospinal ventricles may also provide a convenient location for recording hardware.
 Neural tissues could be grown around pre-fabricated electrode arrays~\cite{jadhav12}, or silicon probes arrays with many nano-fabricated recording sites per probe~\cite{du11} could be inserted into the brain.
@@ -364,7 +364,7 @@ This suggests that it may be possible to push structures of \SI{<10}{\micro\mete
 
 \subsubsection{Conclusions and Future Directions}
 
-The main challenge for electrical recordings is the large number of required recording sites.
+Electrical recording has the advantage of high temporal resolution, but the large number of required recording sites poses challenges for delivery mechanisms.
 Ongoing innovations which could enable viable all-electrical recording methods include
 the development of highly multiplexed probes, thinner wires, smaller electrode impedances,
 amplifiers with lower input-referred noise levels, novel methods to implant large numbers of electrodes,
@@ -373,9 +373,7 @@ implantable optics or other methods.
 
 A caveat, however, pertains to the ability to relate the measured electrical signals to specific cells within a circuit.
 As the set of neurons recorded by each electrode grows to encompass a large volume around the electrode, it will become more difficult to attribute the recorded spikes to particular neurons.
-Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode (unless the spatial density of recording sites is increased such that many electrodes sample the same neuron).
-A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation.
-Until these issues can be resolved, readouts with intrinsic spatial resolving power may be more appropriate than pure electrical recording for the goal of whole-brain activity mapping (as opposed to sparsely sampling neural activities at high temporal resolutions).
+Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode. A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation. If the spatial density of recording sites is increased such that many electrodes sample the same neuron, however, this could enable imaging of neuronal morphology via voltage signals across multiple electrodes.
 
 \subsection{Optical Recording}
 
@@ -404,7 +402,7 @@ Infrared light may thus pass through \SIrange{\ca 1}{2}{\milli\meter} of tissue 
 Activity dependent dyes operating in the infrared~\cite{filonov11,shcherbakova13} could thus be decisive for improvements in imaging depth.
 
 Multi-photon techniques allow deeper penetration.
-Two or more infrared photons can combine to excite a fluorophore with an excitation peak in the visible range, leading to the emission of a visible photon.
+Two or more infrared photons together excite a fluorophore with an excitation peak in the visible range, leading to the emission of a visible photon.
 Because only one neuron is illuminated at a time, all of the light emissions captured by the detector originate from the illuminated neuron, regardless of the extent of scattering of the outgoing light.
 Therefore, the emission pathway is limited less by scattering than by absorption and a single detector may collect a large number of scattered emission photons to obtain a sufficiently large integrated signal.
 Exploiting these ideas has resulted in imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
@@ -423,13 +421,13 @@ This could be done using optical fiber~\cite{mahalati13} and/or waveguide~\cite{
 For example, single-mode fiber cables can support \SI{>1}{\tera\byte\per\second} data rates with low light loss over hundreds of kilometers.
 \end{enumerate}
 
-While implanted optics might seem to require a number of implanted photodetectors, fibers or waveguide ports comparable to the number of neurons, new developments suggest ways of imaging with fewer elements.
+While optics might seem to require a number of photodetectors, fibers or waveguide ports comparable to the number of neurons, new developments suggest ways of imaging with fewer elements.
 For example, compressive sensing or ghost imaging techniques based on random mask projections~\cite{wakin06,studer12,tian11,sun13} might allow a smaller number of photodetectors to be used.
 In an illustrative case, an imaging system may be constructed simply from a single photodetector and a transmissive LCD screen presenting a series of random binary mask patterns~\cite{huang13}, where the number of required mask patterns is much smaller than the number of image pixels due to a compressive reconstruction.
 Furthermore, it is possible to directly image through gradient index of refraction (GRIN) lenses~\cite{murray12} or optical fibers~\cite{mahalati13,kang10,flusberg05}, thus multiplexing multiple observed neurons per fiber.
 
 Hybrid techniques combining optics with other modalities may also provide new ways to overcome scattering.
-For example, ultrasound encoding~\cite{wang12}, which frequency-tags light emissions emerging from a known location via a mechanical Doppler shift of the emitter~\cite{mahan98}, is powerful in that it provides a generic mechanism to sidestep problems of elastic optical scattering, but it requires distinguishing MHz frequency modulations in THz light waves (part per million frequency discrimination) and tags only a small fraction of the emitted photons.
+For example, ultrasound encoding~\cite{wang12}, which frequency-tags light emissions emerging from a known location via a mechanical Doppler shift of the emitter~\cite{mahan98}, is powerful in that it provides a generic mechanism to sidestep problems of elastic optical scattering, but it requires distinguishing MHz frequency modulations in THz light waves (part per million frequency discrimination).
 
 \paragraph{Speed of beam scanning}
 Multi-photon and confocal approaches rely on the serial scanning of an excitation beam across the sample.
@@ -442,7 +440,7 @@ The speed of beam scanning is thus far from its physical limits.
 Fluorescence lifetimes in the \SIrange{0.1}{1}{\nano\second} range~\cite{striker99} may ultimately constrain the design of scanning microscopies: a delay of \SI{0.1}{\nano\second} per mouse neuron per frame corresponds to \SI{100}{\hertz} frame rate with no parallelization.
 
 \paragraph{Diffraction}
-Due to diffraction, a lens (or other limiting optical aperture) of a certain size is necessary to
+Due to diffraction, a lens (or other limiting optical aperture) above a minimum diameter is necessary to
 achieve a given angular resolution, and it might be hypothesized that this would be limiting
 factor for optical methods.
 However, this is not the case.
@@ -479,7 +477,7 @@ Current multi-photon imaging experiments are already near the permissible energy
 Multi-photon experiments rely on short laser pulses with high peak light intensities at a focused excitation spot to excite nonlinear transitions~\cite{kim99}.
 This imposes an experimentally relevant physical limit: at least one excitation pulse of sufficient intensity per neuron per frame is required in order to excite multi-photon fluorescence during each frame.
 Assuming \SI{1}{\kilo\hertz} frame rate and \SI{0.1}{\nano\joule} pulses, delivering only one pulse per neuron per frame would dissipate roughly $\left(\num{1e8}\right)\left(\SI{1}{\kilo\hertz}\right)\left(\SI{0.1}{\nano\joule}\right)=\SI{10}{\watt}$ in the mouse brain, which is clearly prohibitive.
-This is a lower bound because, in general, more than one excitation pulse per neuron per frame will be required to excite detectable fluorescence (e.g., one reference reported 12 pulses per spot~\cite{kim99}).
+This is a lower bound because, in general, more than one excitation pulse per neuron per frame may be required to excite detectable fluorescence (e.g., one reference reported 12 pulses per spot~\cite{kim99}).
 For three-photon excitation, the situation will be even worse as higher peak light intensities are required to excite three-photon fluorescence.
 
 Could the single-pulse energy be reduced while maintaining efficient two-photon excitation? The number of two-photon (2P) transitions excited per fluorophore per pulse is $n_a = F^2 C / t$, where $F$ is the number of photons per pulse per area, in units of \si{photon\per\centi\meter\squared}, $C$ is the two-photon cross-section in units of \si{\centi\meter\tothe{4}\second\per photon}, and $t$ is the pulse duration in \si{\second}.
@@ -629,7 +627,7 @@ Thus, the first priority is to reduce the power consumption associated with embe
 In principle, methods such as infrared light photovoltaics, RF harvesting via diode rectification, or glucose fuel cells, could supply power to embedded neural recorders, but again, significant improvements in the power efficiency of electronics are necessary to enable this.
 Other potential energy harvesting strategies include materials/enzymes harnessing local biological gradients such in voltage, osmolarity, or temperature.
 An analysis of the energy transduction potential of each of these systems is beyond the scope of this discussion.
-Fortunately, with many orders of magnitude potential for improvement before physical limits are reached, we can expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future.
+Fortunately, with many orders of magnitude potential for improvement before physical limits are reached, we may expect that embedded nano-electronic devices will emerge as an energetically viable neural interfacing option at some point in the future.
 
 \subsection{Embedded Devices: Information Theory}
 
@@ -833,7 +831,7 @@ The typical specific absorption rate (SAR) is well under \SI{10}{\watt\per\kilog
 \subsubsection{Imaging Agents}
 
 All the preceding discussion about spatiotemporal resolution presumes the existence of local time-varying signals (e.g., changes in $T_1$ or $T_2$) corresponding to the dynamics of neural activity.
-Such signals are not naturally present in the brain with the exception of the hemodynamic BOLD response, the limitations of which are discussed above.
+Such signals are not naturally present in the brain with the exception of the hemodynamic BOLD response (although there are claims of direct detection of neuronal magnetic fields by MRI~\cite{Bodurka2002}), the limitations of which are discussed above.
 In the past 15 years, efforts have been undertaken to develop chemical and biomolecular imaging agents that can be introduced into the brain to produce MRI detectable signals corresponding to specific aspects of neural function (analogously to fluorescent dyes and proteins).
 Notable examples include $T_1$ and $T_2$ sensors of calcium~\cite{atanasijevic06,li99} and a $T_1$ sensor of neurotransmitter release~\cite{shapiro10}.
 Depending on their mode of action, these imaging agents can provide temporal resolutions ranging from \SI{10}{\milli\second} to \SI{10}{\second}~\cite{shapiro06}.
@@ -866,10 +864,11 @@ Similar strategies could be implemented using RNA polymerases or potentially usi
 
 \subsubsection{Spatiotemporal Resolution}
 
+Polymerases proceed along their template DNA strands in a stochastic, thermally driven fashion; thus, polymerases that are initially synchronized will de-phase with respect to one another over time, occupying a range of positions on their respective templates. The rate of this de-phasing is a key parameter governing the temporal resolution of molecular recording. By averaging over many (e.g., hundreds to thousands) of simultaneously replicated templates, it is theoretically possible to precisely associated nucleotide misincorporations with the times at which these misincorporations occurred, and thus to obtain recordings of the cation concentration at high temporal resolution. Furthermore, the development of mechanisms to improve synchronization of the ensemble of polymerases within each cell, or to encode time-stamps into the synthesized DNA (e.g., molecular clocks), could improve temporal resolution and decrease the number of required template strands per neuron.
+
 An analysis of the projected temporal resolution of molecular ticker-tapes as a function of polymerase biochemical parameters can be found in~\cite{glaser13}.
-This work suggests that molecular ticker tapes are unlikely to record at \SI{<10}{\ms} temporal resolution for durations longer than seconds in the absence of engineered polymerases with kinetic parameters beyond the limits of those found in nature, even when \num{10000} templates per cell are recorded simultaneously.
-Recording at lower temporal resolutions, however, appears feasible using naturalistic biochemical parameters.
-Mechanisms to improve synchronization of the ensemble of polymerases within each cell, or to encode time-stamps into the synthesized DNA, could improve temporal resolution and decrease the number of required template strands per neuron.
+This work suggests that molecular ticker tapes require synchronization mechanisms if they are to record at \SI{<10}{\ms} temporal resolution for durations longer than seconds, even when \num{10000} templates per cell are recorded simultaneously, unless engineered polymerases with kinetic parameters beyond the limits of those found in nature can be developed.
+Recording at lower temporal resolutions, however, appears feasible using naturalistic biochemical parameters, even in the absence of synchronization mechanisms.
 
 \subsubsection{Energy Dissipation}
 % swap paragraphs?
