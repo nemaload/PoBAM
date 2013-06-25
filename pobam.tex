@@ -126,7 +126,7 @@ The activities of neurons can be highly correlated.
 All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
 Electromagnetic waves are attenuated in brain tissue by absorption and scattering.
 As an approximation to the electromagnetic absorption of brain tissue, we treat the absorption by water, the brain's main constituent (\SIrange{68}{80}{\percent} by mass in humans \cite{dobbing73,fatouros99}).
-At visible and near-IR wavelengths, there is far worse scattering than absorption: absorption lengths are in the \SI{\ca 1}{\milli\meter} range, while scattering lengths are \SIrange{\ca 50}{200}{\micro\meter}.
+At visible and near-IR wavelengths, there is far worse scattering than absorption: absorption lengths are in the \SI{\ca 1}{\milli\meter} range, while scattering lengths are \SIrange{\ca 50}{200}{\micro\meter}~\cite{Wilt2009}.
 The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
 \autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering model (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
 This gives a preliminary indication of which wavelengths can be used to measure deep-brain signals with external detectors. Note that the attenuation length is only one of several relevant metrics. Importantly, scattering not only causes signal attenuation, but also causes noise and impairs signal separation (e.g., by expanding width of the point spread function due to photon diffusion), so the magnitude of the scattering is a key figure of merit.
@@ -397,7 +397,7 @@ Multi-photon and confocal techniques scan the focal spot in order to isolate the
 Optical techniques therefore achieve spatial resolution by multiplexing spatially (e.g., epi-fluorescence imaging) or temporally (e.g., beam scanning), and often by a combination of the two.
 
 Single-photon techniques including epi-fluorescence, light sheet and confocal techniques only allow imaging to a depth defined by the scattering lengths of photons matched to the excitation and emission spectra of activity indicators.
-Certain wavelengths of infrared light may pass through \SIrange{\ca 1}{2}{\milli\meter} of tissue without prohibitively strong attenuation~\cite{horton13,kobat09}, while depths of \SI{>500}{\micro\meter} cannot easily be reached in the visible range.
+Certain wavelengths of infrared light may pass through \SIrange{\ca 1}{2}{\milli\meter} of tissue without prohibitively strong attenuation~\cite{horton13,kobat09}, while depths of \SI{>500}{\micro\meter} cannot easily be reached in the visible range~\cite{Wilt2009}.
 Activity dependent dyes operating in the infrared~\cite{filonov11,shcherbakova13} could thus be decisive for improvements in imaging depth.
 
 Multi-photon techniques allow deeper penetration.
