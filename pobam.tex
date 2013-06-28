@@ -295,7 +295,7 @@ Molecular recording devices fall within physical limits but their development po
 
 In the oldest strategy for neural recording, an electrode is used to measure the local voltage at a recording site, which conveys information about the spiking activity of one or more nearby neurons.
 The number of recording sites may be smaller than the number of neurons recorded since each recording site may detect signals from multiple neurons.
-Typical electrical recording techniques keep active devices such as amplifiers outside the skull and therefore do not pose a heat dissipation challenge. Currently, extracellular recording does not allow extraction of molecular information on the cells being recorded, although intracellular electrophysiological recording methods (e.g., automated patch clamp \cite{Kodandaramaiah2012}) might enable this.
+Typical electrical recording techniques keep active devices such as amplifiers outside the skull and therefore do not pose a heat dissipation challenge.
 
 \subsubsection{Spatiotemporal Resolution}
 
@@ -380,7 +380,7 @@ implantable optics or other methods.
 
 A caveat, however, pertains to the ability to relate the measured electrical signals to specific cells within a circuit.
 As the set of neurons recorded by each electrode grows to encompass a large volume around the electrode, it will become more difficult to attribute the recorded spikes to particular neurons.
-Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode. A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation. If the spatial density of recording sites is increased such that many electrodes sample the same neuron, however, this could enable imaging of neuronal morphology via voltage signals across multiple electrodes.
+Furthermore, given the complex geometries of neuronal processes, it is not obvious how to determine the spatial position or layout of a neuron from its electrical signature on a nearby electrode. A given electrode will be positioned near the axons or dendrites of some neurons, and near the cell bodies of other neurons, complicating data interpretation. If the spatial density of recording sites is increased such that many electrodes sample the same neuron, however, this could enable imaging of neuronal morphology via voltage signals across multiple electrodes. Currently, extracellular recording also does not allow extraction of molecular information on the cells being recorded, although intracellular electrophysiological recording methods (e.g., automated patch clamp \cite{Kodandaramaiah2012}) might enable this for a limited number of cells.
 
 \subsection{Optical Recording}
 
@@ -618,7 +618,7 @@ Therefore, in order to be compatible with wireless power transfer, the power dis
 
 Piezoelectric harvesting of ultrasound energy by micro-devices is also a possibility. The efficiency of electrical harvesting of mechanical strain energy in piezoelectrics can be above \SI{30}{\percent} for materials with high electromechanical coupling coefficients (e.g., PZT)~\cite{safari08, xu12}. The losses in the piezoelectric transduction process are well described by models such as the KLM model~\cite{krimholtz70,castillo03}. 
 
-It may also be possible to power devices with applied magnetic fields (which are highly penetrant) using magneto-electric~\cite{Kitagawa2010, Priya2009, Yue2012, Fiebig2005} materials or via near-field inductive coupling. For the case of simple inductive coupling, a loop of \SI{10}{\micro\meter} diameter in an applied field of \SI{1}{\tesla} switching at \SI{1000}{\hertz} produces an induced electromotive force of only \SI{0.1}{\micro\volt}, however. Assuming a copper loop (\SI{\ca 17}{\nano\ohm\meter} resistivity) with \SI{1 x 1}{\micro\meter} cross-section and \SI{40}{\micro\meter} length (around the outer edge of the chip) gives a power of only \SI{\ca 15}{\femto\watt} associated with the induced current.
+It may also be possible to power devices with applied magnetic fields (which are highly penetrant) using magneto-electric~\cite{Kitagawa2010, Priya2009, Yue2012, Fiebig2005} materials or via near-field inductive coupling. For the case of simple inductive coupling, however, a loop of \SI{10}{\micro\meter} diameter in an applied field of \SI{1}{\tesla} switching at \SI{1000}{\hertz} produces an induced electromotive force of only \SI{0.1}{\micro\volt}. Assuming a copper loop (\SI{\ca 17}{\nano\ohm\meter} resistivity) with \SI{1 x 1}{\micro\meter} cross-section and \SI{40}{\micro\meter} length (around the outer edge of the chip) gives a power of only \SI{\ca 15}{\femto\watt} associated with the induced current.
 
 An alternative to wireless energy transmission is the local harvesting of biochemical energy carriers. Implanted neural recording devices could conceivably be powered by free glucose, the main energy source used by the brain itself.
 The theoretical maximum thermodynamic efficiency for a fuel cell in aqueous solution is equal to that of the hydrogen fuel cell: $\Delta G^0/\Delta H^0 = \SI{83}{\percent}$ at \SI{25}{\degreeCelsius}.
