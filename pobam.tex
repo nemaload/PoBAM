@@ -191,12 +191,12 @@ Both of these effects are appreciable when the temperature changes are on the or
 
 \subsection{Sensitivity to Volume Displacement}
 
-To prevent damage to the brain, we assume that a recording technique should not cause a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess. One important consideration in this regard would be the disruption of blood circulation by inserted material. Recent studies \cite{Kleinfeld2013} have defined in microscopic detail the complete vascular network of the mouse cortex using high-throughput histology; this type of information could be used to enumerate key vascular pathways which could be spared from damage.
+To prevent damage to the brain, we assume that a recording technique should not cause a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess. One important consideration in this regard would be the disruption of blood circulation by inserted material; a high density of implanted material in a brain region could cause stroke due to widespread vascular damage. Recent studies \cite{Kleinfeld2013} have defined in microscopic detail the complete vascular network of the mouse cortex using high-throughput histology; this type of information could be used to enumerate key vascular pathways which could be spared from damage.
 
-It is possible to insert large numbers of probes throughout multiple brain areas without compromising function. For example, in one study in rats \cite{Ribeiro2004}, 96 electrodes of \SI{50}{\micro\meter} diameter were simultaneously inserted across four forebrain structures (cortex, thalamus, hippocampus and putamen). Note, however, that the total volume displacement in this experiment was below \SI{0.1}{\percent}.
+It is possible to insert large numbers of probes throughout multiple brain areas without compromising function. In rats \cite{Ribeiro2004}, 96 electrodes of \SI{50}{\micro\meter} diameter were simultaneously inserted across four forebrain structures (cortex, thalamus, hippocampus and putamen). In rhesus macaque \cite{Nicolelis2003}, 704 electrodes of diameter \SI{50}{\micro\meter} and average depth \SI{2.5}{\milli\meter} were chronically implanted in cortex. Note, however, that the total volume displacement in these experiments was below \SI{0.1}{\percent}, and below \SI{0.01}{\percent}, respectively. 
 
 The nature of the volume displacement is important---sheets of instrumentation that sever long-range connectivity, for example, would disrupt normal brain function regardless of the degree of volume displacement.
-Conversely, higher volume displacement might be possible if introduced during the early development of the brain, insomuch as the brain can adapt without disrupting natural computation.
+Conversely, higher volume displacement might be possible if introduced gradually, or during early development, insomuch as the brain can adapt without disrupting natural computation.
 
 \section{Evaluation of Modalities}
 
@@ -403,14 +403,14 @@ Multi-photon and confocal techniques scan the focal spot in order to isolate the
 Optical techniques therefore achieve spatial resolution by multiplexing spatially (e.g., epi-fluorescence imaging) or temporally (e.g., beam scanning), and often by a combination of the two.
 
 Single-photon techniques including epi-fluorescence, light sheet and confocal techniques only allow imaging to a depth defined by the scattering lengths of photons matched to the excitation and emission spectra of activity indicators.
-Certain wavelengths of infrared light may pass through \SIrange{\ca 1}{2}{\milli\meter} of tissue without prohibitively strong attenuation~\cite{horton13,kobat09}, while depths of \SI{>500}{\micro\meter} cannot easily be reached in the visible range~\cite{Wilt2009}.
+Certain wavelengths of infrared light may pass through \SIrange{\ca 1}{2}{\milli\meter} of tissue without prohibitively strong attenuation~\cite{horton13,kobat09,Kobat2011}, while depths of \SI{>500}{\micro\meter} cannot easily be reached in the visible range~\cite{Wilt2009}.
 Activity dependent dyes operating in the infrared~\cite{filonov11,shcherbakova13} could thus be decisive for improvements in imaging depth.
 
 Multi-photon techniques allow deeper penetration.
 Two or more infrared photons may together excite a fluorophore with an excitation peak in the visible range, leading to the emission of a visible photon.
 Because only one neuron is illuminated at a time, all of the light emissions captured by the detector originate from the illuminated neuron, regardless of the extent of scattering of the outgoing light.
 Therefore, the emission pathway is limited less by scattering than by absorption and a single detector may collect a large number of scattered emission photons to obtain a sufficiently large integrated signal.
-Exploiting these ideas has resulted in imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
+Exploiting these ideas has resulted in imaging at \SI{>1}{\milli\meter} depth~\cite{horton13,kobat09, Kobat2011} and allows multi-photon techniques to largely sidestep the signal separation challenge insomuch as the excitation spot is sufficiently well-focused.
 
 There are at least four options for overcoming the scattering of visible light to enable signal-separation from deep-brain neurons:
 
