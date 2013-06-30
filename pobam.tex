@@ -189,6 +189,8 @@ For example, heating of cell membranes and surrounding solution by millisecond o
 Slower temperature changes (on a scale of seconds) resulting from RF radiation lead to accelerated ion channel and transporter kinetics~\cite{shapiro13}.
 Both of these effects are appreciable when the temperature changes are on the order of \SIrange{1}{10}{\degreeCelsius}.
 
+The above calculations should be treated as rough estimates, and further work is needed to properly define the limits of volumetric heat production by neural recording systems distributed throughout the mouse brain. For comparison, one analysis \cite{Wolf2008} used upper limits of \SI{2}{\celsius} temperature change, \SI{40}{\milli\watt\per\centi\meter\squared} heat flux from the surface of implanted brain machine interface (BMI) hardware, and \SI{1.6}{\milli\watt\per\gram} of electromagnetic energy absorbed by tissue. This study also noted, however, that local brain temperature increases of \SI{1.8}{\celsius} are tolerated in rats over a timescale of hours and that changes of this magnitude may occur naturally in response to varying activity levels. A 96-channel BMI system has been demonstrated in living brains \cite{rizk2009} with dissipated areal power density approaching \SI{40}{\milli\watt\per\centi\meter\squared}.
+
 \subsection{Sensitivity to Volume Displacement}
 
 To prevent damage to the brain, we assume that a recording technique should not cause a brain volume change of \SI{> 1}{\percent}. The appropriate damage threshold is not yet established, however, so this constitutes a first guess. One important consideration in this regard would be the disruption of blood circulation by inserted material; a high density of implanted material in a brain region could cause stroke due to widespread vascular damage. Recent studies \cite{Kleinfeld2013} have defined in microscopic detail the complete vascular network of the mouse cortex using high-throughput histology; this type of information could be used to enumerate key vascular pathways which could be spared from damage.
@@ -398,7 +400,7 @@ Optical techniques thus achieve signal separation by multiplexing spatially (e.g
 
 \paragraph{Effects of light scattering}
 Single-photon techniques limit imaging to a depth of a few scattering lengths at the excitation and emission wavelengths of activity indicators (\SIrange{\ca 1}{2}{\milli\meter} for certain infrared wavelengths \cite{horton13,kobat09,Kobat2011} vs. \SI{ \ca 500}{\micro\meter} for visible wavelengths \cite{Wilt2009}).
-Activity dependent dyes are currently available only in the visible spectrum; indicators operating in the infrared (see \cite{filonov11,shcherbakova13} for far-red fluorescent proteins) could improve imaging depth.
+Activity dependent dyes are currently available only in the visible spectrum; indicators operating in the infrared (see \cite{filonov11,shcherbakova13, Shcherbo2009} for far-red fluorescent proteins) could improve imaging depth.
 
 Multi-photon excitation takes advantage of the deeper penetration of infrared light.
 Two or more infrared photons may together excite a fluorophore with an excitation peak in the visible range, leading to the emission of a visible photon.
@@ -482,10 +484,8 @@ Could the single-pulse energy be reduced while maintaining efficient two-photon 
 This can be approximated as
 \[n_a = \left(\frac{4E\left(\NA\right)^2}{h c \lambda}\right)^2 \frac{C}{t}\]
 where $\NA$ is the numerical aperture of the focusing optics, $E$ is the pulse energy and $\lambda$ is the stimulation wavelength.
-For a 2P experiment with \SI{100}{\femto\second}, \SI{0.1}{\nano\joule} pulses, assuming a 2P cross section~\cite{masters06} of \SI{1e-49}{\centi\meter\tothe{4}\second\per photon}, $\lambda=\SI{900}{\nano\meter}$ and $\NA=1.0$, $n_a \approx \frac{1}{20}$.
-While multiple pulses per neuron per frame are thus required to excite each fluorophore in every frame, a single pulse per neuron per frame will likely excite at least one fluorophore when there are \num{>20} fluorophores per excitation spot.
-If the single-pulse energy is reduced much further at fixed pulse duration, however, the excitation efficiency will become unacceptably low.
-To improve this situation, shorter pulses could be used to achieve the same excitation rate with lower pulse energy, or indicators with improved 2P or 3P cross-sections could be developed.
+For a 2P experiment with \SI{100}{\femto\second}, \SI{0.1}{\nano\joule} pulses, assuming a 2P cross section~\cite{masters06, drobizhev2011} of \SI{1e-48}{\centi\meter\tothe{4}\second\per photon} (i.e., 100 Goeppert-Mayer units \cite{Goeppert-Mayer1931}, comparable to that of DsRed2 \cite{drobizhev2011}), $\lambda=\SI{900}{\nano\meter}$ and $\NA=1.0$, $n_a \approx \frac{1}{2}$.
+Thus, a few pulses are likely necessary and sufficient to excite 2P fluorescence by each fluorophore within the focal spot. With a 2P cross section of \SI{1e-47}{\centi\meter\tothe{4}\second\per photon} (1000 Goeppert-Mayer units), higher than any listed in \cite{drobizhev2011}, it might be possible to reduce the pulse energy by an order of magnitude (and hence $n_a$ by two orders of magnitude) without unacceptably reducing the excited fluorescence. Shorter pulse durations could also increase the light intensity and hence 2P excitation probability at fixed pulse energy.
 
 \subsubsection{Bioluminescence}
 To work around the requirement for large amounts of excitation light, bioluminescent rather than fluorescent activity indicators could be used.
