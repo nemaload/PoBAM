@@ -73,7 +73,7 @@ The use of embedded local recording and wireless data transmission would only be
 \end{abstract}
 
 \section{Introduction}
-Progress in neuroscience depends on recording the electrical activities of neurons within functioning brains.
+Progress in neuroscience depends on recording the electrical activities of neurons within functioning brains~\cite{alivisatos2012brain}.
 The classical technique of electrical recording with wired electrodes has made remarkable progress: the number of simultaneously recorded neurons has doubled every seven years since the 1950s, currently allowing electrical observation of hundreds of neurons at millisecond timescales~\cite{stevenson11}.
 
 Recording techniques have recently diversified beyond their roots in electrical recording.
@@ -127,7 +127,7 @@ The activities of neurons can be highly correlated.
 All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
 Electromagnetic waves are attenuated in brain tissue by absorption and scattering.
 As an approximation to the electromagnetic absorption of brain tissue, we treat the absorption by water, the brain's main constituent (\SIrange{68}{80}{\percent} by mass in humans \cite{dobbing73,fatouros99}).
-At visible and near-IR wavelengths, there is far worse scattering than absorption: absorption lengths are in the \SI{\ca 1}{\milli\meter} range, while scattering lengths are \SIrange{\ca 50}{200}{\micro\meter}~\cite{Wilt2009}.
+At visible and near-IR wavelengths, there is far worse scattering than absorption: absorption lengths are in the \SI{\ca 1}{\milli\meter} range, while scattering lengths are \SIrange{\ca 25}{200}{\micro\meter}~\cite{Wilt2009}.
 The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
 \autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering model (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
 This gives a preliminary indication of which wavelengths can be used to measure deep-brain signals with external detectors. Note that the attenuation length is only one of several relevant metrics. Importantly, scattering not only causes signal attenuation, but also causes noise and impairs signal separation, so the magnitude of the scattering is a key figure of merit.
@@ -400,7 +400,7 @@ In confocal scanning microscopy, only photons from a point of interest are measu
 Optical techniques thus achieve signal separation by multiplexing spatially (e.g., direct imaging) or temporally (e.g., beam scanning), and often by a combination of the two.
 
 \paragraph{Effects of light scattering}
-Single-photon techniques limit imaging to a depth of a few scattering lengths at the excitation and emission wavelengths of activity indicators (\SIrange{\ca 1}{2}{\milli\meter} for certain infrared wavelengths \cite{horton13,kobat09,Kobat2011} vs. \SI{ \ca 500}{\micro\meter} for visible wavelengths \cite{Wilt2009}).
+Single-photon techniques limit imaging to a depth of a few scattering lengths at the excitation and emission wavelengths of activity indicators (up to \SIrange{\ca 1}{2}{\milli\meter} for certain infrared wavelengths \cite{horton13,kobat09,Kobat2011} vs. a few hundred \si{\micro\meter} for visible wavelengths \cite{Wilt2009}).
 Activity dependent dyes are currently available only in the visible spectrum; indicators operating in the infrared (see \cite{filonov11,shcherbakova13, Shcherbo2009} for far-red fluorescent proteins) could improve imaging depth.
 
 Multi-photon excitation takes advantage of the deeper penetration of infrared light.
@@ -408,7 +408,7 @@ Two or more infrared photons may together excite a fluorophore with an excitatio
 If only one neuron is illuminated with sufficient intensity to generate multi-photon excitation, all photons captured by the detector originate from that neuron, regardless of the scattering of the outgoing light. Hence, the emission pathway is limited less by scattering than by absorption.
 This has resulted in imaging at \SI{>1}{\milli\meter} depth \cite{horton13,kobat09, Kobat2011}.
 
-There are at least four options for overcoming the scattering of visible light to enable signal-separation from deep-brain neurons:
+There are at least four options for overcoming the scattering of visible light to enable signal-separation from deep-brain neurons~\cite{alivisatos2012brain, alivisatos13}:
 
 \begin{enumerate}
 \item Infrared light can excite multi-photon fluorescence in an excitation-scanning architecture.
