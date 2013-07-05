@@ -120,7 +120,9 @@ Because power consumption scales approximately linearly with the number of neuro
 
 \paragraph{Neural activities}
 Action potentials (spikes) last \SI{\ca 2}{\milli\second}.
-The average rate of neuronal spiking is \SI{\ca 5}{\hertz}~\cite{sarpeshkar10}, but some neurons spike at \SI{500}{\hertz} or faster~\cite{gittis10}. The activities of neurons can be highly correlated locally or across large networks \cite{schneidman2006weak}. Measuring spike timing with millisecond precision is relevant for understanding network function \cite{markram2011history, Babadi2013, Taillefumier27032013, Gire2013416}.
+The average rate of neuronal spiking is \SI{\ca 5}{\hertz}~\cite{sarpeshkar10}, but some neurons spike at \SI{500}{\hertz} or faster~\cite{gittis10}. The activities of neurons can be highly correlated locally or across large networks \cite{schneidman2006weak}. Measuring spike timing with millisecond precision is relevant for understanding network function \cite{markram2011history, Babadi2013, Taillefumier27032013, Gire2013416}. 
+
+Many neurons (possibly up to 90$\%$ for some neuron types in some brain areas \cite{Shoham2006}) may be effectively silent \cite{Shoham2006, Barth2012345} (e.g., spiking less than once every ten seconds). In areas where a significant fraction of neurons are silent, the requirements on sampling and data transmission during brain activity mapping could be reduced for some applications. The precise distribution of neural firing rates has not been fully established, however.
 
 \paragraph{Absorption and scattering of radiation}
 All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
@@ -311,7 +313,7 @@ A more optimistic estimate, neglecting difficulties with spike sorting, derives 
 In a first approximation, this is determined by two factors: the decay of the signal with distance from the spiking neuron and the background noise level at the recording site.
 We assume that for an electrode to reliably detect the signal from a given neuron, the magnitude of that neuron's signal must be larger than the electrode's noise level. Note, however, that knowledge of spike shape distributions could potentially be used to extract low-amplitude spikes from noise.
 
-The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scale roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
+The peak signals of spikes from neurons immediately adjacent to an electrode are in the \SIrange{0.1}{1.0}{\milli\volt} range and scale \cite{Shoham2006} roughly as $e^{-r/r_0}$, where $r$ is the distance from the cell surface and the $1/e$ falloff distance $r_0$ has been experimentally measured at \SI{\ca 28}{\micro\meter} in both salamander retina~\cite{segev04} and cat cortex~\cite{gray95}, and computed at \SI{\ca 18}{\micro\meter} in a biophysically realistic simulation~\cite{gold07}.
 However, this decay is strongly influenced by the detailed geometry of neuronal currents and the properties of the extracellular space, making analytical calculation of the decay rate difficult (at large distances, a much slower $1/r^2$ dipole falloff is expected).
 
 Several sources of background noise enter the recordings.
