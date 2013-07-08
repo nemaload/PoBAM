@@ -279,7 +279,7 @@ Calculate spatial resolution, signal strength and bandwidth limits on ultrasound
 Speed of sound in brain \iskip
 Attenuation rate of ultrasound in brain &
 Attenuation of ultrasound by brain tissue and bone may be prohibitive at the \SI{\ca 100}{\mega\hertz} frequencies needed for single-cell resolution ultrasound imaging \iskip
-Ultrasound may be a viable medium for spatially multiplexed data transmission from embedded devices
+Ultrasound may be a viable medium for spatially multiplexed data transmission from embedded devices~\cite{Seo2013}
 \\
 
 Molecular recording &
@@ -617,7 +617,7 @@ Alternatively, if the photon energy is above the silicon band gap ($\lambda < \f
 There is no thermodynamic or quantum limit to the conversion efficiency of light to DC electrical power for monochromatic sources, other than resistive losses and dark currents in the material (\SI{86}{\percent} in GaAs for example~\cite{bett08}). Again, however, capturing sufficient light becomes difficult for tiny devices.
 To supply \SI{10}{\micro\watt} (typical of current wirelessly-powered RFID chips) photovoltaically to a \SI{10 x 10}{\micro\meter} (cell sized) chip at \SI{34}{\percent} photovoltaic efficiency requires a light intensity of \SI{\ca 300}{\kilo\watt\per\meter\squared} at the chip, which is prohibitive. Furthermore, in the use of infrared light for photovoltaics, the penetration of the photons through tissue is decreased compared to radio frequencies.
 
-Piezoelectric harvesting of ultrasound energy by micro-devices is a possibility. The efficiency of electrical harvesting of mechanical strain energy in piezoelectrics can be above \SI{30}{\percent} for materials with high electromechanical coupling coefficients (e.g., PZT)~\cite{safari08, xu12}. The losses in the piezoelectric transduction process are well described by models such as the KLM model~\cite{krimholtz70,castillo03}. 
+Piezoelectric harvesting of ultrasound energy by micro-devices is a possibility \cite{Seo2013}. The efficiency of electrical harvesting of mechanical strain energy in piezoelectrics can be above \SI{30}{\percent} for materials with high electromechanical coupling coefficients (e.g., PZT)~\cite{safari08, xu12}. The losses in the piezoelectric transduction process are well described by models such as the KLM model~\cite{krimholtz70,castillo03}. 
 
 An alternative to wireless energy transmission is the local harvesting of biochemical energy carriers. Implanted neural recording devices could conceivably be powered by free glucose, the main energy source used by the brain itself.
 The theoretical maximum thermodynamic efficiency for a fuel cell in aqueous solution is equal to that of the hydrogen fuel cell: $\Delta G^0/\Delta H^0 = \SI{83}{\percent}$ at \SI{25}{\degreeCelsius}.
@@ -740,7 +740,7 @@ An important caveat to these conclusions on wireless data transfer occurs if we 
 Because the speed of sound is dramatically slower than that of light, the wavelength of \SI{10}{\mega\hertz} ultrasound is only \SI{\ca 150}{\micro\meter} (approximating the speed of sound in brain as the speed of sound in water, \SI{\ca 1500}{\meter\per\second}).
 Thus, many \SI{10}{\mega\hertz} ultrasound transmitters/receiver could be placed inside a mouse brain while maintaining their spatial separation above the wavelength, and a linear scaling of the MIMO channel capacity with the number of devices is likely possible in this regime, assuming that appropriate antenna gains and orientations can be achieved inside brain tissue. Beam orientation could present a challenge if micro-devices are oriented randomly after implantation.
 With an attenuation of \SI{0.5}{\dB\per\centi\meter\per\mega\hertz}~\cite{hoskins10}, the attenuation at \SI{10}{\mega\hertz} is only \SI{5}{\dB\per\centi\meter}.
-Thus ultrasound-based transmission of power and data from embedded recording devices may be viable.
+Thus ultrasound-based transmission of power and data from embedded recording devices may be viable \cite{Seo2013}.
 
 In contrast, direct imaging of neural activity by ultrasound (e.g., using contrast agents which create local variations in tissue elastic modulus or density) may be more difficult.
 The wavelength of \SI{100}{\mega\hertz} ultrasound is \SI{\ca 15}{\micro\meter}, providing a theoretical diffraction limited spatial resolution that would be sufficient for resolving neuronal somas.
