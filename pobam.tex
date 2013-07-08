@@ -361,7 +361,7 @@ In practice, the number of neurons per electrode distinguishable by spike-sortin
 
 There are several technology options for introducing many electrodes into a brain.
 For example, flexible nanowire electrodes could, in theory, be threaded through the capillary network~\cite{llinas05}.
-Capillaries are present in the brain at a density of \SIrange{2500}{3000}{per \milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. 
+Capillaries are present in the brain at a density of \SIrange{2500}{3000}{per \milli\meter\cubed}~\cite{schmidt89}, which equates to one capillary per \SI{73}{\micro\meter}, with each neuron lying within \SI{\ca 200}{\micro\meter} of a capillary~\cite{loffredo08}. The minimum capillary diameter is as small as \SIrange{3}{4}{\micro\meter}, although the average diameter is \SI{\ca 8}{\micro\meter}, comparable to the non-deformed size of the red blood cells \cite{Freitas1999}. Blocking a significant fraction of capillaries could lead to stroke or to unacceptable levels of tissue necrosis/liquifaction.
 The cerebrospinal ventricles may also provide a convenient location for recording hardware.
 Neural tissues could be grown around pre-fabricated electrode arrays~\cite{jadhav12}, or silicon probes arrays with many nano-fabricated recording sites per probe~\cite{du11} could be inserted into the brain.
 
@@ -502,6 +502,10 @@ Heat dissipation associated with the luciferase biochemistry itself is therefore
 In the same scenario, however, the brain would consume \num{\ca 6e8} additional ATP molecules per minute per neuron in order to power the bioluminescence, which is within the limits of cellular aerobic respiration rates (\SI{\ca 1}{\femto\mole\ O\textsubscript{2}} per minute per cell~\cite{molter09}, with \num{\ca 30} ATP per 6 O\textsubscript{2}, hence \num{3e9} molecules ATP synthesized per minute from ADP via glucose oxidation), but not by a large margin.
 Transient increases in metabolic rate are possible: energy dissipation more than doubles in the mouse during high physical activity~\cite{speakman13}.
 Therefore, whole-brain activity-dependent bioluminescence, at speeds high enough to achieve millisecond frame rates, may be metabolically taxing for the cell but is nevertheless plausible as a light generation strategy. Note that we have not treated the energy required to bio-synthesize the luciferin compound, which may create additional overhead (though conceivably luciferin could be provided exogenously).
+
+\subsubsection{Intrinsic signals}
+
+The ideal technique would not require exogenous contrast agents or genetically encoded indicators, instead relying on signals intrinsic to neurophysiology. Neurons exhibit few-nano-meter scale \cite{iwasa1980swelling} membrane displacements (e.g., in response to Maxwell stresses from large local electric field variations) during the action potential. These can be measured using optical interferometry \cite{fang2004noncontact}, but in principle they could also be monitored acoustically (and related activity-associated membrane swellings have been directly observed by atomic force microscopy \cite{kim2007mechanical} in cultured neurons). Other intrinsic signals include changes in refractive index associated with neural activity, which will modulate the reflection and scattering of light \cite{stepnoski1991noninvasive}.
 
 \subsubsection{Conclusions and Future Directions}
 
@@ -866,11 +870,15 @@ Similar strategies could be implemented using RNA polymerases or potentially usi
 
 \subsubsection{Spatiotemporal Resolution}
 
-Polymerases proceed along their template DNA strands in a stochastic, thermally driven fashion; thus, polymerases that are initially synchronized will de-phase with respect to one another over time, occupying a range of positions on their respective templates. The rate of this de-phasing is a key parameter governing the temporal resolution of molecular recording. By averaging over many (e.g., hundreds to thousands) of simultaneously replicated templates, it is theoretically possible to precisely associate nucleotide misincorporations with the times at which these misincorporations occurred, and thus to obtain recordings of the cation concentration at high temporal resolution. Furthermore, the development of mechanisms to improve synchronization of the ensemble of polymerases within each cell, or to encode time-stamps into the synthesized DNA (e.g., molecular clocks), could improve temporal resolution and decrease the number of required template strands per neuron. Mutation-based molecular clocks over evolutionary timescales are widely used in the field of phylogenetics \cite{Ochman1987}, and new tools from synthetic biology \cite{Elowitz2000} and optogenetics or thermogenetics \cite{Bernstein2012} also suggest strategies for building molecular clocks on faster timescales.
+Polymerases proceed along their template DNA strands in a stochastic, thermally driven fashion; thus, polymerases that are initially synchronized will de-phase with respect to one another over time, occupying a range of positions on their respective templates. The rate of this de-phasing is a key parameter governing the temporal resolution of molecular recording. By averaging over many (e.g., hundreds to thousands) of simultaneously replicated templates, it is theoretically possible to precisely associate nucleotide misincorporations with the times at which these misincorporations occurred, and thus to obtain recordings of the cation concentration at high temporal resolution. 
+
+Furthermore, the development of mechanisms to improve synchronization of the ensemble of polymerases within each cell, or to encode time-stamps into the synthesized DNA (e.g., molecular clocks), could improve temporal resolution and decrease the number of required template strands per neuron. Mutation-based molecular clocks over evolutionary timescales are widely used in the field of phylogenetics \cite{Ochman1987}, and new tools from synthetic biology \cite{Elowitz2000} and optogenetics or thermogenetics \cite{Bernstein2012} also suggest strategies for building molecular clocks on faster timescales. For example, optogenetics could be used to write bit strings encoding time stamps directly onto the synthesized DNA. This would require a single, sufficiently strong global clock signal to be optically broadcast to all neurons. The optics involved would be comparatively simple: this could be done using far fewer optical fibers than would be required for fiber-based activity readout, for instance.
 
 An analysis of the projected temporal resolution of molecular ticker-tapes as a function of polymerase biochemical parameters can be found in~\cite{glaser13}.
 This work suggests that molecular ticker tapes require synchronization mechanisms if they are to record at \SI{<10}{\ms} temporal resolution for durations longer than seconds, even when \num{10000} templates per cell are recorded simultaneously, unless engineered polymerases with kinetic parameters beyond the limits of those found in nature can be developed.
 Recording at lower temporal resolutions, however, appears feasible using naturalistic biochemical parameters, even in the absence of synchronization mechanisms.
+
+Spatial resolution for molecular recording would naturally reach the single cell level. To determine which nucleic acid tape originated from which neuron, static cell-specific DNA barcoding could be used \cite{zador12} to associate the synthesized DNA strands with nodes in a topological connectome map obtained via DNA sequencing.  Fluorescence in-situ DNA sequencing (FISSEQ) on serially-sectioned or intact tissue (fixed post-mortem) \cite{chung2013structural} could be used to obtain explicit geometric information.
 
 \subsubsection{Energy Dissipation}
 % swap paragraphs?
@@ -899,7 +907,6 @@ Therefore, with appropriate mechanisms to fold/pack the nucleic acids generated 
 Molecular recording of neural activity has the advantages of inherent scalability, single-cell precision, and low energy and volume footprints.
 Making molecular recording work at temporal resolutions approaching \SI{1}{\kHz}, however, will require multiple new developments in synthetic biology, including protein engineering to create a fast polymerase (\SI{>1}{\kHz}) that strongly couples proxies for neural activity to nucleotide incorporation probabilities.
 An attractive potential payoff from molecular approaches to activity mapping is the prospect of seamlessly combining---within a single brain---the readout of activity patterns with the readout of structural connectome barcodes~\cite{zador12}, transcriptional profiles (cell type information) or other (epi-)genetic signatures which are accessible via high-throughput nucleic acid sequencing.
-
 
 \section{Discussion}
 
@@ -932,7 +939,7 @@ We hope that knowledge of the constraints governing scalable neural recording wi
 
 \section{Acknowledgments}
 
-We thank K. Esvelt for helpful discussions on bioluminescent proteins; D. Boysen for help on the fuel cell calculations; R.~Tucker and E.~Yablonovitch (\url{http://www.e3s-center.org}) for helpful discussions on the energy efficiency of CMOS; C.~Xu and C.~Schaffer for data on optical attenuation lengths; T. Dean and the participants in his CS379C course at Stanford/Google, including Chris Uhlik and Akram Sadek, for helpful discussions and informative content in the discussion notes (\url{http://www.stanford.edu/class/cs379c/}); and R.~Koene, S.~Rezchikov, A.~Bansal, J.~Lovelock, A.~Payne, R.~Barish, N.~Donoghue, J.~Pillow, W.~Shih and P.~Yin for helpful discussions.
+We thank K. Esvelt for helpful discussions on bioluminescent proteins; D. Boysen for help on the fuel cell calculations; R.~Tucker and E.~Yablonovitch (\url{http://www.e3s-center.org}) for helpful discussions on the energy efficiency of CMOS; C.~Xu and C.~Schaffer for data on optical attenuation lengths; T. Dean and the participants in his CS379C course at Stanford/Google, including Chris Uhlik and Akram Sadek, for helpful discussions and informative content in the discussion notes (\url{http://www.stanford.edu/class/cs379c/}); and L.~Wood, R.~Koene, S.~Rezchikov, A.~Bansal, J.~Lovelock, A.~Payne, R.~Barish, N.~Donoghue, J.~Pillow, W.~Shih and P.~Yin for helpful discussions.
 
 A.~Marblestone is supported by the Fannie and John Hertz Foundation fellowship.
 D.~Dalrymple is supported by the Thiel Foundation.
