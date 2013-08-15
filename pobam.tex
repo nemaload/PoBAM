@@ -174,11 +174,13 @@ where $P\sub{metabolic} = \SI{0.0116}{\watt\per\gram}$ is the power per unit mas
 A steady-state temperature increase ($\od T/\od t = 0$) of \SI{2}{\celsius} corresponds to a power dissipation of \SI{\ca 40}{\milli\watt} per \SI{500}{\milli\gram} mouse brain.
 Therefore, a recording technique should not dissipate more than \SI{\ca 40}{\milli\watt} of power in a mouse brain at steady state.
 
+This may be an under-estimate of the actual maximum steady-state power dissipation. 
+Radiative loss of heat from the brain was ignored here since infrared light emitted by deep-brain tissue is quickly re-absorbed by nearby tissue.
+We have also assumed that conductive heat loss is negligible at the whole-brain scale compared to the heat extracted by blood flow.
+
 Higher power levels may be introduced transiently.
 According to the above equation, if a neural recorder dissipates \SI{\ca 40}{\milli\watt} per \SI{500}{\milli\gram} mouse brain, then the brain approaches the steady-state temperature in \SIrange{2}{3}{\minute}, so shorter experiments may be feasible.
-Increasing convective heat loss from the brain by increasing blood flow (e.g. via increased heart rate) or cooling~\cite{polderman2004} the brain, the blood, the cerebrospinal fluid (CSF), or the whole animal, could increase the allowable power dissipation.
-Note that radiative loss of heat from the brain was ignored here since infrared light emitted by deep-brain tissue is quickly re-absorbed by nearby tissue.
-We have also assumed that conductive heat loss is negligible at the whole-brain scale compared to the heat extracted by blood flow.
+Increasing convective heat loss from the brain by increasing blood flow (e.g. via increased heart rate) or cooling~\cite{polderman2004} the brain, the blood, the cerebrospinal fluid (CSF), or the whole animal, could increase the allowable transient or steady-state power dissipation.
 
 There are also limits on the power density of radiation applied to brain tissue.
 For radio-frequency electromagnetic radiation, the specific absorption rate (SAR) limit on the power density exposed to human tissue (calibrated for \SI{\ca 1}{\celsius} temperature change) is \SI{\ca 10}{\milli\watt\per\centi\meter\squared}, while for ultrasound (which couples less strongly to dissipative loss mechanisms in tissue) the SAR limit is up to 72$\times$ higher.
@@ -575,10 +577,12 @@ This was a consequence of Moore's law and Dennard scaling, where both the capaci
 Unfortunately however, issues related to device variability and the 3D structures needed to maintain the on-to-off current ratio have largely stopped the reduction in effective capacitance per device; current devices are stuck at \SIrange{\ca 100}{200}{\atto\farad} for a minimum sized transistor.
 Furthermore, the exponential increase in leakage current that comes along with the scaling of the threshold voltage in this scenario has precluded substantial further decreases in voltage at a given performance level.
 Indeed, for the past several technology generations (since about 2005), CMOS devices have operated at a supply voltage of \SI{\ca 1}{\volt}.
+
 While neural signal processing does not demand very stringent transistor speeds and so reductions below \SI{\ca 1}{\volt} are certainly feasible, a fundamental limitation in scaling the supply voltage still remains.
 Specifically, CMOS has a well-defined minimum-energy per bit and an associated minimum-energy operating voltage that is defined by the tradeoff between static (leakage) and dynamic (switching) energy:
 as the operating voltage is decreased, the capacitive switching energy decreases, but the ratio of currents in the on and off states, $I\sub{off}/I\sub{on}$, increases exponentially, increasing the energy associated with leakage (this effect is independent of the threshold voltage in the sub-threshold regime).
 For practical circuits, the supply voltage that leads to this minimum energy is on the order of \SIrange{300}{500}{\milli\volt}, and thus supply voltage scaling will at most provide 3$\times$--10$\times$ improvement in energy over today's designs.
+
 Thus, a paradigm shift in microelectronic hardware is needed to reduce power by several orders of magnitude if we are to approach the physical limits.
 Developing a switching device operating in the \si{\milli\volt} range, rather than the \SI{1}{\volt} range of current transistors, would allow $\left(\SI{1}{\volt}/\SI{1}{\milli\volt}\right)^2=\num{1e6}$ fold reduction in power consumption~\cite{yablonovitch08}.
 Electronic circuits constructed using analog techniques~\cite{sarpeshkar98}, which sometimes rely on bio-inspired computational architectures, show promise for reducing energy costs by up to five orders of magnitude~\cite{rapoport09,sarpeshkar98,mandal07}, depending on the nature of the computation and the required level of precision.
