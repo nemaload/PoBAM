@@ -339,9 +339,10 @@ Wires from each electrode must make it to the surface of the brain, which implie
 
 As a rough approximation we consider each recorder to produce a volume displacement associated with a single cylindrical wire, with length $\ell$ and radius $r$.
 Thus $r$ must satisfy \[\pi r^2\ell N\sub{min,rd} < 0.01V\sub{brain}\]
-Using $N\sub{min,rd} =$ \num{210000} or \num{38000} recording sites and $\ell\approx\SI{4}{\milli\meter}$ requires wires of radius $r\sub{max} \approx \SI{6.0}{\micro\meter}$, or \SI{2.5}{\micro\meter}, respectively.
+Using $N\sub{min,rd} =$ \num{210000} or \num{38000} recording sites and $\ell\approx\SI{4}{\milli\meter}$ requires wires of radius $r\sub{max} \approx \SI{6.0}{\micro\meter}$, or \SI{2.5}{\micro\meter}, respectively. 
+Even using $\num{7.5e6}$ electrodes, the required wire radius is \SI{\ca 200}{\nano\meter}.
 While these dimensions are readily achievable using lithographic microfabrication, there would be a challenge to produce \emph{isolated} wires of such dimensions at scale (perhaps suggesting the use of wire bundles).
-Still, the volume constraints are unlikely to limit whole-mouse-brain electrical recording even in the most pessimistic scenario.
+Still, the volume constraints are unlikely to limit whole-mouse-brain electrical recording even in the most pessimistic scenario (e.g., even assuming current spike-sorting capabilities).
 
 \autoref{fig:snrlimits} illustrates the above considerations as a function of the electrode SINR.
 
