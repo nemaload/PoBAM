@@ -119,13 +119,6 @@ Action potentials (spikes) last \SI{\ca 2}{\milli\second}.
 The rate of neuronal spiking is highly variable. Some authors have assumed an average rate of \SIrange{\ca 4}{5}{\hertz}~\cite{sarpeshkar10, harris2012synaptic}, but certain neurons spike at \SI{500}{\hertz} or faster~\cite{gittis10}, while many neurons spike much more slowly. In particular, cerebellar granule cells, which make up half of the neurons in the brain, have spontaneous firing rates of \SI{\ca 0.5}{\hertz} \cite{chadderton2004integration}. In neocortex, one analysis estimated 0.16 spikes per second per neuron (in primate) as energetically sustainable \cite{lennie2003cost}. There may be as much as a two-fold change in metabolism and hence firing rate across brain states \cite{howarth2012updated}. Certain neurons (possibly up to 90$\%$ for some neuron types in some brain areas) may be effectively silent \cite{Shoham2006, Barth2012345} (e.g., spiking less than once every ten seconds). While these estimates of  typical firing rates are useful numbers to have in mind, in the below we aim to sample all neurons at rates approaching \SI{1}{\kilo\hertz} (or higher for techniques requiring observation of detailed spike waveforms). The activities of neurons can be highly correlated locally or across large networks \cite{schneidman2006weak}. Measuring spike timing with millisecond precision is relevant for understanding network function \cite{markram2011history, Babadi2013, Taillefumier27032013, Gire2013416}. 
 
 \paragraph{Absorption and scattering of radiation}
-All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
-These electromagnetic waves are attenuated in brain tissue by absorption and scattering.
-As an approximation to the electromagnetic absorption of brain tissue, we treat the absorption by water, the brain's main constituent (\SIrange{68}{80}{\percent} by mass in humans \cite{dobbing73,fatouros99}).
-At visible and near-IR wavelengths, there is far worse scattering than absorption: absorption lengths are in the \SI{\ca 1}{\milli\meter} range, while scattering lengths are \SIrange{\ca 25}{200}{\micro\meter}~\cite{Wilt2009}.
-The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
-\autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering model (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
-This gives a preliminary indication of which wavelengths can be used to measure deep-brain signals with external detectors. Note that the attenuation length is only one of several relevant metrics. Importantly, scattering not only causes signal attenuation, but also causes noise and impairs signal separation, so the magnitude of the scattering is a key figure of merit.
 
 \begin{figure}[htbp]
 \caption{%
@@ -136,6 +129,13 @@ Inset: approximate tissue model based on Mie scattering theory and water absorpt
 \centering
 \includegraphics[width=0.5\linewidth]{figs/Fig2.eps}
 \end{figure}
+
+All existing methods of neural recording utilize electromagnetic waves, from the near-DC frequencies of wired electrical recordings (\SI{\ca 1}{\kilo\hertz}) to the radio-frequencies of wireless electronics and fMRI (MHz--GHz) to visible light in optical approaches (\SI{\ca 500}{\tera\hertz}).
+These electromagnetic waves are attenuated in brain tissue by absorption and scattering.
+As an approximation to the electromagnetic absorption of brain tissue, we treat the absorption by water, the brain's main constituent (\SIrange{68}{80}{\percent} by mass in humans \cite{dobbing73,fatouros99}).
+At visible and near-IR wavelengths, there is far worse scattering than absorption: absorption lengths are in the \SI{\ca 1}{\milli\meter} range, while scattering lengths are \SIrange{\ca 25}{200}{\micro\meter}~\cite{Wilt2009}. The combined effect of absorption and scattering is measured by the attenuation length, the distance over which the signal strength is reduced by $1/e$ along a path.
+\autoref{fig:attenuation} shows the absorption length of water~\cite{kou93}, and the attenuation length in a Mie scattering model (from \cite{horton13}) intended to approximate the scattering properties of cortical tissue (and see \cite{gabriel1996} for tissue skin depth measurements in the \SI{10}{\hertz} to \SI{100}{\giga\hertz} range).
+This gives a preliminary indication of which wavelengths can be used to measure deep-brain signals with external detectors. Note that the attenuation length is only one of several relevant metrics. Importantly, scattering not only causes signal attenuation, but also causes noise and impairs signal separation, so the magnitude of the scattering is a key figure of merit.
 
 \section{Challenges for Brain Activity Mapping}
 \label{sec:challenges}
@@ -299,12 +299,16 @@ Traditional electrical recording techniques keep active devices such as amplifie
 
 \subsubsection{Spatiotemporal Resolution}
 
+\paragraph{Limits from spike sorting}
 One way to estimate the minimal number of electrodes required to record from the entire mouse brain is to extrapolate the state of the art in spike sorting.
 In an optimistic scenario, $\ca 10$ neurons per electrode may be distinguishable using current spike-sorting algorithms \cite{pedreira12,sahani99,camunas13}, although the theoretical upper bound is unknown.
 Indeed, most current techniques (e.g. hand-positioned tetrodes) optimize for signal separability, not for total number of recorded neurons.
 This scenario would necessitate $N=\num{7.5e6}$ electrodes to record from all mouse neurons, and could correspond to recording sites spaced on the vertices of a \num{\ca 200 x 200 x 200} site cubic lattice with \SI{\ca 40}{\micro\meter} edge length.
 
-A more optimistic estimate, neglecting difficulties with spike sorting, derives from the maximum distance between an extracellular electrical recorder and a neuron from which it records spikes.
+...To be edited/expanded by Dario...
+
+\paragraph{Limits assuming perfect spike-sorting}
+A more optimistic estimate, neglecting difficulties with spike sorting (i.e., assuming a game-changing advance which obviates the above limits on spike sorting), derives from the maximum distance between an extracellular electrical recorder and a neuron from which it records spikes.
 In a first approximation, this is determined by two factors: the decay of the signal with distance from the spiking neuron and the background noise level at the recording site.
 We assume that for an electrode to reliably detect the signal from a given neuron, the magnitude of that neuron's signal must be larger than the electrode's noise level. Note, however, that knowledge of spike shape distributions could potentially be used to extract low-amplitude spikes from noise.
 
@@ -323,11 +327,10 @@ Recordings in the hippocampal CA1 region could not detect spikes from cells fart
 
 Due to the steep local falloff, even improving the SINR by a factor of 10 only extends the maximal recording distance to $r\sub{max} \approx \SI{190}{\micro\meter}$. Assuming packing of the brain into equal sized cubes of side length $d = \frac{2}{\sqrt{3}}r\sub{max} \approx \SI{150}{\micro\meter}$ gives $N > 130000$ electrodes for whole brain recording using recording sites with $r\sub{max} \approx \SI{130}{\micro\meter}$. Note that N varies as the third power of $r\sub{max}$ and is therefore highly sensitive to variations in the assumed maximal recording distance; the number of required recorders can range from \num{38000} to \num{210000} as $r\sub{max}$ varies from \SI{190}{\micro\meter} to \SI{110}{\micro\meter}.
 
-Importantly, this calculation underestimates the required number of electrodes in practice, because sorting spikes from all neurons within the \SI{6e6}{\micro\meter\cubed} cube corresponding to a single electrode is likely to be unrealistic for several reasons.
+As discussed above, these calculations assuming perfect spike-sorting will greatly underestimate the required number of electrodes in practice. Sorting spikes from all of the $> 500$ neurons within the \SI{3e6}{\micro\meter\cubed} cube corresponding to a single electrode is likely to be unrealistic for several reasons.
 First, signals from the weakest cells are far weaker than those from the strongest cells and the signals from some cells decay much faster than others~\cite{gray95}.
 Second, because of neuronal synchronization, the local noise produced by nearby neurons may sometimes be large. 
 Finally, with many neurons per electrode or at high firing rates, spikes from detectable neurons will often temporally overlap, making spike sorting difficult.
-This would be exacerbated by correlated firing patterns of nearby neurons.
 
 \subsubsection{Volume Displacement}
 
