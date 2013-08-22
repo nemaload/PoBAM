@@ -410,7 +410,7 @@ There are at least four options for overcoming the scattering of visible light t
 \item Emerging techniques based on beam shaping allow transmission of focused light through random scattering media by inverting the scattering matrix~\cite{conkey12}.
 Because the scattering properties change over time, this must be done quickly, possibly faster than the imaging frame rate, necessitating high-speed wavefront modulation.
 This can currently be achieved with digital micro-mirror devices (DMDs), but not with phase-only spatial light modulators (SLMs), although GHz switching of phase modulators appears feasible in principle ~\cite{alivisatos13}. High speed focusing through turbid media is also achievable using all-optical feedback in a laser cavity~\cite{Nixon2013}.
-It is possible to measure the scattering matrix non-invasively~\cite{Chaigne2013} using a photo-acoustic microscopy based on focused ultrasound.
+It is possible to measure the scattering matrix non-invasively~\cite{Chaigne2013} using a photo-acoustic microscopy based on focused ultrasound. When using short optical pulses (e.g., in two-photon microscopy), similar techniques can be used to correct for temporal distortions due to scattering \cite{mccabe2011spatio, katz2011focusing}
 \item Light sources and/or detectors could be positioned close to the measured neurons, necessitating the use of embedded optical devices.
 This could be done using optical fiber~\cite{mahalati13} and/or waveguide~\cite{zorzos10,zorzos12} technologies, which are developing rapidly.
 For example, single-mode fiber cables can support \SI{>1}{\tera\byte\per\second} data rates with low light loss over hundreds of kilometers.
@@ -499,9 +499,10 @@ The ideal technique would not require exogenous contrast agents or genetically e
 
 Scattering of visible light in the brain creates a problem of signal-separation from deep-brain neurons.
 Multi-photon techniques, which scan an infrared excitation beam, can work around this scattering problem.
+Although scanning of a single, focused two-photon excitation beam is slow, temporal focusing techniques can excite two-photon fluorescence over an entire plane or line in the sample \cite{tal2005improved, sela2013ultra, packer2013targeting} and can in some cases be used correct for scattering \cite{papagiakoumou2013functional}.
 However, current multi-photon techniques using fluorescent protein indicators, when applied at whole brain scale, would dissipate too much power to avoid thermal damage to brain tissue.
 Systems (such as plasmonic nano-antennas~\cite{blanchard11} or subwavelength metallic gratings~\cite{Harats11}) that could locally excite multi-photon fluorescence without the need for high-energy laser pulses could conceivably ameliorate this issue. 
-Importantly, quantum dots show promise as ultra-bright multi-photon indicators.
+Importantly, quantum dots show promise as ultra-bright multi-photon indicators, if they can be targeted to neurons and optimized in terms of fluorescence lifetime.
 New methods besides multi-photon techniques could also work around the scattering of visible light in the brain.
 For example, fluorophores or bio-luminescent proteins could be developed which operate at infrared wavelengths.
 A compelling example from nature is the black dragonfish, which generates far red light (\SI{\ca 705}{\nano\meter}) via a multi-step bioluminescent process (using this light to see in deep ocean waters)~\cite{widder84,campbell87}.
