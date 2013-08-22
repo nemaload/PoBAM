@@ -87,14 +87,9 @@ While further development of these methods promises to be a crucial driver for f
 
 \begin{figure}[htbp]
 \centering
-\caption{Four generalized neural recording modalities. (a) \emph{Extracellular electrical recording} probes the voltage due to nearby neurons. (b) \emph{Optical microscopy} detects light emission from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 2$\times$ the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) \emph{Magnetic resonance imaging} detects radio-frequency magnetic induction signals from proton spins in water, after weak thermal alignment by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. (d) \emph{Molecular recording} devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
-\subfloat[Electrical]{\includegraphics[width=2.5in, clip=false]{figs/electrode_sketch_tc.eps}}
-\hspace{0.1in}
-\subfloat[Optical]{\includegraphics[width=2.5in, clip=false]{figs/optical_sketch_tc.eps}}
-\\
-\subfloat[MRI]{\includegraphics[width=3in,clip=false]{figs/mr_sketch_tc.eps}}
-\hspace{0.5in}
-\subfloat[Molecular]{\includegraphics[width=2.5in,clip=false]{figs/molecular_sketch_tc.eps}}
+\includegraphics[width=0.8\linewidth]{figs/Fig1.eps}
+\caption{Four generalized neural recording modalities. (a) \emph{Extracellular electrical recording} probes the voltage due to nearby neurons. (b) \emph{Optical microscopy} detects light emission from activity-dependent indicators. In two-photon laser scanning microscopy, shown here, an excitation beam at 2$\times$ the peak excitation wavelength of the fluorescent indicator is scanned across the sample, while an integrating detector captures the emitted fluorescence. (c) \emph{Magnetic resonance imaging} typically detects radio-frequency magnetic induction signals from aqueous protons, after weak thermal alignment of the proton spins by a static magnetic field. A resonant radio-frequency pulse tips the spins into a plane perpendicular to the static field, causing the net magnetization to precess. The resulting signals are affected by the local chemical and magnetic environment, which can be altered dynamically by imaging agents in response to neural activity. Activity-dependent contrast agents are necessary to transduce neural activity into an MRI readout, whereas current functional MRI methods rely on blood oxygenation signals which cannot reach single-neuron resolution. (d) \emph{Molecular recording} devices have been proposed, in which a “ticker-tape” record of neural activity is encoded in the monomer sequence of a biomolecular polymer – a form of nano-scale local data storage. This could be achieved by coupling correlates of neural activity to the nucleotide misincorporation probabilities of a DNA or RNA polymerase as it replicates or transcribes a known DNA strand.}  \label{fig:modalities}
+
 \end{figure}
 
 Our analysis is predicated on assumptions that enable us to estimate scaling limits.
@@ -775,7 +770,7 @@ The second form of relaxation reflects the dephasing of spin signals in a given 
 
 In blood-oxygen level dependent functional MRI (BOLD-fMRI)---the most widely used form of neural MR imaging---increased neural activity in a given brain region alters the vascular concentration of paramagnetic deoxy-hemoglobin, which affects local magnetic field homogeneity and thereby alters $T_2$.
 Although the existence of this paramagnetic reporter of oxygen metabolism is fortuitous, the data it provides is only an indirect readout of neural activity, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}).
-A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain to transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}.
+A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain to transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}, as described in section 4.5.3, below.
 
 \subsubsection{Spatiotemporal Resolution}
 
