@@ -1,0 +1,21 @@
+[1] Config.pm:300> INFO - This is Biber 0.9.9
+[1] Config.pm:303> INFO - Logfile is 'pobam.blg'
+[2] biber-darwin:145> INFO - === Sat Aug 24, 2013, 00:59:47
+[2] Biber.pm:271> INFO - Reading 'pobam.bcf'
+[35] Biber.pm:586> INFO - Found 244 citekeys in bib section 0
+[51] Biber.pm:2585> INFO - Processing bib section 0
+[78] Biber.pm:2677> INFO - Looking for bibtex format file 'pobam_.bib' for section 0
+[91] bibtex.pm:833> INFO - Decoding LaTeX character macros into UTF-8
+[138] bibtex.pm:837> INFO - Finished Decoding LaTeX character macros into UTF-8
+[139] bibtex.pm:708> INFO - Found BibTeX data source 'pobam_.bib'
+[540] Utils.pm:168> WARN - BibTeX subsystem: /var/folders/pF/pFD7TDdjGPS9jUd1hYVeJU+++TI/-Tmp-/7MhC2n19Jn/pobam_.bib_26276.utf8, line 161, warning: 30 characters of junk seen at toplevel
+[540] Utils.pm:168> WARN - BibTeX subsystem: /var/folders/pF/pFD7TDdjGPS9jUd1hYVeJU+++TI/-Tmp-/7MhC2n19Jn/pobam_.bib_26276.utf8, line 525, warning: 14 characters of junk seen at toplevel
+[540] Utils.pm:168> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[540] Utils.pm:168> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[1440] Biber.pm:2480> INFO - Sorting list 'MAIN' keys
+[1441] Biber.pm:2484> INFO - No sort tailoring available for locale 'en_US.UTF-8'
+[1558] Biber.pm:2480> INFO - Sorting list 'SHORTHANDS' keys
+[1559] Biber.pm:2484> INFO - No sort tailoring available for locale 'en_US.UTF-8'
+[1929] bbl.pm:427> INFO - Writing 'pobam.bbl' with encoding 'UTF-8'
+[1949] bbl.pm:498> INFO - Output to pobam.bbl
+[1949] Biber.pm:106> INFO - WARNINGS: 4
