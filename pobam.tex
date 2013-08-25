@@ -682,19 +682,6 @@ The analysis above has ignored the effects of noise sources other than thermal n
 For optical transmission in the brain, the noise is dominated by time-correlated ``speckle noise'' below \SI{200}{\kilo\hertz}, which arises mostly from local blood flow~\cite{carp11}.
 This correlated noise, which cannot be filtered by simple averaging, could be avoided by modulating optical signals at frequencies above \SI{200}{\kHz}.
 
-\begin{figure}[htbp]
-\caption{%
-Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
-Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
-Top: minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
-While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
-Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
-}
-\label{fig:rfpower}
-\centering
-\includegraphics[width=0.78\textwidth]{figs/Fig5.eps}
-\end{figure}
-
 \subsubsection{Spatially Multiplexed Data Transmission}
 
 As discussed above, transmitting information through a single channel imposes direct limits on bit rate, carrier frequency and input power.
@@ -733,6 +720,19 @@ Therefore infrared light could be used for spatially multiplexed data transmissi
 At wavelengths $\lambda$ comparable to critical brain dimensions in the mouse, however, an insufficient number of scattering events will occur to create multiple independent pathways for $N$ transmitters.
 Mathematically, the matrix $\mat{H}$ will have one highly dominant singular value and a number of much smaller remaining terms, such that the signals appearing at a receiver from two separate transmitters will be highly linearly dependent, differing by only a small phase angle.
 Therefore, there will be no capacity gain from multiple transmitters, and distinct transmitters will effectively share a single channel (reducing to the SISO result).
+
+\begin{figure}[htbp]
+\caption{%
+Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
+Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
+Top: minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
+While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
+Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
+}
+\label{fig:rfpower}
+\centering
+\includegraphics[width=0.78\textwidth]{figs/Fig5.eps}
+\end{figure}
 
 Little is known about the biological interaction with electromagnetic fields at wavelengths much shorter than the critical brain dimensions but beyond the infrared, approximately \SI{100}{\giga\hertz} (\SI{\ca 3}{\milli\meter}) to \SI{100}{\tera\hertz} (\SI{\ca 3}{\micro\meter}) in the mouse.
 If multiple scattering occurs and the absorption is low, this may also be a regime conducive to MIMO communications~\cite{bakopoulos09}.
@@ -946,7 +946,7 @@ Alternatively, novel fluorescent or bio-luminescent activity indicators could in
 
 On the other hand, molecular recording devices operating at slower timescales (e.g., seconds) could perhaps be engineered via more conservative combinations of known mechanisms, such as CREB-mediated signaling to the nucleus \cite{Deisseroth2012}. In either case, the nucleic acid strands resulting from such molecular recorders could be space-stamped with cell-specific viral connectome barcodes for later readout by bulk sequencing. Alternatively, the ticker-tapes could be read within their anatomical contexts by in-situ sequencing, i.e., nucleic acid sequencing performed inside intact tissue \cite{Lee2013InSitu}.
 
-\paragraph{Combining static and dynamic datasets} Combining dynamic activity information with static structural or molecular information could allow these datasets to disambiguate one another. For example, a diversity of colors for fluorescent activity indicators (e.g., BrainBow calcium imaging) could ease requirements on spatial separation of optical signals, and the color pattern across cells could be mapped post-mortem at single-cell resolution using in-situ microscopy. Generalizing further, in-situ sequencing enables the extraction of vast quantities of molecular data from fixed tissue, in effecting allowing observations with a palette of $4^N$ colors, where $N$ is the length of the nucleic acid polymer. It is still unclear, however, whether this exponential informational resource can be harnessed for the readout of dynamic activity information, e.g., using molecular ticker-tapes.
+\paragraph{Combining static and dynamic datasets} Combining dynamic activity information with static structural or molecular information could allow these datasets to disambiguate one another. For example, a diversity of colors for fluorescent activity indicators (e.g., BrainBow calcium imaging) could ease requirements on spatial separation of optical signals, and the color pattern across cells could be mapped post-mortem at single-cell resolution using in-situ microscopy. Generalizing further, in-situ sequencing enables the extraction of vast quantities of molecular data from fixed tissue, in effect allowing observations with a palette of $4^N$ colors, where $N$ is the length of the nucleic acid polymer. It is still unclear, however, whether this exponential informational resource can be harnessed for the readout of dynamic activity information, e.g., using molecular ticker-tapes.
 
 \paragraph{MRI} Current MRI is limited by its reliance on intrinsic hemodynamic contrast mechanisms and on rapidly diffusing aqueous protons. Indicators coupling neural activity to spin relaxation rates are being developed to move beyond hemodynamic contrast. In principle, MRI could also abandon the use of water protons as the signal sources, although this would pose significant implementation challenges: the use of non-diffusible spin species could allow micron-scale resolutions, spins with higher gyromagnetic ratios could give higher sensitivity, and accelerated spin relaxation times could enable higher temporal resolution. There may also be opportunities to apply spin manipulations analogous to those of MRI in the context of novel hybrid techniques.
 
