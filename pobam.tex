@@ -702,6 +702,19 @@ If the matrix $\mat{H}$ is of full rank, then the capacity for the multi-channel
 Note that the rank of the matrix corresponds to the number of non-zero singular values, so an analysis of the singular values of channel matrices can inform us about the multiplexing capacity of the channel.
 Furthermore, this multiplexing capacity can in principle be achieved even when the transmitters are not in communication with each other, which could potentially be important for scenarios involving many brain embedded transmitters~\cite{spencer04}.
 
+\begin{figure}[htbp]
+\caption{%
+Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
+Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
+Top: minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
+While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
+Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
+}
+\label{fig:rfpower}
+\centering
+\includegraphics[width=0.78\textwidth]{figs/Fig5.eps}
+\end{figure}
+
 Transmission through a medium with negligible scattering is the simplest situation to analyze.
 In this case, evaluating the matrix $\mat{H}$ requires knowledge of the transmitter-transmitter, transmitter- receiver, and receiver-receiver distances, as well as the orientations and radiation patterns of the antennas (e.g., high gain antennas will have a highly directional radiation pattern).
 Depending on these factors, the beam from each transmitter will spread to impinge upon multiple receivers and the effective number of spatially independent beams will be reduced.
@@ -720,19 +733,6 @@ Therefore infrared light could be used for spatially multiplexed data transmissi
 At wavelengths $\lambda$ comparable to critical brain dimensions in the mouse, however, an insufficient number of scattering events will occur to create multiple independent pathways for $N$ transmitters.
 Mathematically, the matrix $\mat{H}$ will have one highly dominant singular value and a number of much smaller remaining terms, such that the signals appearing at a receiver from two separate transmitters will be highly linearly dependent, differing by only a small phase angle.
 Therefore, there will be no capacity gain from multiple transmitters, and distinct transmitters will effectively share a single channel (reducing to the SISO result).
-
-\begin{figure}[htbp]
-\caption{%
-Fundamental power requirements imposed by information theory on data transmission through a single (additive white Gaussian noise) channel with carrier frequency $\nu$ (an upper bound on the bandwidth), given thermal noise and path loss.
-Bottom: absorption length of water as a function of frequency (blue), minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} (green) as a function of frequency, assuming thermal noise but no path loss.
-Top: minimal power to transmit data at \SIlist{100;1000;10000}{\giga\bit\per\second} as a function of frequency, assuming thermal noise and a path loss corresponding to the attenuation by water absorption over a distance of \SI{2}{\milli\meter}.
-While formulated for a single channel, at certain wavelengths (e.g., RF) these factors also constrain multiplexed data transmissions between many transmitters and many receivers, depending on capacity of the system for spatial multiplexing.
-Horizontal dashed lines: \SI{40}{\milli\watt}, the approximate maximal whole-brain power dissipation in steady state.
-}
-\label{fig:rfpower}
-\centering
-\includegraphics[width=0.78\textwidth]{figs/Fig5.eps}
-\end{figure}
 
 Little is known about the biological interaction with electromagnetic fields at wavelengths much shorter than the critical brain dimensions but beyond the infrared, approximately \SI{100}{\giga\hertz} (\SI{\ca 3}{\milli\meter}) to \SI{100}{\tera\hertz} (\SI{\ca 3}{\micro\meter}) in the mouse.
 If multiple scattering occurs and the absorption is low, this may also be a regime conducive to MIMO communications~\cite{bakopoulos09}.
