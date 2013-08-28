@@ -228,8 +228,9 @@ Compute minimal number recorders based on max distance from recorder to recorded
 \iskip Approximate noise levels at recording site}
 &
 {Maximum recording distance $r\sub{max}\approx\SIrange{100}{200}{\micro\meter}$ from electrode to neuron measured
-\iskip \num{\ca 100000} recording sites are required per mouse brain at current noise levels
-\iskip However, $\ca\num{1e7}$ electrodes are required to enable sorting of noisy, temporally overlapping spikes using current algorithms}
+\iskip $\ca\num{1e5}$ recording sites are required per mouse brain at current noise levels assuming perfect spike sorting
+\iskip $\ca\num{1e6}$ recording sites are required at current noise levels at the physical limits of spike sorting
+\iskip $\ca\num{1e7}$ recording sites are required using current spike sorting algorithms}
 \\
 
 Implanted electrical recorders &
@@ -237,15 +238,15 @@ Compute power dissipation of electronic devices that digitally sample neuronal a
 Physical limit: $\left.\kb T\ln\left(2\right)\right/\si{\bit}$ erased \iskip
 Practical limit: $\left.\ca 10 \kb T\right/\si{\bit}$ processed \iskip
 Current CMOS digital circuits: $\left.\num{>1e5}\kb T\right/\si{\bit}$ processed &
-Requires at least 2--3 orders of magnitude increase in the power efficiency of electronics relative to current devices to scale to whole-brain simultaneous recordings \iskip
-Minimalist architectures should be developed to reduce local data processing overhead
+Requires 2--3 orders of magnitude increase in the power efficiency of electronics relative to current devices to scale to whole-brain simultaneous recordings \iskip
+Minimalist architectures could be developed to reduce local data processing overhead
 \\
 
 Wireless data transmission &
 Compute tradeoff between power dissipation and channel bandwidth using information theory &
 Transmitter must supply enough power to overcome noise and path loss &
-Data transmission at optical or near-optical frequencies is necessary to achieve sufficient single-channel data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain activity data would draw excessive power due to bandwidth constraints
-\iskip Bandwidth cannot effectively be split over multiple independent RF channels, but IR light or ultrasound may allow spatial multiplexing
+Transmission at optical or near-optical frequencies is needed to achieve sufficient single-channel data rates using electromagnetic radiation. Radio-frequency (RF) electromagnetic transmission of whole-brain activity data draws excessive power due to bandwidth constraints
+\iskip Bandwidth cannot be split over multiple independent RF channels, but IR light or ultrasound may allow spatial multiplexing
 \\
 
 Optical imaging &
@@ -258,7 +259,7 @@ Multi-photon optics &
 Compute minimum total excitation light power to excite multi-photon transitions from indicators within each neuron in every imaging frame &
 Approximate values of multi-photon cross-sections \iskip
 Pulse durations similar to those currently used in multi-photon imaging &
-Whole-brain multi-photon excitation will over-heat the brain except in very short experiments, unless ultra-high-cross-section inorganic indicators are used
+Whole-brain multi-photon excitation will over-heat the brain except in very short experiments, unless ultra-high-cross-section indicators are used
 \\
 
 Beam scanning microscopies &
@@ -273,15 +274,15 @@ Magnetic resonance imaging &
 Calculate spatial and temporal resolution of MRI based on spin relaxation times and spin diffusion &
 Proton MRI using tissue water \iskip
 Approximate $T_1$ and $T_2$ relaxation times and self-diffusion times for tissue water &
-To a first approximation, proton MRI is limited by the $T_1$ relaxation time of water to \SI{\ca 100}{\milli\second} temporal resolution and by the self-diffusion of water to spatial resolutions of \SI{\ca 40}{\micro\meter}. $T_1$ pre-mapping could allow $T_2$ contrast on a \SI{\ca 10}{\milli\second} timescale
+Proton MRI is limited by the $T_1$ relaxation time of water to \SI{\ca 100}{\milli\second} temporal resolution and by the self-diffusion of water to spatial resolutions of \SI{\ca 40}{\micro\meter}. $T_1$ pre-mapping could allow $T_2$ contrast on a \SI{\ca 10}{\milli\second} timescale. Achieving these limits for functional imaging requires going beyond BOLD contrast
 \\
 
 Ultrasound &
 Calculate spatial resolution, signal strength and bandwidth limits on ultrasound imaging &
 Speed of sound in brain \iskip
-Attenuation rate of ultrasound in brain &
+Attenuation length of ultrasound in brain &
 Attenuation of ultrasound by brain tissue and bone may be prohibitive at the \SI{\ca 100}{\mega\hertz} frequencies needed for single-cell resolution ultrasound imaging \iskip
-Ultrasound may be a viable medium for spatially multiplexed data transmission from embedded devices~\cite{Seo2013}
+Ultrasound may be viable for spatially multiplexed data transmission from embedded devices~\cite{Seo2013}
 \\
 
 Molecular recording &
@@ -289,8 +290,8 @@ Compute metabolic load and DNA volume for rapid synthesis of large nucleic acid 
 Evaluate temporal resolution in simulated experiments using kinetic models~\cite{glaser13} &
 Polymerase biochemical parameter ranges \iskip
 Metabolic requirements of genome replication &
-Molecular recording devices appear to fall within physical limits but their development poses major challenges in synthetic biology \iskip
-Molecular recording would likely require mechanisms for synchronization or time-stamping
+Molecular recording devices appear to fall within physical limits but their development poses multiple major challenges in synthetic biology \iskip
+Synchronization or time-stamping mechanisms are required for temporal resolution to approach the millisecond scale
 
 \\\bottomrule
 \end{tabu}
@@ -782,7 +783,7 @@ The first form results from energy dissipation through interactions with other s
 The second form of relaxation reflects the dephasing of spin signals in a given sampling volume (voxel) over a timescale, $T_2$, of \SIrange{10}{100}{\milli\second}~\cite{deichmann95} due to non-uniform Larmor frequencies caused, e.g., by the presence of local magnetic field inhomogeneities.
 
 In blood-oxygen level dependent \cite{ogawa1990oxygenation} functional MRI (BOLD-fMRI)---the most widely used form of neural MR imaging---increased neural activity in a given brain region alters the vascular concentration of paramagnetic deoxy-hemoglobin, which affects local magnetic field homogeneity and thereby alters $T_2$.
-Although the existence of this paramagnetic reporter of oxygen metabolism is fortuitous, the data it provides is only an indirect readout of neural activity \cite{sirotin2009anticipatory}, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}). 
+Although the existence of this paramagnetic reporter of oxygen metabolism is fortuitous, the data it provides is only an indirect readout of neural activity \cite{sirotin2009anticipatory, logothetis2008we}, which is limited in its spatial and temporal resolution to the dynamics of blood flow in the brain's capillary network (\SIrange{1}{2}{\second}). 
 The spatial point-spread function of the hemodynamic BOLD response is in the \SI{1}{\milli\meter} range, although sub-millimeter measurements, revealing cortical laminar and columnar features, have been obtained by filtering out the signals from larger blood vessels \cite{bandettini2009functional}.
 A significant area of current and future work is aimed at developing new molecular reporters that can be introduced into the brain to transduce aspects of neural signaling such as calcium spikes and neurotransmitter release into MRI- detectable magnetic or chemical signals~\cite{shapiro10,koretsky12,hsieh12}, as described in section 4.5.3, below.
 
