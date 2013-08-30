@@ -9,18 +9,18 @@
 \author[5]{Mikhail~G.~Shapiro\rlap{,}}
 \author[6]{Thaddeus~R.~Cybulski\rlap{,}}
 \author[6]{Joshua~I.~Glaser\rlap{,}}
-\author[14]{Dario~Amodei\rlap{,}}
+\author[7]{Dario~Amodei\rlap{,}}
 \author[3]{P.~Benjamin~Stranges\rlap{,}}
 \author[3]{Reza~Kalhor\rlap{,}}
-\author[1,7,8]{David~A.~Dalrymple\rlap{,}}
-\author[9]{Dongjin~Seo}
-\author[9]{Elad~Alon\rlap{,}}
-\author[9]{Michel~M.~Maharbiz\rlap{,}}
-\author[9,13]{Jose~M.~Carmena\rlap{,}}
-\author[9]{Jan~M.~Rabaey\rlap{,}}
-\author[$\jointlast$8,10]{Edward~S.~Boyden\rlap{,}}
+\author[1,8,9]{David~A.~Dalrymple\rlap{,}}
+\author[10]{Dongjin~Seo}
+\author[10]{Elad~Alon\rlap{,}}
+\author[10]{Michel~M.~Maharbiz\rlap{,}}
+\author[10,11]{Jose~M.~Carmena\rlap{,}}
+\author[10]{Jan~M.~Rabaey\rlap{,}}
+\author[$\jointlast$9,12]{Edward~S.~Boyden\rlap{,}}
 \author[$\jointlast$1,2,3]{George~M.~Church\rlap{,}}
-\author[$\jointlast$11,12]{Konrad~P.~Kording}
+\author[$\jointlast$13,14]{Konrad~P.~Kording}
 
 \affil[$\jointfirst$]{Joint first authors}
 \affil[$\jointlast$]{Joint last authors}
@@ -34,14 +34,14 @@
 \affil[4]{Plum Labs LLC, Cambridge,~MA{~02142, USA}}
 \affil[5]{Division of Chemistry and Chemical Engineering, California Institute of Technology{, Pasadena,~CA~91125, USA}}
 \affil[6]{{Interdepartmental} Neuroscience {Program,} Northwestern Univ.{, Chicago,~IL~60611, USA}}
-\affil[7]{Nemaload, San Francisco, CA{~94107, USA}}
-\affil[8]{Media Lab{oratory,} Massachusetts Institute of Technology{, Cambridge,~MA~02139, USA}}
-\affil[9]{{Dept.\ of} Electrical Engineering and Computer Science{, Univ. of California at} Berkeley{, Berkeley,~CA~94720, USA}}
-\affil[10]{{Depts.\ of} Brain and Cognitive Sciences {\et\ of} Biological Engineering, Massachusetts Institute of Technology{, Cambridge,~MA~02139, USA}}
-\affil[11]{{Depts.\ of} Physical Medicine and Rehabilitation {\et\ of} Physiology, Northwestern Univ.{\ Feinberg} School of Medicine{, Chicago,~IL~60611,~USA}}
-\affil[12]{{Sensory Motor Performance Program,} The Rehabilitation Institute of Chicago{, Chicago,~IL~60611,~USA}}
-\affil[13]{Helen Wills Neuroscience Institute, Univ. of California at Berkeley, Berkeley,~CA~94720, USA}
-\affil[14]{Department of Radiology, Stanford University, Palo Alto, ~CA~94305, USA}
+\affil[7]{Department of Radiology, Stanford University, Palo Alto, ~CA~94305, USA}
+\affil[8]{Nemaload, San Francisco, CA{~94107, USA}}
+\affil[9]{Media Lab{oratory,} Massachusetts Institute of Technology{, Cambridge,~MA~02139, USA}}
+\affil[10]{{Dept.\ of} Electrical Engineering and Computer Sciences{, Univ. of California at} Berkeley{, Berkeley,~CA~94720, USA}}
+\affil[11]{Helen Wills Neuroscience Institute, Univ. of California at Berkeley, Berkeley,~CA~94720, USA}
+\affil[12]{{Depts.\ of} Brain and Cognitive Sciences {\et\ of} Biological Engineering, Massachusetts Institute of Technology{, Cambridge,~MA~02139, USA}}
+\affil[13]{{Depts.\ of} Physical Medicine and Rehabilitation {\et\ of} Physiology, Northwestern Univ.{\ Feinberg} School of Medicine{, Chicago,~IL~60611,~USA}}
+\affil[14]{{Sensory Motor Performance Program,} The Rehabilitation Institute of Chicago{, Chicago,~IL~60611,~USA}}
 
 \renewcommand{\maketitlehookc}{{\small\raggedright Correspondence to: \texttt{adam.h.marblestone\,\textnormal{(at)}\,\,gmail.com}}}
 
@@ -250,7 +250,7 @@ Transmission at optical or near-optical frequencies is needed to achieve suffici
 Optical imaging &
 Relate the scattering and absorption lengths of optical wavelengths in brain tissue to signal-to-noise ratios for optical imaging &
 Approximate values of scattering and absorption lengths as a function of wavelength &
-Light scattering imposes severe limits on optical techniques, but strategies exist which could negate the effects of scattering, such as implantable optics, infrared fluorescence or bioluminescence, and online inversion of the scattering matrix
+Light scattering imposes severe constraints, but strategies exist which could negate the effects of scattering, such as implantable optics, infrared indicators, signal modulation, and online inversion of the scattering matrix
 \\
 
 Multi-photon optical imaging &
@@ -264,7 +264,7 @@ Beam scanning microscopies &
 Calculate device and indicator parameters necessary for fast beam repositioning and signal detection &
 Fast optical phase modulators could reposition beams at \SI{\ca 1}{\giga\hertz} switching rates \iskip
 Fluorescence lifetimes in the \SIrange{0.1}{1.0}{\nano\second} range &
-Beam repositioning time limits the speed of current systems but current systems are far from the physical limits of scan speed \iskip
+Beam repositioning time limits the speed of current systems but these are far from the physical limits \iskip
 Fluorescence lifetimes of indicators constrain design of ultra-fast scanning microscopies
 \\
 
@@ -362,7 +362,7 @@ In practice these limits are likely to be highly optimistic, since the set of sp
 
 Indeed, current practice is far from the above information-theoretic limits. At present, spike sorting algorithms operating on data from large-scale (\num{250}-\num{500} electrodes), densely spaced (\SI{\ca 30}{\micro\meter}), 2D multi-electrode arrays can reliably identify and distinguish spikes from nearly all of the \num{200}-\num{300} retinal ganglion cells~\cite{marre12,pillow13} in a small patch of retina, and can also infer approximate cell locations through spatial triangulation of spike amplitudes.  This represents a roughly $1:1$ ratio of cells to electrodes. Electrodes with up to $3$ single units can be found in chronically implanted multi-electrode arrays (in both mouse and primate) \cite{costa2004differential, Nicolelis2003}, where the electrodes are sparse, although the average yield of cells per electrode is closer to $1:1$; if only electrodes with at least one cell are counted, the average rises to $\ca 1.5$--$1.7$ cells per electrode. Optimistically, simulations of neural activity suggest that \num{5}-\num{10} neurons per electrode may be distinguishable using current spike sorting algorithms~\cite{pedreira12,sahani99,camunas13}. A limit of $\ca\num{10}$ neurons per electrode would imply $N=\num{7.5e6}$ electrodes to record from all neurons in the mouse brain, which could be accomplished by positioning recording sites on a cubic lattice with \SI{\ca 40}{\micro\meter} edge length.
 
-Future algorithmic improvements could enable sorting from more than $\ca\num{10}$ cells per electrode, but this becomes an increasingly challenging computational task. One simple estimate of a reasonable practical limit, for the regime of many neurons per electrode, would be the largest number of neurons that can be sorted without requiring the frequent resolving of temporally overlapping spikes: if the average neuron fires at \SI{\ca 5}{\hertz} and spikes last \SI{\ca 2}{\milli\second}, then at most roughly \num{100} neurons per electrode can be sorted without requiring overlaps to be resolved.  Note that while some present-day algorithms can successfully resolve overlapping spikes~\cite{marre12,pillow13,segev04,ge2011,prentice2011}, they typically do so only in the case where electrodes are densely spaced and any given spike appears on many electrodes, such that spatial information can be used to resolve the overlap. Resolving overlaps when spikes appear on only one or a few channels is more difficult due to extrinsic noise and spike-shape variation.
+Future algorithmic improvements could enable sorting from more than $\ca\num{10}$ cells per electrode, but this becomes increasingly challenging. One simple estimate of a reasonable practical limit, for the regime of many neurons per electrode, would be the largest number of neurons that can be sorted without requiring the frequent resolving of temporally overlapping spikes: if the average neuron fires at \SI{\ca 5}{\hertz} and spikes last \SI{\ca 2}{\milli\second}, then at most roughly \num{100} neurons per electrode can be sorted without requiring overlaps to be resolved.  Note that while some present-day algorithms can successfully resolve overlapping spikes~\cite{marre12,pillow13,segev04,ge2011,prentice2011}, they typically do so only in the case where electrodes are densely spaced and any given spike appears on many electrodes, such that spatial information can be used to resolve the overlap. Resolving overlaps when spikes appear on only one or a few channels is more difficult due to noise and spike-shape variation.
 
 Overall,  $\ca\num{100}$ cells per electrode may be taken as a rough estimate of the limits of spike sorting, and would imply $N = \num{750000}$ electrodes and an edge spacing of \SI{\ca 80}{\micro\meter} if a cubic lattice of recording sites were used.  However, we should not exclude the possibility of game-changers which could alter the nature of the recorded data to improve the available information. For instance, CCD cameras could be attached to multi-electrode arrays to aid in the identification and localization of cells, or directional information on the source of spikes could be obtained at each recording site, for example by measuring the directions of gradients in voltage. Systems that capture additional information in this manner could circumvent the above information-theoretic limits and improve spike sorting performance.
 
@@ -443,7 +443,7 @@ For example, single-mode fiber cables can support \SI{>1}{\tera\byte\per\second}
 \end{enumerate}
 
 Hybrid techniques combining optics with other modalities may also provide new ways to overcome scattering.
-For example, ultrasound encoding~\cite{wang12}, which frequency-tags light emissions emerging from a known location via a mechanical Doppler shift of the emitter~\cite{mahan98}, is powerful in that it provides a generic mechanism to sidestep problems of elastic optical scattering, but it requires distinguishing MHz frequency modulations in THz light waves (part per million frequency discrimination). Radio-frequency tagging of light emission time-series via an all-optical approach is also an option and may be applicable to combatting the problem of emission scattering in deep-tissue, multi-point, multi-photon imaging \cite{diebold2013digitally}. In principle, excitation and detection do not need to make use of the same modality. For example, photoacoustic microscopy \cite{filonov12} uses pulsed laser excitation to drive ultrasonic emission, leading to optical absorption contrast. Such asymmetric techniques impose fundamentally different requirements from pure-optical techniques relative to fluorophore properties, required light intensities and other parameters.
+For example, ultrasound encoding~\cite{wang12}, which frequency-tags light emissions emerging from a known location via a mechanical Doppler shift of the emitter~\cite{mahan98}, is powerful in that it provides a generic mechanism to sidestep problems of elastic optical scattering, although it requires distinguishing MHz frequency modulations in THz light waves (part per million frequency discrimination). Radio-frequency tagging of light emissions via a digitally synthesized optical approach is also an option and may be applicable to combatting the problem of emission scattering in deep-tissue, multi-point, multi-photon imaging \cite{diebold2013digitally}. In principle, excitation and detection do not need to make use of the same modality. For example, photoacoustic microscopy \cite{filonov12} uses pulsed laser excitation to drive ultrasonic emission, leading to optical absorption contrast. Such asymmetric techniques impose fundamentally different requirements from pure-optical techniques relative to fluorophore properties, required light intensities and other parameters.
 
 \paragraph{Speed of beam scanning}
 The speed of scanning microscopes is limited by beam repositioning times (\SI{\ca 0.1}{\micro\second} for spinning disk~\cite{mahalati13,kang10,flusberg05}, \SI{\ca 3}{\micro\second} for piezo-controlled linear scan mirrors, \SI{\ca 10}{\micro\second} for acousto-optic deflectors~\cite{vucinic07}, \SI{\ca 8}{\kilo\hertz} line scans for resonant galvanometer mirrors), and the fluorescence lifetimes of activity indicators (\SI{\ca 1}{\nano\second}).
