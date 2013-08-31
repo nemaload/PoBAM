@@ -75,7 +75,7 @@ The use of embedded local recording and wireless data transmission would only be
 \end{abstract}
 
 \section{Introduction}
-Neuroscience depends on monitoring the electrical activities of neurons within functioning brains~\cite{alivisatos2012brain, bansal2012decoding} and has advanced through steady improvements in the underlying observational tools. The number of neurons simultaneously recorded using wired electrodes, for example, has doubled every seven years since the 1950s, currently allowing electrical observation of hundreds of neurons at sub-millisecond timescales~\cite{stevenson11}. Recording techniques have also diversified: activity-dependent optical signals from neurons endowed with fluorescent indicators can be measured by photodetectors, and radio-frequency emissions from excited nuclear spins allow the construction of magnetic resonance images modulated by activity-dependent contrast mechanisms.
+Neuroscience depends on monitoring the electrical activities of neurons within functioning brains~\cite{alivisatos2012brain, bansal2012decoding, gerhard2013successful} and has advanced through steady improvements in the underlying observational tools. The number of neurons simultaneously recorded using wired electrodes, for example, has doubled every seven years since the 1950s, currently allowing electrical observation of hundreds of neurons at sub-millisecond timescales~\cite{stevenson11}. Recording techniques have also diversified: activity-dependent optical signals from neurons endowed with fluorescent indicators can be measured by photodetectors, and radio-frequency emissions from excited nuclear spins allow the construction of magnetic resonance images modulated by activity-dependent contrast mechanisms.
 Ideas for alternative methods have been proposed, including the direct recording of neural activities into information-bearing biopolymers~\cite{zamft12,glaser13,kording11a}.
 
 Each modality of neural recording has characteristic advantages and disadvantages.
@@ -527,7 +527,7 @@ New methods besides multi-photon techniques could also work around the scatterin
 For example, fluorophores or bio-luminescent proteins could be developed which operate at infrared wavelengths.
 A compelling example from nature is the black dragonfish, which generates far red light (\SI{\ca 705}{\nano\meter}) via a multi-step bioluminescent process (using this light to see in deep ocean waters)~\cite{widder84,campbell87}.
 A large set of activity indicators with distinguishable colors, generated through a combinatorial genetic recombination mechanism such as BrainBow~\cite{livet07}, could also improve signal separation.
-In addition, implanted optical devices, which place emitters and detectors within a few scattering lengths of the neurons being probed, could potentially obviate the negative effects of scattering and allow visible-wavelength indicators to be used without a need for multi-photon excitation. In principle, excitation and detection do not need to make use of the same modality. For example, photoacoustic microscopy \cite{filonov12} uses pulsed laser excitation to drive ultrasonic emission, leading to optical absorption contrast. Such asymmetric techniques impose fundamentally different requirements from pure-optical techniques relative to fluorophore properties, required light intensities and other parameters.
+Targeting of activity indicators to specific locations, such as the axon \cite{arnold2007polarized} or synapse \cite{feinberg2008gfp, yamagata2012transgenic} could also aid in signal discrimination. In addition, implanted optical devices, which place emitters and detectors within a few scattering lengths of the neurons being probed, could potentially obviate the negative effects of scattering and allow visible-wavelength indicators to be used without a need for multi-photon excitation. In principle, excitation and detection do not need to make use of the same modality. For example, photoacoustic microscopy \cite{filonov12} uses pulsed laser excitation to drive ultrasonic emission, leading to optical absorption contrast. Such asymmetric techniques impose fundamentally different requirements from pure-optical techniques relative to fluorophore properties, required light intensities and other parameters.
 
 \subsection{Embedded Active Electronics}
 
@@ -706,7 +706,7 @@ As a concrete example of such ``spatial multiplexing,'' an effective capacity of
 Importantly, in order to exceed the above limits for single-channel data transmission, it must be possible for these transmitter receiver pairs to share the same bandwidth and operate simultaneously without conflicts, for example by modulating distinguishable carrier waves or by transferring data over separate wires.
 The conditions under which this may occur, however, can be counter-intuitive.
 For example, for antennas to operate independently, they must be spaced apart from one another by roughly a wavelength.
-For \SI{10}{\giga\hertz} microwaves, the wavelength is \SI{\ca 3}{\centi\meter}, so no more than a handful of microwave transmitters can co-occupy the mouse brain while operating independently.
+For \SI{10}{\giga\hertz} microwaves, the wavelength is \SI{\ca 3}{\centi\meter}, so no more than a handful of microwave transmitters (e.g., operating at frequencies in the \SI{100}{\giga\hertz}--\SI{1}{\tera\hertz} range) can co-occupy the mouse brain while operating independently.
 
 Even with many non-independent transmitters co-occupying the brain and operating simultaneously over the same frequency spectrum, it may be possible under some conditions to ``factor out'' the effects of the coupling and allow an increase in channel capacity relative the single-channel result.
 To treat such scenarios, a generalization to Shannon's capacity theorem to multi-input-multi-output (MIMO) channels has shown that the maximal total data rate is
@@ -776,7 +776,7 @@ It may also be of interest to explore network architectures~\cite{Bush2011} in w
 Magnetic resonance imaging (MRI) uses the resonant behavior of nuclear spins in a magnetic field to non-invasively probe the spatiotemporally varying chemical and magnetic properties of tissues.
 Although originally conceived as a means to image anatomy, MRI can be used to observe neural activity provided such activity is reflected in dynamic changes in local chemistry or magnetism.
 
-In an MRI study, a strong static field ($B = \SIrange{1}{15}{\tesla}$) is applied to polarize nuclear spins (usually \textsuperscript{1}H), causing them to resonate at a field-dependent Larmor frequency \[f = \frac{\gamma}{2\pi} B\] where $\gamma$ is the gyromagnetic ratio of the nucleus (\SI{267.522}{\mega\hertz\per\tesla} for \textsuperscript{1}H~\cite{codata10}).
+In an MRI study, a strong static field ($B = \SIrange{1}{15}{\tesla}$) is applied to polarize nuclear spins (usually \textsuperscript{1}H), causing them to resonate at a field-dependent Larmor frequency \[f = \frac{\gamma}{2\pi} B\] where $\gamma$ is the gyromagnetic ratio of the nucleus (e.g., \textsuperscript{1}H has a gyromagnetic ratio of \SI{267.522}{\mega\hertz\per\tesla} \cite{codata10} and therefore resonates at \SI{42.577}{\mega\hertz} in a \SI{1}{\tesla} field).
 To obtain positional information, spatial field gradients are applied such that nuclei at different positions in the sample resonate at slightly different frequencies.
 Sequences of RF pulses and gradients are then applied to the sample, eliciting resonant emissions that contain information about spins' local chemical environment, magnetic field anisotropy and various other properties.
 
@@ -863,8 +863,9 @@ However, a major current limitation for fast agents is the requirement that they
 
 \subsubsection{Conclusions and Future Directions}
 
-Moving beyond hemodynamic contrast is crucial for improving the spatiotemporal resolution of fMRI, and several avenues may be available for doing so, especially through the use of novel molecular contrast agents and/or genetic engineering. More fundamentally, current MRI techniques rely on the excitation of proton spins in water, however, and are thus limited to imaging at \SI{>100}{\ms} timescales unless SNR is severely compromised, due to the low polarizability and long $T_1$ relaxation time of proton spins.
-There is also a spatial resolution limit of tens of microns over these timescales due to water's fast diffusion. Methods which couple neural activity to non-diffusible, highly polarized spins could in principle ameliorate this situation.
+Moving beyond hemodynamic contrast is crucial for improving the spatiotemporal resolution of fMRI, and several avenues may be available for doing so, especially through the use of novel molecular contrast agents and/or genetic engineering. 
+More fundamentally, current MRI techniques rely on the excitation of proton spins in water: this limits imaging to \SI{>100}{\ms} timescales, unless SNR is severely compromised, due to the low polarizability and long $T_1$ relaxation times of proton spins.
+There is also a spatial resolution limit of tens of microns over these timescales due to water's fast diffusion. Methods which couple neural activity to non-diffusible, highly polarized spins could, in principle, ameliorate this situation.
 
 \subsection{Molecular Recording}
 
